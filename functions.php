@@ -27,7 +27,13 @@ $pdo->query("set names utf8");
 $pdo->query("set character_set_results='utf8'");
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+// default mode 
+//$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
 $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+// column name array
+$pdo->setAttribute(PDO::FETCH_ASSOC);
+// column number array
+//$pdo->setAttribute(PDO::FETCH_NUM);
 }catch (PDOException $e){
 	echo $e->getMessage();
 	exit('Database error!');
@@ -58,6 +64,34 @@ public function fetch_all_coments($id = '1', $desc = '1', $txt = 'tring'){
 	$query = $pdo->prepare("SELECT * FROM coments WHERE coment_article_id = '$id' AND title = '$txt' ORDER BY coment_time ".$val);
 	$query->execute();
 	return $query->fetchAll();
+}
+
+// fetch example row by row works with while
+public function fetch_example($nr = '100'){
+	// SELECT * FROM articles LIMIT 1
+	$query = $pdo->prepare("SELECT * FROM articles ORDER BY article_id DESC LIMIT 1,:nr");
+	$query->bindValue(':nr', $nr, PDO::PARAM_INT);
+	//$query->bindValue(':nr', $nr, PDO::PARAM_STR);
+	//if use ? not :nr
+	//$query->bindValue(1, $nr, PDO::PARAM_INT);
+	//$query->bindValue(2, $nr, PDO::PARAM_STR);
+	$query->execute();
+
+	//print("Return next row as an array indexed by column number from 0 \n"); 
+	return $query->fetch(PDO::FETCH_NUM);
+
+	//print("Return next row as an array indexed by column name\n");
+	//return $query->fetch(PDO::FETCH_ASSOC);
+
+	//print("Return next row as an array indexed by both column name and number\n");
+	//return $query->fetch(PDO::FETCH_BOTH);
+
+	//print("Return next row as an anonymous object with column names as properties\n");
+	//return $query->fetch(PDO::FETCH_OBJ);
+
+	// Returns a single column from the next row of a result set
+	// $pdo->query("SELECT COUNT(id) FROM pics");	
+	// return $query->fetchColumn(); 
 }
 
 // fetch all articles from database pagination example
