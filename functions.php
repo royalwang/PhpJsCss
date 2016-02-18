@@ -189,7 +189,7 @@ if (isset($_POST["email"]) && isset($_POST["comment"]) && isset($_POST["name"]))
 
 // save email newsletter address to file
 if($_POST['email']){
-    $fileName = 'newsletter.txt'; //set 777 permision for this file: chmod($fileName, 0777);
+    $fileName = 'newsletter.txt'; //set 700 permision for this file: chmod($fileName, 0700); or 755
     $error = false;
     $email = $_POST['email'];
     
