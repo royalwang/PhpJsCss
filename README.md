@@ -1,2 +1,2 @@
-# Php
-Php 
+# Php, Js, jQuery
+Php, JavaScript
