@@ -1,4 +1,7 @@
 //Initialize google map for contact setion with your location.
+// add script first
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
 function initializeMap() {
 
     var lat = '44.8164056'; //Set your latitude.
