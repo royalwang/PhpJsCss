@@ -1,2 +1,2 @@
-# Php, Js, jQuery
-Php, JavaScript
+#Php, Js, Css
+Php, Js, Css
