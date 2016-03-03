@@ -134,7 +134,7 @@ public function fetch_all_coments($id = '1', $desc = '1', $txt = 'tring'){
 	// secure passwords hash md5()
 	$pass = md5($txt);
 	
-	// :) secure strings if need  $txt =  $_POST['string'] or $_GET['string']
+	// :) secure strings if needed  $txt =  $_POST['string'] or $_GET['string']
 	$txt = htmlentities($txt, ENT_QUOTES, "UTF-8");
 	
 	// sortowanie
