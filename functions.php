@@ -1,4 +1,84 @@
 <?php
+session_cache_limiter('');
+header('Thu, 01 Jan 1970 00:00:00 GMT');
+session_start();
+error_reporting(0);
+
+// time from mysql timestamp
+// echo date('M j Y g:i A', strtotime('2010-05-29 01:17:35'));
+$dayofweek = date('w', strtotime('2016-02-1'));
+
+// usuń http://
+function isWWW($s){
+$s= str_replace("https://", '', $s);
+return $s= str_replace("http://", '', $s);
+}
+
+// rozstrzel text po 3 od końca
+function isTel($t = "111222333"){
+return substr($t, -15 ,-12)." ".substr($t, -12 ,-9)." ".substr($t, -9 ,-6)." ".substr($t, -6 ,-3)." ".substr($t, -3);
+}
+
+
+// random password
+function randomPassword($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+// if image exist return path to image
+function isLogo($id){
+	$p = '../media/_ludek.jpg';
+	if (file_exists('../media/'.$id.'_logo.gif')) {	$p = '../media/'.$id.'_logo.gif';}
+	if (file_exists('../media/'.$id.'_logo.png')) {	$p = '../media/'.$id.'_logo.png';}
+	if (file_exists('../media/'.$id.'_logo.jpeg')){ $p = '../media/'.$id.'_logo.jpeg';}
+	if (file_exists('../media/'.$id.'_logo.jpg')) { $p = '../media/'.$id.'_logo.jpg';}	
+	return $p;
+}
+
+// is background exist
+function isWall($id){
+	$p = '../media/_wall.jpg';
+	if (file_exists('../media/'.$id.'_wall.gif')) {	$p = '../media/'.$id.'_wall.gif';}
+	if (file_exists('../media/'.$id.'_wall.png')) {	$p = '../media/'.$id.'_wall.png';}
+	if (file_exists('../media/'.$id.'_wall.jpeg')){ $p = '../media/'.$id.'_wall.jpeg';}
+	if (file_exists('../media/'.$id.'_wall.jpg')) { $p = '../media/'.$id.'_wall.jpg';}	
+	return $p;
+}
+
+// secure input data 
+function Clear(){
+	foreach ($_GET as $key => $val) { 
+	    if (is_string($val)) { 
+	        $_GET[$key] = htmlentities($val, ENT_QUOTES, 'UTF-8'); 
+	    } else if (is_array($val)) { 
+	        $_GET[$key] = Clear($val); 
+	    } 
+	} 
+	foreach ($_POST as $key => $val) { 
+	    if (is_string($val)) { 
+	        $_POST[$key] = htmlentities($val, ENT_QUOTES, 'UTF-8'); 
+	    } else if (is_array($val)) { 
+	        $_POST[$key] = Clear($val); 
+	    } 
+	} 
+}
+
+
+// log to database
+function logDB(){
+    // create database first
+    // CREATE TABLE IF NOT EXISTS `logs` (`link` text, `ip` text) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+    $log = $_SERVER['HTTP_HOST']." ".$_SERVER['REQUEST_URI'];
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $log = htmlentities($log,ENT_QUOTES, 'utf-8');    
+    mysql_query("INSERT INTO logs(link,ip) VALUE('$log','$ip')");    
+
 
 // log request
 function logrequest($pathdir = "_logs"){    
