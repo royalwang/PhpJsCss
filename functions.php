@@ -169,8 +169,12 @@ public function fetch_example($nr = '100'){
 	//print("Return next row as an anonymous object with column names as properties\n");
 	//return $query->fetch(PDO::FETCH_OBJ);
 
+	// query only fetch results SIMPLE VERSION
+	// $query = $pdo->query('SELECT * FROM `mytable` WHERE true', PDO::FETCH_ASSOC);
+	// return $query->fetchAll(); 
+	
 	// Returns a single column from the next row of a result set
-	// $pdo->query("SELECT COUNT(id) FROM pics");	
+	// $query = $pdo->query("SELECT COUNT(id) FROM pics");	
 	// return $query->fetchColumn(); 
 }
 
