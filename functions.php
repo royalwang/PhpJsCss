@@ -288,8 +288,11 @@ if (isset($_POST["email"]) && isset($_POST["comment"]) && isset($_POST["name"]))
   //email subject
   $emailSubject = "Mail from Company";
   
-  //email subject polskie znaki w tytule
+  //email subject polskie znaki w tytule dla utf
   $emailSubject = "=?UTF-8?B?".base64_encode("Temat z ogonkami ęóąśłżźćń")."?=";
+  
+  // dla iso podobno
+  // $emailSubject = "=?iso-8859-2?B?".base64_encode($temat)."?=";
 
   if($name == "") $data['success'] = false;
  
