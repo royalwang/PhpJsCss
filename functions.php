@@ -274,19 +274,23 @@ if (isset($_POST["email"]) && isset($_POST["comment"]) && isset($_POST["name"]))
   $data['success'] = true;
   $_POST  = multiDimensionalArrayMap('cleanEvilTags', $_POST);
   $_POST  = multiDimensionalArrayMap('cleanData', $_POST);
-
-  //your email adress 
-  $emailTo ="yourmail@yoursite.com"; //"yourmail@yoursite.com";
-
-  //from email adress
-  $emailFrom ="contact@yoursite.com"; //"contact@yoursite.com";
-
-  //email subject
-  $emailSubject = "Mail from Company";
-
+  
   $name = $_POST["name"];
   $email = $_POST["email"];
   $comment = $_POST["comment"];
+  
+  //your email adress 
+  $emailTo ="to@yoursite.com";
+
+  //from email adress
+  $emailFrom ="from@yoursite.com";
+
+  //email subject
+  $emailSubject = "Mail from Company";
+  
+  //email subject polskie znaki w tytule
+  $emailSubject = "=?UTF-8?B?".base64_encode("Temat z ogonkami ęóąśłżźćń")."?=";
+
   if($name == "") $data['success'] = false;
  
  if (!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) $data['success'] = false;
