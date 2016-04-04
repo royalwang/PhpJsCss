@@ -1,8 +1,25 @@
 <?php
+// no cache, refresh content
 session_cache_limiter('');
 header('Thu, 01 Jan 1970 00:00:00 GMT');
+// session start
 session_start();
+//error reporting 0 or 'E_ALL'
 error_reporting(0);
+
+// sent email like
+ini_set("sendmail_from", "email@fxstar.eu");
+
+// max upload file size
+ini_set('post_max_size', '200M');
+ini_set('upload_max_filesize', '200M');
+
+// allow connection only from ip
+function allowIP($vpsip = "1.2.3.4"){
+ if (substr($_SERVER['REMOTE_ADDR'], 0, strlen($vpsip)) != $vpsip) {
+ die("Wrong ip address!");
+ }	
+}
 
 function curl_get_contents($url) {
        // Initiate the curl session
@@ -22,7 +39,6 @@ function curl_get_contents($url) {
 }
 // use 
 //echo $output = curl_get_contents('http://fxstar.eu/');
-
 
 // time from mysql timestamp
 // echo date('M j Y g:i A', strtotime('2010-05-29 01:17:35'));
@@ -96,7 +112,8 @@ function logDB(){
     // CREATE TABLE IF NOT EXISTS `logs` (`link` text, `ip` text) ENGINE=MyISAM DEFAULT CHARSET=utf8;
     $log = $_SERVER['HTTP_HOST']." ".$_SERVER['REQUEST_URI'];
     $ip = $_SERVER['REMOTE_ADDR'];
-    $log = htmlentities($log,ENT_QUOTES, 'utf-8');    
+    $log = htmlentities($log,ENT_QUOTES, 'utf-8');
+    mysql_query("CREATE TABLE IF NOT EXISTS `logs` (`link` text, `ip` text) ENGINE=MyISAM DEFAULT CHARSET=utf8");
     mysql_query("INSERT INTO logs(link,ip) VALUE('$log','$ip')");    
 
 
