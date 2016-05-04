@@ -1,5 +1,5 @@
 <?php
-function getResultFromYQL() {
+function getYQL() {
     
     // pogoda
     $yql_query_url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%3D946738&format=json&diagnostics=true";
@@ -18,6 +18,6 @@ function getResultFromYQL() {
     return json_decode($json, true);
 }
 
-//print_r(getResultFromYQL());
-var_dump(getResultFromYQL());
+//print_r(getYQL());
+var_dump(getYQL());
 ?>
