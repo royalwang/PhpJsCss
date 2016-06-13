@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" >  
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Rezydencja Fryderyk</title>
+
+<!-- jQuery library (served from Google) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<!-- bxSlider Javascript file -->
+<script src="jquery.bxslider.min.js"></script>
+<!-- bxSlider CSS file -->
+<link href="jquery.bxslider.css" rel="stylesheet" />
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('.bxslider').bxSlider({
+  mode: 'fade',
+  captions: true
+});
+});
+</script>
+<style type="text/css">
+  .bxslider{
+    position: relative;
+    height: 500px;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+</style>
+</head>
+<body>
+
+<div style="max-width: 500px;">
+<ul class="bxslider">
+  <li><img src="slider/pic1.jpg" title="Jakis tekst" /></li>
+  <li><img src="slider/pic2.jpg" /></li>
+  <li><img src="slider/pic3.jpg" title="Jakis tekst" /></li>
+  <li><img src="slider/pic4.jpg" /></li>
+</ul>
+</div>
+
+</body>
+</html>
