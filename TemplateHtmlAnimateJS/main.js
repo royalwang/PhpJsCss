@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+    /* show hidden display: none; div, element */
+    $(".profilsmall").click(function (){        
+        $("#showit").css('display', 'inherit');
+    });
+    
     /* Scroll div background */
     $(window).scroll(function () {        
         var x = $(this).scrollTop();
