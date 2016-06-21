@@ -133,7 +133,7 @@ header{
   text-align: center;
   font-size: 32px;
   line-height: 108px;
-  height: 208px;
+  height: 255px;
   background: #335C7D;
   color: #fff;
   font-family: 'PT Sans', sans-serif;
