@@ -354,10 +354,38 @@ img {
 </div>
 
 
-<header><h1>Sticky Header</h1></header>
+<header><h1>Sticky Header</h1> <i class="fa fa-bars" aria-hidden="true"></i></header>
 
 <div class="menu">
 <img src="https://fxstar.eu/img/fxstareulogo2.png" class="logo" alt="fxstar.eu">
+<style type="text/css">
+#lines {
+    border-bottom: 13px double #FFF;
+    border-top: 4px solid #FFF;
+    content: "";
+    height: 5px;
+    width: 30px;
+}
+.menubtn {
+    position: relative;
+    float: right;
+    top: 15px;
+    right: 20px;
+    max-width: 100px;
+    cursor: pointer;
+    box-sizing: content-box;
+}
+.menubtn {
+    position: relative;
+    float: right;
+    top: 5px;
+    right: 20px;
+    max-width: 40px;
+    cursor: pointer;
+    margin-left: 20px;
+    box-sizing: content-box;
+}
+</style>
 <div id="lines" class="menubtn"></div>
 </div>
 
@@ -375,7 +403,7 @@ SUPER TEXT
 </h3>
 
 <div class="show">
-	<label class="animated fadeInLeftBig">HOVER LABEL</label>
+	<label class="animated fadeInLeftBig">HOVER ANIMATED LABEL</label>
 </div>
 
 <button class="pin"><i class="fa fa-coffee" aria-hidden="true"></i> SUPER</button>
