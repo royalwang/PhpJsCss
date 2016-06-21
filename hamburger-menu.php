@@ -11,8 +11,8 @@ https://jonsuh.com/hamburgers/
 <div id="top" style="margin-bottom: 5px;">
 <style type="text/css">
 #lines {
-    border-bottom: 13px double #ff2233;
-    border-top: 4px solid #ff2233;
+    border-bottom: 13px double #FFF;
+    border-top: 4px solid #FFF;
     content: "";
     height: 5px;
     width: 30px;
@@ -20,10 +20,21 @@ https://jonsuh.com/hamburgers/
 .menubtn {
     position: relative;
     float: right;
+    top: 15px;
+    right: 20px;
+    max-width: 100px;
+    cursor: pointer;
+    box-sizing: content-box;
+}
+.menubtn {
+    position: relative;
+    float: right;
     top: 5px;
     right: 20px;
-    max-width: 30px;
+    max-width: 40px;
     cursor: pointer;
+    margin-left: 20px;
+    box-sizing: content-box;
 }
 </style>
 	<div id="lines" class="menubtn"></div>
