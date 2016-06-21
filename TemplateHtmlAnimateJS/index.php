@@ -8,11 +8,11 @@
 ?>
 <html lang="pl">
 <head>
-	<title>TemplateHtmlAnimateJS</title>
+	<title>test</title>
 	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">  
 	<meta name="description" content="">
-    <meta name="keywords" content="menu, jedzenie online,jedzenie z dowozem,jedzenie na wynos,pizza,kebab,sushi,obiady domowe,menu online,menuonline,naleśniki,kawiarnie,restauracje,pizza online" />
+  <meta name="keywords" content="menu, jedzenie online,jedzenie z dowozem,jedzenie na wynos,pizza,kebab,sushi,obiady domowe,menu online,menuonline,naleśniki,kawiarnie,restauracje,pizza online" />
 
   <!-- CSS animation -->
   <link rel="stylesheet" type="text/css" href="animate.css">
@@ -340,6 +340,8 @@ padding: 5px;
 }
 img {
     border: 0px none;
+    padding: 10px;
+    max-width: 100px;
 }
 
 </style>
@@ -382,6 +384,13 @@ SUPER TEXT
 <button class="pin3"><i class="fa fa-phone" aria-hidden="true"></i> SUPER</button>
 
 <button class="btn">SUPER <i class="fa fa-phone" aria-hidden="true"></i></button>
+
+<p>
+<img src="https://fxstar.eu/img/fxstareulogo2.png" class="animated infinite bounce">
+<img src="https://fxstar.eu/img/fxstareulogo2.png" class="animated infinite bounceIn">
+<img src="https://fxstar.eu/img/fxstareulogo2.png" class="animated infinite bounceOut">
+<img src="https://fxstar.eu/img/fxstareulogo2.png" class="animated infinite rotateInDownRight">
+</p>
 
 <div class="box"><div style="width: 10%;" class="bar" data-width="70" data-txt="Android"><span>Android</span>70% </div></div>
 
