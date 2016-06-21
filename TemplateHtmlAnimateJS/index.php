@@ -389,10 +389,6 @@ img {
 <div id="lines" class="menubtn"></div>
 </div>
 
-<div style="background: #ff2233; padding: 50px; overflow: hidden;">
-	<iframe src="test1.php" scrolling="no" frameborder="0" height="200" width="100%" allowtransparency="true"></iframe>
-</div>
-
 <a href="#skills">slide down</a>
 <a href="#boom1">slide down</a>
 
@@ -405,6 +401,14 @@ SUPER TEXT
 <div class="show">
 	<label class="animated fadeInLeftBig">HOVER ANIMATED LABEL</label>
 </div>
+
+<div style="background: #ff2233; margin: 50px; padding: 50px; overflow: hidden;">
+<br><br>
+  like button from external file
+</div>
+
+<!-- polubienia button like button-->
+<iframe src="include.php" scrolling="no" frameborder="0" height="200" width="100%" allowtransparency="true"></iframe>
 
 <button class="pin"><i class="fa fa-coffee" aria-hidden="true"></i> SUPER</button>
 <button class="pin1"><i class="fa fa-heart" aria-hidden="true"></i> SUPER</button>
