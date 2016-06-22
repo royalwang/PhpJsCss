@@ -1,0 +1,160 @@
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+        <script type="text/javascript">
+            // When the window has finished loading create our google map below
+            google.maps.event.addDomListener(window, 'load', init);
+          
+            function init() {
+                // Basic options for a simple Google Map
+                // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+                var mapOptions = {
+                    // How zoomed in you want the map to start at (always required)
+                    zoom: 15,
+                    scrollwheel: false,
+                    zoomControl: true,
+                    scaleControl: true,
+                    navigationControl: true,
+                    mapTypeControl: true,
+                    draggable: true,
+                    // The latitude and longitude to center the map (always required)
+                    center: new google.maps.LatLng(53.02119, 20.88006), // Przasnysz
+
+                    // How you would like to style the map. 
+                    // This is where you would paste any style found on Snazzy Maps.
+ 
+                    styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#080707"}]},{"featureType":"administrative.locality","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"},{"weight":"5.40"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#222222"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#e66e3b"},{"visibility":"on"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"saturation":"-37"},{"color":"#ffffff"}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"saturation":"-10"},{"gamma":"0.88"}]}]                   
+                };
+
+                // Get the HTML DOM element that will contain your map 
+                // We are using a div with id="map" seen below in the <body>
+                var mapElement = document.getElementById('map');
+
+                // Create the Google Map using our element and options defined above
+                var map = new google.maps.Map(mapElement, mapOptions);
+
+          var contentString = '<div id="content" style="padding: 5px; padding-left: 20px;">'+
+              '<div style="font-weight: bold; font-size: 15px;">Fxstar | fxstar.eu</div>'+
+              '<div id="bodyContent">'+
+              '<p><b>06-300 Przasnysz</b> ul. 3 Maja 9</p> <p><i class="fa fa-phone"></i> +48 796 060 536</p> <p><i class="fa fa-home"></i> <a href="https://fxstar.eu" target="_blank" style="color: #f26621">https://fxstar.eu</a></p>'+
+              '</div>'+
+              '</div>';
+
+          var infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
+
+          // center after resize  
+          google.maps.event.addDomListener(window, "resize", function() {
+              var center = map.getCenter();
+              google.maps.event.trigger(map, "resize");
+              map.setCenter(center); 
+          });
+
+          var image = {
+            url: 'https://fxstar.eu/img/marker000.png',
+            // This marker is 20 pixels wide by 32 pixels tall.
+            size: new google.maps.Size(64, 64),
+            // The origin for this image is 0,0.
+            origin: new google.maps.Point(0,0),
+            // The anchor for this image is the base of the flagpole at 0,32.
+            anchor: new google.maps.Point(30, 30)
+          };
+
+          // Let's also add a marker while we're at it
+          var marker = new google.maps.Marker({
+              icon: image,
+              position: new google.maps.LatLng(53.02119, 20.88006),
+              map: map,
+              title: 'Fxstar | Fxstar.eu'
+          });
+
+        /* REMOVE standard info window */
+        google.maps.event.addListener(infowindow, 'domready', function() {
+
+        // Reference to the DIV which receives the contents of the infowindow using jQuery
+        var iwOuter = $('.gm-style-iw');
+
+        /* The DIV we want to change is above the .gm-style-iw DIV.
+        * So, we use jQuery and create a iwBackground variable,
+        * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
+        */
+        var iwBackground = iwOuter.prev();
+        var iwCloseBtn = iwOuter.next();
+
+        // Apply the desired effect to the close button 
+        iwCloseBtn.css({
+        opacity: '1', // by default the close button has an opacity of 0.7
+        right: '35px', top: '10px', // button repositioning
+        border: '1px solid #f26621', // increasing button border and new color
+        'border-radius': '1px', // circular effect
+        'box-shadow': '0px 2px 3px #f26621' // 3D effect to highlight the button
+        });
+
+        // The API automatically applies 0.7 opacity to the button after the mouseout event.
+        // This function reverses this event to the desired value.
+        iwCloseBtn.mouseout(function(){
+          $(this).css({opacity: '1'});
+        });
+
+        // Remove close button
+        //iwCloseBtn.css({'display': 'none'});
+
+        // Remove the background shadow DIV
+        iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+        // Remove the white background DIV
+        iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+        // Moves the infowindow 50px to the right.
+        iwOuter.parent().parent().css({left: '50px'});
+
+        // Moves the shadow of the arrow 76px to the left margin 
+        iwBackground.children(':nth-child(1)').attr('style', function(i,s){ return s + 'left: 40px !important;'});
+
+        // Moves the arrow 76px to the left margin 
+        iwBackground.children(':nth-child(3)').attr('style', function(i,s){ return s + 'left: 40px !important;'});
+        
+        
+        //alert(iwBackground.children(':nth-child(3)').html());
+        // Changes the desired color for the tail outline.
+        // The outline of the tail is composed of two descendants of div which contains the tail.
+        // The .find('div').children() method refers to all the div which are direct descendants of the previous div. 
+        iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6);'});
+        iwBackground.children(':nth-child(3)').find('div').children().css({'border': '1px solid #f26621'});
+        iwBackground.children(':nth-child(3)').find('div').children().css({'border-top': '0px solid #f26621'});
+        iwBackground.children(':nth-child(3)').find('div').css({'z-index' : '99999'});
+        //alert(iwBackground.children(':nth-child(3)').find('div').html());
+
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+
+        }
+        </script>
+
+	<div id="map" style="width: 100%; min-height: 455px;"></div>
+	<style type="text/css">
+	/* style info window google maps */
+	.gm-style-iw {
+	   width: 215px !important;
+	   top: 15px !important; // move the infowindow 15px down
+	   left: 0 !important;
+	   background-color: #fff;
+	   box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+	   border: 1px solid #f26621;
+	   border-radius: 2px 2px 0 0;
+	}
+
+	.iw-bottom-gradient {
+	  position: absolute;
+	  width: 326px;
+	  height: 25px;
+	  bottom: 10px;
+	  right: 16px;
+	  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+	  background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	  background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	  background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+	}
+	</style>
