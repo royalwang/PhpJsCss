@@ -31,6 +31,17 @@ $p = htmlentities($_POST['pass'], ENT_QUOTES, 'utf-8');
 // INSERT INTO user(user) VALUES (N'శ్రీనివాస్ తామాడా'), (N'新概念英语第');
 $res = $db->exec("INSERT INTO user(user) VALUES(N'$u')");
 
+// OR LONG VERSION prepare and bind
+//$sth = $db->prepare("INSERT INTO example (firstname, lastname, email) VALUES (?, ?, ?)");
+//$sth->bind_param("sss", $name, $pass, $email);
+//$name ="jon"; $pass="pass"; $email = "email@email.ooo";
+//$sth->execute();
+// OR
+//$sth->bindParam(1, $name, PDO::PARAM_STR, 4000); 
+//$sth->bindParam(2, $pass, PDO::PARAM_PARAM_INT , 21); 
+//$sth->bindParam(3, $email, PDO::PARAM_BOOL, 4000); 
+//$sth->execute();
+
 // GET FROM MYSQL
 $sth = $db->prepare("SELECT * FROM user");
 $sth->execute();
@@ -42,7 +53,6 @@ $sth->rowCount();
 
 // DISPLAY IN BROWSER
 print_r($rows);
-
 
 ?>
 <form method="post" action="">
