@@ -10,6 +10,7 @@ ini_set("default_charset", "UTF-8");
 
 // PDO
 function Conn(){
+// $connection will be close after scripts end	
 $connection = new PDO('mysql:host=localhost;dbname=user;mysql:charset=utf8mb4', 'root', '');
 $connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -22,14 +23,22 @@ return $connection;
 $db = Conn();
 
 // GET POST DATA
-$u = htmlentities($_POST['user'], ENT_QUOTES, 'UTF-8');
-$e = htmlentities($_POST['email'], ENT_QUOTES, 'UTF-8');
-$p = htmlentities($_POST['pass'], ENT_QUOTES, 'UTF-8');
+$u = htmlentities($_POST['user'], ENT_QUOTES, 'utf-8');
+$e = htmlentities($_POST['email'], ENT_QUOTES, 'utf-8');
+$p = htmlentities($_POST['pass'], ENT_QUOTES, 'utf-8');
 
 
 // INSERT TO MYSQL
 // INSERT INTO user(user) VALUES (N'శ్రీనివాస్ తామాడా'), (N'新概念英语第');
+try { 
 $res = $db->exec("INSERT INTO user(user) VALUES(N'$u')");
+} catch (PDOException $e) {
+    if ($e->getCode() == '2A000')
+        echo "Syntax Error: ".$e->getMessage();
+} 
+// ERORORS
+// print_r($db->errorInfo());
+// echo "\nPDO::errorCode(): ", $db->errorCode();
 
 // OR LONG VERSION prepare and bind
 //$sth = $db->prepare("INSERT INTO example (firstname, lastname, email) VALUES (?, ?, ?)");
