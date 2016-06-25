@@ -26,25 +26,29 @@ $u = htmlentities($_POST['user'], ENT_QUOTES, 'utf-8');
 $e = htmlentities($_POST['email'], ENT_QUOTES, 'utf-8');
 $p = htmlentities($_POST['pass'], ENT_QUOTES, 'utf-8');
 
+
 // INSERT TO MYSQL
-$res = $db->exec("INSERT INTO user(user) VALUES('$u')");
+// INSERT INTO user(user) VALUES (N'శ్రీనివాస్ తామాడా'), (N'新概念英语第');
+$res = $db->exec("INSERT INTO user(user) VALUES(N'$u')");
 
 // GET FROM MYSQL
 $sth = $db->prepare("SELECT * FROM user");
 $sth->execute();
-// PDO::FETCH_ASSOC PDO::FETCH_NUM PDO::FETCH_OBJ
-$rows = $sth->fetchAll(PDO::FETCH_BOTH);
+// PDO::FETCH_ASSOC PDO::FETCH_NUM PDO::FETCH_OBJ PDO::FETCH_BOTH
+$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 // count num rows
 $sth->rowCount();
 
 // DISPLAY IN BROWSER
 print_r($rows);
-?>
 
+
+?>
 <form method="post" action="">
 	<input type="text" name="user">
 	<input type="text" name="email">
 	<input type="password" name="pass">
 	<input type="submit" name="submit">
+
 </form>
