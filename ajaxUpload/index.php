@@ -8,8 +8,8 @@ header('Content-Type: text/html; charset=utf-8');
 <!DOCTYPE html>
 <html>
 <head>
-	<title>JSON js tutorial</title>
-	<meta charset="utf-8">
+<title>JSON js tutorial</title>
+<meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -56,9 +56,6 @@ $(document).ready(function(){
 
 
 });	
-
-
-
 </script>
 </head>
 <body>
