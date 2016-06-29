@@ -6,16 +6,16 @@ header('Content-Type: text/html; charset=utf-8');
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-	<title>JSON js tutorial</title>
-	<meta charset="utf-8">
+<title>JSON js tutorial</title>
+<meta charset="utf-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
 
-	// getJSON example
+    // getJSON example
     $(".btn1").click(function(){
         $.getJSON("json-obj.php", function(data, status, xhr){
             $.each(data.users, function(i, users){
@@ -23,7 +23,7 @@ $(document).ready(function(){
             });
         }).fail(function(xhr, d, e){
         	alert("Something goes wrong " + d);
-   			switch (xhr.status) {
+   		switch (xhr.status) {
                 case 404:
                     alert(xhr.statusText + " error " + xhr.status);
                     break;
@@ -39,8 +39,8 @@ $(document).ready(function(){
                 case 503:
                     alert(xhr.statusText + " error " + xhr.status);
                     break;   				
-   			}
-		});
+   		}
+	});
     });
 
   // ajax JSON example  
@@ -56,7 +56,7 @@ $(document).ready(function(){
 	    },
 	    error: function( xhr, d, e ) {
 	    	alert("Something goes wrong " + d);
-   			switch (xhr.status) {
+   		switch (xhr.status) {
                 case 404:
                     alert(xhr.statusText + " error " + xhr.status);
                     break;
@@ -72,9 +72,9 @@ $(document).ready(function(){
                 case 503:
                     alert(xhr.statusText + " error " + xhr.status);
                     break;   				
-   			}
+   		}
 	    }
-	  });
+	});
   });
 
 
@@ -86,8 +86,8 @@ $(document).ready(function(){
 </head>
 <body>
 
-<button class="btn1">GetJSON</button>
-<button class="btn2">ajax JSON</button>
+<button class="btn1">getJSON request</button>
+<button class="btn2">ajax JSON request</button>
 
 <div>getJSON</div>
 <p>AJAX</p>
@@ -108,11 +108,11 @@ $user = array(
             "lastName" => "Doe"
         ),
         array(
-            "firstName" => "Alice",
+            "firstName" => "Venice",
             "lastName" => "Wonderland"
         ),
         array(
-            "firstName" => "Yorro",
+            "firstName" => "Zorro",
             "lastName" => "Bohaterski"
         )
     )
