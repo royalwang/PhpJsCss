@@ -15,6 +15,16 @@ header('Content-Type: text/html; charset=utf-8');
 <script type="text/javascript">
 $(document).ready(function(){
 
+    // post with data type execute first
+    $.post( "json-obj.php", { sendCmd: "getNameAndLastName" }, function( data ) {
+        alert( data.users[2].name + " " + data.users[2].lastName );      
+    }, "json");
+
+    // simple getjson
+    $.getJSON("json-obj.php", { name: "John", time: "2pm" }, function(json) {
+        alert("JSON Data: " + json.users[1].lastName);
+    });
+    
     // getJSON example
     $(".btn1").click(function(){
     // create json from array
