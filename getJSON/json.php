@@ -17,13 +17,19 @@ $(document).ready(function(){
 
     // getJSON example
     $(".btn1").click(function(){
-        $.getJSON("json-obj.php", function(data, status, xhr){
+    // create json from array
+    var arr = new Array('listingID', 'site', 'browser', 'dimension');    
+    var jsonString = JSON.stringify(arr);
+    // send this to server
+    var senddata = { 'name': 'Imię1' , 'lastname': 'Nazwisko1', 'jsonString': jsonString};
+
+        $.getJSON("json-obj.php", senddata, function(data, status, xhr){
             $.each(data.users, function(i, users){
                 $("div").append(users.firstName + " " + users.lastName + "<br>");
             });
         }).fail(function(xhr, d, e){
         	alert("Something goes wrong " + d);
-   		switch (xhr.status) {
+    			switch (xhr.status) {
                 case 404:
                     alert(xhr.statusText + " error " + xhr.status);
                     break;
@@ -39,24 +45,32 @@ $(document).ready(function(){
                 case 503:
                     alert(xhr.statusText + " error " + xhr.status);
                     break;   				
-   		}
-	});
+    			}
+    	});
     });
 
   // ajax JSON example  
   $(".btn2").click(function(){
-	  $.ajax({
-	    url: 'json-obj.php',
-	    dataType: 'json',
-	    success: function( data ) {
-	      //alert( "SUCCESS:  " + data );
-	      $.each(data.users, function(j, obj) {
-	      	$("p").append(obj.firstName + " " + obj.lastName + "<br>");
-	      });
-	    },
-	    error: function( xhr, d, e ) {
-	    	alert("Something goes wrong " + d);
-   		switch (xhr.status) {
+    // create json from array
+    var arr = new Array('listingID', 'site', 'browser', 'dimension');    
+    var jsonString = JSON.stringify(arr);
+    // send this to server
+    var senddata = { 'name': 'Imię' , 'lastname': 'Nazwisko', 'jsonString': jsonString};
+    
+        $.ajax({
+        type: 'POST', // or method 'GET' if you need
+        data: senddata,
+        url: 'json-obj.php',
+        dataType: 'json',
+        success: function( data ) {
+          //alert( "SUCCESS:  " + data );
+          $.each(data.users, function(j, obj) {
+          	$("p").append(obj.firstName + " " + obj.lastName + "<br>");
+          });
+        },
+        error: function( xhr, d, e ) {
+        	alert("Something goes wrong " + d);
+        		switch (xhr.status) {
                 case 404:
                     alert(xhr.statusText + " error " + xhr.status);
                     break;
@@ -72,12 +86,11 @@ $(document).ready(function(){
                 case 503:
                     alert(xhr.statusText + " error " + xhr.status);
                     break;   				
-   		}
-	    }
-	});
+        		}
+        }
+        });
   });
-
-
+  
 });	
 
 
