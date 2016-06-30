@@ -1,10 +1,15 @@
 <?php
-echo serialize($_FILES);
+echo json_encode($_FILES);
+// or
+// echo serialize($_FILES);
+// or show FILES array
+// print_r($_FILES);
+
 ?>
 
 <?php
 /*
-//multiple files
+//multiple files upload script
 foreach ($_FILES["file"]["error"] as $key => $error) {
     if ($error == UPLOAD_ERR_OK) {
         $tmp_name = $_FILES["file"]["tmp_name"][$key];
@@ -17,7 +22,7 @@ foreach ($_FILES["file"]["error"] as $key => $error) {
 
 <?php
 /* 
-// upload file
+// upload file script
 $uploads_dir = '/uploads';
 foreach ($_FILES["file"]["error"] as $key => $error) {
     if ($error == UPLOAD_ERR_OK) {
