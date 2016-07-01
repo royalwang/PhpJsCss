@@ -23,11 +23,11 @@ function loadDoc() {
     // code for IE6, IE5
     xhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
-  // GET method
+  // get data
   //xhttp.open("GET", "json-obj.php", true);
   //xhttp.send();
 
-  // POST method
+  // post data
   xhttp.open("POST", "json-obj.php", true);
   //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   //xhttp.setRequestHeader("Content-type", "Content-Type: application/json");
@@ -35,7 +35,12 @@ function loadDoc() {
 
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
+        // put to div
         document.getElementById("demo").innerHTML = xhttp.responseText;
+        // javascript parse JSON
+        var json = JSON.parse(xhttp.responseText);
+        // show json  obj values
+        alert("Data json xhttp "+ json.users[1].firstName +" "+ json.users[1].lastName);
         // get all headers
         //xhttp.getAllResponseHeaders();
         //xhttp.getResponseHeader(headerName)
