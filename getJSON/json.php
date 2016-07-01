@@ -13,6 +13,33 @@ header('Content-Type: text/html; charset=utf-8');
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 <script type="text/javascript">
+// XMLhttp request
+function loadDoc() {
+    alert("XMLhttp load data");
+  var xhttp;
+  if (window.XMLHttpRequest) {
+    xhttp = new XMLHttpRequest();
+    } else {
+    // code for IE6, IE5
+    xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  // get data
+  //xhttp.open("GET", "json-obj.php", true);
+  //xhttp.send();
+
+  // post data
+  xhttp.open("POST", "json-obj.php", true);
+  //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  //xhttp.setRequestHeader("Content-type", "Content-Type: application/json");
+  xhttp.send("name=Jim&year=1234");
+
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
+  };
+}
+
 $(document).ready(function(){
 
     // post with data type execute first
@@ -111,9 +138,12 @@ $(document).ready(function(){
 
 <button class="btn1">getJSON request</button>
 <button class="btn2">ajax JSON request</button>
+<button type="button" onclick="loadDoc()">XMLhttp</button>
 
 <div>getJSON</div>
 <p>AJAX</p>
+<p id="demo">XMLhttp</p>
+
 </body>
 </html>
 
