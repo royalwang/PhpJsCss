@@ -23,11 +23,11 @@ function loadDoc() {
     // code for IE6, IE5
     xhttp = new ActiveXObject("Microsoft.XMLHTTP");
   }
-  // get data
+  // GET method
   //xhttp.open("GET", "json-obj.php", true);
   //xhttp.send();
 
-  // post data
+  // POST method
   xhttp.open("POST", "json-obj.php", true);
   //xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   //xhttp.setRequestHeader("Content-type", "Content-Type: application/json");
@@ -35,7 +35,10 @@ function loadDoc() {
 
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-      document.getElementById("demo").innerHTML = xhttp.responseText;
+        document.getElementById("demo").innerHTML = xhttp.responseText;
+        // get all headers
+        //xhttp.getAllResponseHeaders();
+        //xhttp.getResponseHeader(headerName)
     }
   };
 }
