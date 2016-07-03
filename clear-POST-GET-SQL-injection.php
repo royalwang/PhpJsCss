@@ -16,7 +16,7 @@ function Clear(){
 	} 
 }
 
-// use before insert data to mysql query
+// use before insert data to mysql query, but only once in php file on top !!!
 Clear();
 
 // Secure mysql injection and then insert in mysql query or use php pdo class for insert data to mysql database
