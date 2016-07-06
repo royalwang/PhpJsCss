@@ -5,11 +5,12 @@ https://developer.tizen.org/dev-guide/web/2.3.0/org.tizen.mobile.web.appprogramm
 or here with progress bar
 http://stackoverflow.com/questions/6211145/upload-file-with-ajax-xmlhttprequest
 
+# simple request with header("Access-Control-Allow-Origin: http://origin-domain.com");
+https://developer.tizen.org/dev-guide/web/2.3.0/org.tizen.mobile.web.appprogramming/html/tutorials/w3c_tutorial/sec_tutorial/using_simple_request.htm
 
-<form>
 <input type="file" id="uploadfile" name="uploadfile" />
 <input type="button" value="upload" onclick="upload()" />
-</form>
+
 
 <script>
    var client = new XMLHttpRequest();
