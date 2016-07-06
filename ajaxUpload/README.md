@@ -8,6 +8,12 @@ http://stackoverflow.com/questions/6211145/upload-file-with-ajax-xmlhttprequest
 # simple request with header("Access-Control-Allow-Origin: http://origin-domain.com");
 https://developer.tizen.org/dev-guide/web/2.3.0/org.tizen.mobile.web.appprogramming/html/tutorials/w3c_tutorial/sec_tutorial/using_simple_request.htm
 
+# webSockets examples
+https://developer.tizen.org/dev-guide/web/2.3.0/org.tizen.mobile.web.appprogramming/html/tutorials/w3c_tutorial/comm_tutorial/websocket_tutorial.htm
+
+# Server-sent Events
+https://developer.tizen.org/dev-guide/web/2.3.0/org.tizen.mobile.web.appprogramming/html/tutorials/w3c_tutorial/comm_tutorial/server-sent_tutorial.htm
+
 <input type="file" id="uploadfile" name="uploadfile" />
 <input type="button" value="upload" onclick="upload()" />
 
