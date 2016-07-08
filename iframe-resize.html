@@ -1,0 +1,36 @@
+<?php
+session_start();
+// secure session id
+ini_set( 'session.cookie_httponly', 1 );
+ini_set('session.use_only_cookies',1);
+ini_set('session.cookie_secure',1);
+?>
+        <!-- disable js in iframe sandbox="allow-same-origin" -->
+        <iframe src="mailexample.html"  onload="resizeIframe(this);" class="iframe" sandbox="allow-same-origin">
+          <a href="sdsds.php">ERROR LOAD IFRAME</a>
+        </iframe>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- get cokies -->
+        <a onclick="alert(document.cookie);"> Get cookie on click</a>
+        
+        <script language="javascript" type="text/javascript">
+        function resizeIframe(obj) {
+          obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+          //images();
+        }
+        resizeIframe(document.getElementsByClassName('iframe'));
+
+        function images(){
+          alert($(".iframe").contents().find('body').find("img")[0]);
+          var frame = document.getElementsByClassName('iframe');
+          var fDoc = frame.contentWindow.document;
+          alert(fDoc);
+          var images = fDoc.getElementsByTagName('img'); 
+          var srcList = [];
+          for(var i = 0; i < images.length; i++) {
+              srcList.push(images[i].src);              
+          }
+          alert(srcList);
+        }
+        </script>
