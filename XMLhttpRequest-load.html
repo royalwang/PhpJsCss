@@ -1,0 +1,18 @@
+<script type="text/javascript">
+var progressBar = document.getElementById("progress"),
+xhr = new XMLHttpRequest();
+xhr.open("POST", "progress-bar/upload.php", true);
+xhr.upload.onprogress = function (e) {
+    if (e.lengthComputable) {
+        progressBar.max = e.total;
+        progressBar.value = e.loaded;
+    }
+}
+xhr.upload.onloadstart = function (e) {
+    progressBar.value = 0;
+}
+xhr.upload.onloadend = function (e) {
+    progressBar.value = e.loaded;
+}
+xhr.send(new FormData());
+</script>
