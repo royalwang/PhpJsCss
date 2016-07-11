@@ -39,4 +39,6 @@ if ($type == 'text/html' || $type == 'text/plain') {
 	exit();
 }
 
+// how use
+// <iframe src="secureshow.php?id=1" />
 ?>
