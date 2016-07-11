@@ -54,7 +54,9 @@
             'odt' => 'application/vnd.oasis.opendocument.text',
             'ods' => 'application/vnd.oasis.opendocument.spreadsheet',
         );
-        
+
+// or
+application/octet-stream
 // and php
 text/php
 text/x-php
