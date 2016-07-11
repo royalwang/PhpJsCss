@@ -16,7 +16,11 @@ $type = mime_content_type($f);
 	exit();		
 	}
 
-if ($type == 'text/html' || $type == 'text/plain') {
+if ($type == 'text/html' || $type == 'text/plain' || $type == 'text/x-php') {
+	// secure php content
+	if ($type == 'text/x-php') {
+		$type = 'text/html';
+	}
 	header("Content-type: ".$type."; ".'charset=utf-8');
 	echo file_get_contents($f);		
 	exit();
