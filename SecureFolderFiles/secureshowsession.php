@@ -16,9 +16,9 @@ $type = mime_content_type($f);
 	exit();		
 	}
 
-if ($type == 'text/html' || $type == 'text/plain' || $type == 'text/x-php') {
+if ($type == 'text/html' || $type == 'text/plain' || $type == 'text/x-php' || $type == 'text/php') {
 	// secure php content
-	if ($type == 'text/x-php') {
+	if ($type == 'text/x-php' || $type == 'text/php') {
 		$type = 'text/plain';
 	}
 	header("Content-type: ".$type."; ".'charset=utf-8');
