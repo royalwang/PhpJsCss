@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 /* resize iframe to inner content height */
 function setIframeHeight(iframe) {
@@ -23,3 +24,6 @@ $('.iframe').ready(function() {
 <iframe  src="secureshow.php?id=0" onload="setIframeHeight(this);" class="iframe" id="iframe" sandbox="allow-same-origin allow-popups" >
     <a href="index.php">ERROR</a>
 </iframe>
+
+<!-- get cokies -->
+<a onclick="alert(document.cookie);"> Get cookie on click</a>
