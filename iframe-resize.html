@@ -1,0 +1,26 @@
+	<script>
+		/* resize iframe to inner content height */
+		function setIframeHeight(iframe) {
+			if (iframe) {
+				var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+				if (iframeWin.document.body) {
+					iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+				}
+			}
+		};
+		window.onload = function () {
+			setIframeHeight(document.getElementById('iframe'));
+			// or by class
+			setIframeHeight(document.getElementsByClassName('iframe'));
+		};
+		/* show links from i frame in new tabs */
+    $('.iframe').ready(function() { 
+        $('.iframe').contents().find("a").attr('target','_blank');                  
+    }); 
+	</script>
+	
+	<!-- resize frame and disable javascript when load page (secure) and allow display links in new tab -->
+	
+	<iframe  src="secureshow.php?id=0" onload="setIframeHeight(this);" class="iframe" id="iframe" sandbox="allow-same-origin allow-popups" >
+    <a href="index.php">ERROR</a>
+  </iframe>
