@@ -46,3 +46,11 @@ color: #8A6D3B;
 background-color: #FCF8E3;
 border-color: #FAEBCC;
 }
+/* @media all and (max-width: 480px) */
+@media only all and (max-width: 480px) {
+
+.margin{
+margin: 10px;
+}
+
+}
