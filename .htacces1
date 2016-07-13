@@ -1,0 +1,94 @@
+// more examples http://www.htaccess-guide.com/
+
+# allow only from ip range /8 /16 /24 /31
+#Order deny,allow
+#Deny from all
+#Allow from 123.230.0.0/16
+
+# disable folder listing
+Options -Indexes
+
+#disable folder listing files with extensions
+#Option +Indexes
+#IndexIgnore *
+#IndexIgnore *.zip
+#IndexIgnore *.zip *.jpg *.gif 
+
+# On rewrite
+RewriteEngine On
+
+# [NC]- case-insensitive 
+# [L] - Last Rule , stop the rewriting process here 
+# [OR] = Or - If it matches this condition or the next 
+# [QSA] -	Append query string to rewriting url
+# [R] - redirect [R=301] move permanently, 302 - temporarily, 403 - Forbidden, 404 - Not Found,  410 - Gone
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d
+# in IIS windows server import disable
+RewriteCond %[REQUEST_FILENAME] !-l
+
+# fix folder redirect images and css js/images/css/media
+RewriteRule ^.+?/((img|css|js|media|upload|posts)/.+)$ /$1 [L,R=301,NC]
+
+#portfolio rewrite
+RewriteRule ^([portfolio]+)/?$ /portfolio/index.php?id=$1 [NC,L]
+
+#(rewrite) pretty url page.xom/id/post/number 
+RewriteRule ^([A-za-z0-9_-]+)/?$ profil.php?id=$1 [NC,L]
+RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9]+)/?$ profil.php?id=$1&menu=$2 [NC,L]
+RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9]+)/([0-9]+)/?$ profil.php?id=$1&menu=$2&page=$3 [NC,L]
+
+#RewriteRule ^([A-Za-z0-9_-]+)/(ustawienia)/?$ ustawienia.php?id=$1&menu=$2 [NC,L]
+#RewriteRule ^([A-Za-z0-9_-]+)/(wpisy)/?$ profil0.php?id=$1&menu=$2 [QSA,NC,L]
+#RewriteRule ^([A-Za-z0-9_-]+)/(fani)/?$ profil1.php?id=$1&menu=$2 [QSA,NC,L]
+#RewriteRule ^([A-Za-z0-9_-]+)/(ogladasz)/?$ profil2.php?id=$1&menu=$2 [QSA,NC,L]
+#RewriteRule ^([A-Za-z0-9_-]+)/(zdjecia)/?$ profil3.php?id=$1&menu=$2 [QSA,NC,L]
+#RewriteRule ^([A-Za-z0-9_-]+)/(video)/?$ profil4.php?id=$1&menu=$2 [QSA,NC,L]
+#RewriteRule ^([A-Za-z0-9_-]+)/(ulubione)/?$ profil5.php?id=$1&menu=$2 [QSA,NC,L]
+#RewriteRule ^([A-Za-z0-9_-]+)/(wiadomosci)/?$ profil6.php?id=$1&menu=$2 [QSA,NC,L]
+#RewriteRule ^([A-za-z0-9_-]+)/?$ profil.php?id=$1 [NC,L]
+#RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9]+)/?$ profil.php?id=$1&menu=$2 [NC,L]
+#RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9]+)/([A-Za-z0-9]+)/?$ index.php?id=$1&dir=$2&post=$3 [NC,L]
+
+# rewrite example.xx/index.php na example.xx/
+RewriteCond %{THE_REQUEST} ^.*/index\.php 
+RewriteRule ^(.*)index\.(php|html?)$ / [R=301,NC,L]
+
+# Redirect all subdomains
+RewriteCond %{HTTP_HOST} ^(.*)\.breakermind\.com
+RewriteRule ^(.*)$ http://breakermind.com/$1 [R=301,QSA,NC,L]
+
+# Redirect subdomain
+RewriteCond %{HTTP_HOST} ^www.ns2.breakermind.com [NC]
+RewriteRule ^(.*)$ http://breakermind.com/$1 [R=301,QSA,NC,L]
+
+RewriteCond %{HTTP_HOST} ^ns2.breakermind.com [NC]
+RewriteRule ^(.*)$ http://breakermind.com/$1 [R=301,QSA,NC,L]
+
+# Redirect from www. to non-www (unhash if need)
+RewriteCond %{HTTP_HOST} ^www.breakermind.com [NC]
+RewriteRule ^(.*)$ http://breakermind.com/$1 [R=301,QSA,NC,L]
+
+# Redirect from http:// to https:// (from no-ssl to ssl)
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://breakermind.com/$1 [R=301,QSA,NC,L]
+
+#custom error pages
+ErrorDocument 400 /er404.html
+ErrorDocument 401 /er404.html
+ErrorDocument 402 /er404.html
+ErrorDocument 403 /er403.html
+ErrorDocument 404 /er404.html
+ErrorDocument 500 /er404.html
+ErrorDocument 502 /er404.html
+ErrorDocument 504 /er404.html
+
+#RewriteEngin On
+#RewriteCond %[REQUEST_FILENAME] !-d
+#RewriteCond %[REQUEST_FILENAME] !-f
+#RewriteCond %[REQUEST_FILENAME] !-l
+#RewriteRule ^(.+)$ index.php?c=$1 [QSA,L]
+#
+#        \w = [A-Za-z0-9_]  \d = [0-9]
