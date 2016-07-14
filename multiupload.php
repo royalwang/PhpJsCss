@@ -39,3 +39,54 @@ echo '</select>';
 <input type="file" name="files[]" multiple>
 <input type="submit" value="Dodaj zdjęcia" name="add">
 </form>
+
+
+<?php
+/* 
+// upload foto profil 11_fxstarusser.ext short version
+if (isset($_FILES)) {
+  $uploads_dir = 'media/';
+  $allowed = array('gif','jpg','jpeg','png');
+  foreach ($_FILES["file"]["error"] as $key => $error) {
+      if ($error == UPLOAD_ERR_OK) {
+          $tmp_name = $_FILES["file"]["tmp_name"][$key];
+          $name = $_FILES["file"]["name"][$key];
+          $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+          if (in_array($ext, $allowed)) {              
+            $name = $id."_fxstaruser".".".$ext;
+            // delete old photos
+            unlink('media/'.$id."_fxstaruser".".jpg");
+            unlink('media/'.$id."_fxstaruser".".jpeg");
+            unlink('media/'.$id."_fxstaruser".".gif");
+            unlink('media/'.$id."_fxstaruser".".png");
+
+            move_uploaded_file($tmp_name, "$uploads_dir".$name);
+          }          
+      }else{
+        $error = "Dozwolony format plików: jpg, jpeg, png, gif";
+      }
+  }
+}
+
+
+// show images from folder if exist
+function isUser($id){
+  $p = 'media/fxstaruser.png';
+
+  if (file_exists('media/'.$id.'_fxstaruser.gif')) {
+    $p = 'media/'.$id.'_fxstaruser.gif'; 
+  }
+  if (file_exists('media/'.$id.'_fxstaruser.png')) {
+    $p = 'media/'.$id.'_fxstaruser.png'; 
+  }
+  if (file_exists('media/'.$id.'_fxstaruser.jpeg')) {
+    $p = 'media/'.$id.'_fxstaruser.jpeg';  
+  }
+  if (file_exists('media/'.$id.'_fxstaruser.jpg')) {
+    $p = 'media/'.$id.'_fxstaruser.jpg'; 
+  } 
+  return $p;
+}
+
+*/
+?>
