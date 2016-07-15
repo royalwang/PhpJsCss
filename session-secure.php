@@ -72,8 +72,16 @@ $id = (int)$_POST['userid'];
 // How secure POST values from html <form> when you click submit button in form
 echo "POST username " . $username = htmlentities($_POST['username'], ENT_QUOTES, 'utf-8');
 
+// when click on form button
+if(isset($_POST['submit'])){
+// Username from form ( . <- concat text and variable in one string)
+echo "Username from form " . $_POST['username'] . "<br>";
+
 // print array with file(s) to upload
+echo "Files from form: <br>";
 print_r($_FILES);
+}
+
 ?>
 
 <form method="post" action="" enctype="multipart/form-data">
