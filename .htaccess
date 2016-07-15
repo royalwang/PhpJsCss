@@ -1,3 +1,6 @@
+// disable magic quotes
+php_flag magic_quotes_gpc off
+
 # allow only from ip range /8 /16 /24 /31
 #Order deny,allow
 #Deny from all
