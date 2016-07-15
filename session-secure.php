@@ -65,6 +65,10 @@ echo "Show session values (json): " . json_encode($_SESSION);
 // http://localhost/index.php?username=Jim&lastname=Jimone
 echo "GET username ". $username = htmlentities($_GET['username'], ENT_QUOTES, 'utf-8');
 
+// secure id value integer
+$id = (int)$_GET['userid'];
+$id = (int)$_POST['userid'];
+
 // How secure POST values from html <form> when you click submit button in form
 echo "POST username " . $username = htmlentities($_POST['username'], ENT_QUOTES, 'utf-8');
 
