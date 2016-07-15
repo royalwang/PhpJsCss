@@ -150,9 +150,15 @@ Clear();
 // PDO mysql connection
 function Conn(){
 $connection = new PDO('mysql:host=localhost;dbname=xmail;mysql:charset=utf8mb4', 'root', 'toor');
+// don't cache query
 $connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+// throw error exception
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$connection->setAttribute(PDO::ATTR_PERSISTENT, true);
+// show warning text
+//$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
+// don't colose connecion on script end
+$connection->setAttribute(PDO::ATTR_PERSISTENT, false);
+// set utf for connection
 $connection->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8mb4' COLLATE 'utf8mb4_unicode_ci'");
 return $connection;
 }
