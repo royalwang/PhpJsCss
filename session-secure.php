@@ -29,7 +29,7 @@ ini_set("post_max_size","50MB");
 ini_set("upload_max_filesize","10M");
 
 // mail send from 
-//ini_set('sendmail_from', 'domain.loc');
+ini_set('sendmail_from', 'domain.loc');
 //ini_set('SMTP','domain.com');
 //ini_set('smtp_port',25);
 
