@@ -104,7 +104,7 @@ if(isset($_POST['submit'])){
             // check files extensions
             if (in_array($ext, $allowed)) {              
               // upload file to server folder
-              move_uploaded_file($tmp_name, "$uploads_dir/".$name);
+              move_uploaded_file($tmp_name, $uploads_dir."/".$name);
             }
         }
     }
