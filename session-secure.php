@@ -33,4 +33,28 @@ ini_set('sendmail_from', 'domain.loc');
 //ini_set('SMTP','domain.com');
 //ini_set('smtp_port',25);
 
+// if session variable is not set redirect to login page
+if ($_SESSION['loged'] != 1) {
+  // redirect to another page
+  header('Location: login.php');
+}
+
+// how set session value
+$_SESSION['MAX'] = 'Super jest';
+// is set or is empty 
+if(isset($_SESSION['MAX'])){
+  echo $_SESSION['MAX'];
+}
+// if not empty
+if(!empty($_SESSION['MAX'])){
+  echo $_SESSION['MAX'];
+}
+
+// array
+echo "Show session values (array): " . print_r($_SESSION);
+// serialize string
+echo "Show session values (serialize): " . serialize($_SESSION);
+// json string
+echo "Show session values (json): " . json_encode($_SESSION);
+
 ?>
