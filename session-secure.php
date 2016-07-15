@@ -1,10 +1,14 @@
 <?php
 session_start();
-
 // display errors
 ini_set('display_errors', 1);
 // show errors 0 - no errors 'E_ALL' - show
 error_reporting(0);
+
+// set utf content type (wyświetl polskie znaki w przeglądarce)
+header('Content-Type: text/html; charset=utf-8');
+// default charset to utf-8 (wyświetl polskie znaki w przeglądarce)
+ini_set("default_charset", "UTF-8");
 
 // don't allow javascript(jquery) access to session cookie
 ini_set( 'session.cookie_httponly',1);
@@ -36,7 +40,7 @@ ini_set('sendmail_from', 'domain.loc');
 // if session variable is not set redirect to login page
 if ($_SESSION['loged'] != 1) {
   // redirect to another page
-  header('Location: login.php');
+  // header('Location: login.php');
 }
 
 // how set session value
@@ -57,4 +61,26 @@ echo "Show session values (serialize): " . serialize($_SESSION);
 // json string
 echo "Show session values (json): " . json_encode($_SESSION);
 
+// How secure $_GET values it gets from url: 
+// http://localhost/index.php?username=Jim&lastname=Jimone
+echo "GET username ". $username = htmlentities($_GET['username'], ENT_QUOTES, 'utf-8');
+
+// How secure POST values from html <form> when you click submit button in form
+echo "POST username " . $username = htmlentities($_POST['username'], ENT_QUOTES, 'utf-8');
+
+// print array with file(s) to upload
+print_r($_FILES);
 ?>
+
+<form method="post" action="" enctype="multipart/form-data">
+  <label>Username</label>
+  <input type="text" name="username" placeholder="Insert username" autocomplate="false" value="">
+  <!-- single file -->
+  <label>Single file</label>
+  <input type="file" name="file">
+  <!-- multiple files -->
+  <label>Multiple files</label>
+  <input type="file" name="file[]" multiple>
+  <!-- submit button -->
+  <input type="submit" name="submit" value="Send POST">
+</form>
