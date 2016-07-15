@@ -86,7 +86,7 @@ if(isset($_POST['submit'])){
     // create folder
     mkdir($uploads_dir, 0755, true);    
     $name = $_FILES["file"]["name"];
-    move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "$uploads_dir/".$name);
+    move_uploaded_file($_FILES["file"]["tmp_name"], "$uploads_dir/".$name);
     // end single file upload
     
     // AND multiple file upload
