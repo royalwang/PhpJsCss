@@ -11,6 +11,7 @@ $content = 'Super długi text. Super długi text. Super długi text. Super dług
               
               
 function replace_url_img($content){
+  $urls = "";
   // get all urls images links clear tekst no tags
   preg_match_all("/\b(?:(?:https?|ftp|ftps):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$content,$urls);
   foreach ($urls[0] as $url) {
