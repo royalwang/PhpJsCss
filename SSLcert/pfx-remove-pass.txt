@@ -1,0 +1,5 @@
+openssl pkcs12 -in protected.p12.orig -nodes -out temp.pem
+ 
+openssl pkcs12 -export -in temp.pem  -out unprotected.p12
+ 
+rm temp.pem
