@@ -1,5 +1,4 @@
 # mysqldump --single-transaction (InnoDB)
-
 CREATE USER 'backup'@'localhost' IDENTIFIED BY 'secret';
 GRANT SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER ON *.* TO 'backup'@'localhost';
 FLUSH PRIVILEGES;
