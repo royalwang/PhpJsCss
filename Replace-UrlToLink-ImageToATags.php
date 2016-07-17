@@ -1,4 +1,5 @@
 <?php
+// php zamiana adresów url na linki i url obrazków na tagi preg_replace, preg-match
 $content = 'Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. 
             Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. 
             Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text. Super długi text.
