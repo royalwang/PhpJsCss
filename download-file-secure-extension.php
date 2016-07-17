@@ -25,7 +25,7 @@ if (file_exists($file)) {
 // Maximum size of chunks (in bytes).
 $maxRead    = 1 * 1024 * 1204; // 1MB
 // or max file size
-$maxRead = filesize($file);
+// $maxRead = filesize($file);
 // cut from path file name file.ext
 $fileName   = basename($file);
 $fh         = fopen($file, 'r');
