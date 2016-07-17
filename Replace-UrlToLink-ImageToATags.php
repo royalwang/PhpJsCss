@@ -30,6 +30,34 @@ function replace_url_img($content){
   return $content;
 }
 
+// or
+function replace_url_img($content){
+  $urls = "";
+  // get all urls images links clear tekst no tags
+  preg_match_all("/\b(?:(?:https?|ftp|ftps):\/\/|\s\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$content,$urls);
+  print_r($urls);
+  foreach ($urls[0] as $url) {
+    // file extension
+    $ext = pathinfo($url,PATHINFO_EXTENSION);
+    if (strpos($url, 'embed') > 0 || strpos($url, 'vimeo') > 0 || strpos($url, 'youtube') > 0) {
+       // do nothing embed url embed urls like youtube
+    }else if ($ext == 'jpg' || $ext == 'gif' || $ext == 'png' || $ext == 'jpeg') {
+
+        //$out = preg_replace('#(https?://[^\s]+(?=\.(jpe?g|png|gif)))(\.(jpe?g|png|gif))#i', '<img src="$1.$2" alt="$1.$2" style="color: #09c" />', $url);   
+        //$e = end(explode('/', $url));
+        $dir = pathinfo($url, PATHINFO_DIRNAME);
+        $name = pathinfo($url, PATHINFO_BASENAME);
+        $path = $dir."/".$name;
+        echo $a = '<img src="'.$path.'" alt="'.$path.'" style="color: #09c">';
+        $content = str_replace($path, $a, $content);
+    }else {
+        $out = preg_replace('|([\w\d]*)\s?(https?://([\d\w\.-]+\.[\w\.]{2,6})[^\s\]\[\<\>]*/?)|i', '$1 <a href="$2" style="color: #09c">$3</a>', $url);
+        $content = str_replace($url, $out, $content);
+    }
+  }
+  return $content;
+}
+
 // use it
 echo replace_url_img($content);
 
