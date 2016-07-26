@@ -57,7 +57,7 @@ require('header.php');
 <form method="post" action="">
 <label>Zaloguj się</label>
 <div style="height: auto; width: 100%; float: left; color: #f23; padding-left: 10px; padding: 5px;"><?php echo $error; ?></div>
-	<input type="text" name="user" placeholder="NazwaUżytkownika@" autocomplete="false">		
+	<input type="text" name="user" placeholder="NazwaUżytkownika" autocomplete="false">		
 	<input type="password" name="pass" placeholder="Hasło (min. 8 znaków)" autocomplete="false">	
 	<input type="submit" name="add" value="Wejście" class="btn animated flipInX">
 	<p><a href="register.php" class="link">Zarejestruj się!</a> <a href="pass.php" class="link-right">Nie pamietasz hasła?</a></p>
