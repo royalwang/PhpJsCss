@@ -61,7 +61,7 @@ $db = Conn();
 		if ($res1->rowCount()) {
 			$error = "Użytkownik już istnieje. Zaloguj się.";
 		}else{
-			$error = "Coś poszło nie tak, zrestartuj przeglądarkę";
+			$error = "Coś poszło nie tak (hasło min. 8  znaków), zrestartuj przeglądarkę";
 		}
 	}
 } catch (PDOException $e) {
