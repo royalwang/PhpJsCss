@@ -1,6 +1,9 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+CREATE DATABASE IF NOT EXISTS `NAMEDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `NAMEDB`;
+
 CREATE TABLE `user` (
   `id` bigint(20) NOT NULL,
   `user` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
