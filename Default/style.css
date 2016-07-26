@@ -105,3 +105,10 @@ select{
   margin-left: 5px;
   transition: all .5s;
 }
+
+
+@media all and (max-width: 480px){  
+.hi{
+color: #f23;  
+}
+}
