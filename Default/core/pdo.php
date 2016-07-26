@@ -1,7 +1,7 @@
 <?php
 // PDO
 function Conn(){
-$connection = new PDO('mysql:host=localhost;dbname=xmail;mysql:charset=utf8mb4', 'root', 'toor');
+$connection = new PDO('mysql:host=localhost;dbname=NAMEDB;mysql:charset=utf8mb4', 'root', 'toor');
 // don't cache query
 $connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 // show warning text
