@@ -15,7 +15,7 @@ require('core/pdo.php');
 
 if (isset($_POST['add'])) {
 // GET POST DATA
-$_POST['user'] = preg_replace("/[^A-Za-z0-9-_]/",'', $_POST['user'])."@";
+$_POST['user'] = preg_replace("/[^A-Za-z0-9-_]/",'', $_POST['user']);
 $err = 0;
 $u = htmlentities($_POST['user'], ENT_QUOTES, 'utf-8');
 $e = htmlentities($_POST['email'], ENT_QUOTES, 'utf-8');
