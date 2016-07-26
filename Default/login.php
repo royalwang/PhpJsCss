@@ -14,7 +14,7 @@ if (isset($_POST['add'])) {
 
 $db = Conn();
 
-$_POST['user'] = preg_replace("/[^A-Za-z0-9-_@]/",'', $_POST['user']);
+$_POST['user'] = preg_replace("/[^A-Za-z0-9-_]/",'', $_POST['user']);
 $u = htmlentities($_POST['user'], ENT_QUOTES, 'utf-8');
 $p = md5($_POST['pass']);
 
