@@ -37,7 +37,7 @@ curl_close($ch);
 return $result;
 }
 
-$res = sendJson($msg);
+echo $res = sendJson($msg);
 $j = json_decode($res, true);
 echo "error " . $j['error'];
 //print_r($j);
