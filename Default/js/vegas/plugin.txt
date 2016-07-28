@@ -1,0 +1,40 @@
+http://vegas.jaysalvat.com/documentation/setup/
+http://vegas.jaysalvat.com/documentation/settings/
+
+    fade
+    fade2
+    slideLeft
+    slideLeft2
+    slideRight
+    slideRight2
+    slideUp
+    slideUp2
+    slideDown
+    slideDown2
+    zoomIn
+    zoomIn2
+    zoomOut
+    zoomOut2
+    swirlLeft
+    swirlLeft2
+    swirlRight
+    swirlRight2
+    burn
+    burn2
+    blur
+    blur2
+    flash
+    flash2
+
+	<script type="text/javascript">
+	$(document).ready(function(){	
+		$("html").vegas({
+		delay: 5000,
+		transition: 'fade'
+		    slides: [
+		        { src: "img/bg5.jpg" },{ src: "img/bg1.jpg" },{ src: "img/bg2.jpg" },{ src: "img/bg.jpg" },{ src: "img/bg4.jpg" }
+		    ]
+		});	
+	});
+	</script>	
+
