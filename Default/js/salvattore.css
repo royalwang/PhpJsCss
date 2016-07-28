@@ -1,0 +1,41 @@
+@media screen and (max-width: 480px){
+	#grid[data-columns]::before {
+		content: '1 .column.size-1of1';
+	}
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+	#grid[data-columns]::before {
+		content: '2 .column.size-1of2';
+	}
+}
+@media screen and (min-width: 769px) {
+	#grid[data-columns]::before {
+		content: '3 .column.size-1of3';
+	}
+}
+
+/* Again, you’re free to use and define the classes: */
+.column { float: left; }
+.size-1of1 { width: 100%; }
+.size-1of2 { width: 50%; }
+.size-1of3 { width: 33.333%; }
+
+/*
+
+<div id="grid" data-columns>
+	<div>Item #1</div>
+	<div>Item #2</div>
+	<div>Item #3</div>
+	…
+	<div>Item #20</div>
+</div>
+
+var grid = document.querySelector('#grid');
+var item = document.createElement('article');
+
+salvattore.appendElements(grid, [item]);
+salvattore.preppendElements(grid, [item]);
+item.outerHTML = 'I’ve been appended!';
+
+*/
