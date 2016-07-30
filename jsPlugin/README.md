@@ -12,3 +12,13 @@ $('body').on('click', '.show',function(){
   }
 });
 ```
+or
+```
+<script type="text/javascript">
+// show
+$("body").PopUp("Info text");
+// hide popup
+$('.popup').delay(2000).fadeOut(300);
+</script>
+```
+
