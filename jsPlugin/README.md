@@ -1,6 +1,5 @@
 
 # PopUp.js - Show alert popup window 
-# Hot to
 
 Add links
 ```
