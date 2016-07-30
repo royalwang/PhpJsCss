@@ -1,6 +1,12 @@
 
 # PopUp.js how to use
 
+Add links
+```
+<script src="https://raw.githubusercontent.com/fxstar/PhpJsCss/master/jsPlugin/jquery.PopUp.js"></script>
+<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/fxstar/PhpJsCss/master/jsPlugin/jquery.PopUp.css">
+```
+
 ```
 $('body').on('click', '.show',function(){
 	if (show == 1) {        			
