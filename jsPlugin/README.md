@@ -1,5 +1,6 @@
 
-# PopUp.js how to use
+# PopUp.js - Show alert popup window 
+# Hot to
 
 Add links
 ```
