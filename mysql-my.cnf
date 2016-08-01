@@ -1,0 +1,3 @@
+
+# max allowed data for BIG databases with images
+max_allowed_packet=900M
