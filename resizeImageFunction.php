@@ -12,21 +12,23 @@ function resizeImage($file = 'image.png', $maxwidth = 1366){
   $image_height = $image_info[1];
   $ratio = $image_width / $maxwidth;
   $info = getimagesize($file);
-
   if ($image_width > $maxwidth) {
     // GoGoGo
     $newwidth = $maxwidth;
     $newheight = (int)($image_height / $ratio);
-      
-    if ($info['mime'] == 'image/jpg') {    
+    if ($info['mime'] == 'image/jpeg') {    
       $thumb = imagecreatetruecolor($newwidth, $newheight);
-      $source = imagecreatefrompng($file);
+      $source = imagecreatefromjpeg($file);
       imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $image_width, $image_height);
-      imagejpeg($thumb,$file,90);
-    }
-    
+      echo imagejpeg($thumb,$file,90);
+    }   
+     if ($info['mime'] == 'image/jpg') {    
+      $thumb = imagecreatetruecolor($newwidth, $newheight);
+      $source = imagecreatefromjpeg($file);
+      imagecopyresized($thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $image_width, $image_height);
+      echo imagejpeg($thumb,$file,90);
+    }   
     if ($info['mime'] == 'image/png') {
-      echo "PNG";
       $im = imagecreatefrompng($file);
       $im_dest = imagecreatetruecolor($newwidth, $newheight);
       imagealphablending($im_dest, false);
@@ -34,7 +36,6 @@ function resizeImage($file = 'image.png', $maxwidth = 1366){
       imagesavealpha($im_dest, true);
       imagepng($im_dest, $file, 9);
     }
-
     if ($info['mime'] == 'image/gif') {
       $im = imagecreatefromgif($file);
       $im_dest = imagecreatetruecolor($newwidth, $newheight);
@@ -43,7 +44,6 @@ function resizeImage($file = 'image.png', $maxwidth = 1366){
       imagesavealpha($im_dest, true);
       imagegif($im_dest, $file);
     }
-
   }
 }
 
