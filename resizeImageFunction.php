@@ -43,13 +43,37 @@ function resizeImage($file = 'image.png', $maxwidth = 1366){
       imagesavealpha($im_dest, true);
       imagegif($im_dest, $file);
     }
+
   }
 }
 
 // how resize image
-// resizeImage('D:\tmp\11.png', 1366);
+resizeImage('D:\tmp\11.png', 1366);
 // or local folder
-// resizeImage('tmp/11.png', 1366);
+resizeImage('tmp/11.png', 1366);
 
+// upload file
+if (empty($_FILES['file']['error'])) {  
+  $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+  $tmp = 'tmp.'.$ext;
+  $name = basename($_FILES['file']['name']);
+  // zapisz plik  
+  move_uploaded_file($_FILES['file']['tmp_name'], 'tmp/'.$name);
+}
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Upload file, resizeImage function</title>
+</head>
+<body>
+
+<form method="POST" action="" enctype="multipart/form-data">
+  <input type="file" name="file">
+  <input type="submit" name="add">
+</form>
+
+</body>
+</html>
