@@ -9,6 +9,10 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="Notyfication system" />
 
+    	<!-- Socket.IO <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.js"></script> -->
+    	<!-- JQUERY <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+    	
+    	<!-- FONTS -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,800italic,700italic,600italic,600,400italic,300italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
