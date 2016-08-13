@@ -1,4 +1,22 @@
 <?php
+// clear sql injection from post and get requests
+function Clear(){
+  foreach ($_GET as $key => $val) { 
+      if (is_string($val)) { 
+          $_GET[$key] = htmlentities($val, ENT_QUOTES, 'UTF-8'); 
+      } else if (is_array($val)) { 
+          $_GET[$key] = Clear($val); 
+      } 
+  } 
+  foreach ($_POST as $key => $val) { 
+      if (is_string($val)) { 
+          $_POST[$key] = htmlentities($val, ENT_QUOTES, 'UTF-8'); 
+      } else if (is_array($val)) { 
+          $_POST[$key] = Clear($val); 
+      } 
+  } 
+}
+
 // PDO
 function Conn(){
 $connection = new PDO('mysql:host=localhost;dbname=NAMEDB;mysql:charset=utf8mb4', 'root', 'toor');
