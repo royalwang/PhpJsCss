@@ -1,8 +1,9 @@
 <?php
 $host = $_SERVER['HTTP_HOST'];
 
-// get domain from host
+// get domain from hostname or from email address
 function getDomain($host){
+$host = str_replace('@', '.', $host);
 $e = explode('.', $host);
 $c = count($e);
 return $h = $e[$c-2].'.'.$e[$c-1];
