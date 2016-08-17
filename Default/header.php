@@ -19,11 +19,16 @@
 
 	<!-- font awesome -->
   	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  	<!-- style.css -->
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- animate.css -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+	<!-- or local -->
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 
 	<!-- jquery -->
 	<script src="js/jquery.min.js"></script>
+	<!-- my plugins -->
 	<script src="js/jquery.plugin.js"></script>	
 
 	<script type="text/javascript">
