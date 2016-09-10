@@ -125,7 +125,7 @@ function logDB(){
     $log = htmlentities($log,ENT_QUOTES, 'utf-8');
     mysql_query("CREATE TABLE IF NOT EXISTS `logs` (`link` text, `ip` text) ENGINE=MyISAM DEFAULT CHARSET=utf8");
     mysql_query("INSERT INTO logs(link,ip) VALUE('$log','$ip')");    
-
+}
 
 // log request
 function logrequest($pathdir = "_logs"){    
