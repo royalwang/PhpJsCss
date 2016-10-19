@@ -174,4 +174,21 @@ function replace_url_img($content){
       return $html;
   }
   
+  function pagine1($table= 'images', $perpage = 15){
+    if(empty($_GET['page'])){$page = 1;}else{$page = (int)$_GET['page'];}
+    $pagenext = $page +1;
+    $pageprev = $page -1;
+    if ($pageprev < 0){$pageprev = 1;}
+    $offset = ($page - 1) * $perpage;
+    $sql = "SELECT * FROM ".$table." WHERE active = '1' AND adminid = '0' ORDER BY id DESC LIMIT " . $offset . "," . $perpage;
+    global $db; // get pdo connection Conn()
+    $st = $db->query($sql);
+    $row = $st->fetchAll(PDO::FETCH_ASSOC);
+
+    echo '<p class="pagine"><a class="pagelink" href="?page='.$pageprev.'"> Poprzednia</a>';
+    echo '<a class="pagelink"> '.$page.' </a>';
+    echo '<a class="pagelink" href="?page='.$pagenext.'"> Nastepna</a></p>';
+    return $row;
+  }
+
 ?>
