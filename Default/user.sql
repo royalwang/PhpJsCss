@@ -1,6 +1,8 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8';
+
 CREATE DATABASE IF NOT EXISTS `NAMEDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `NAMEDB`;
 
@@ -35,3 +37,16 @@ ALTER TABLE `user`
 
 ALTER TABLE `user`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+
+#DROP TABLE IF EXISTS `images`;
+CREATE TABLE `images` (
+  `id` int(21) NOT NULL AUTO_INCREMENT,
+  `adminid` int(21) DEFAULT '0',
+  `name` varchar(100) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ip` varchar(100) DEFAULT NULL,
+  `active` char(1) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
