@@ -13,6 +13,10 @@
 	html{
 		min-height: 1200px;
 	}
+	h1{
+		margin-left: 20px;
+	}
+
 	/* Tabs style */
 	*{
 		font-family: Tahoma;
@@ -95,16 +99,18 @@
 	}
 
 
+/* skill progress bar */
 .box {
+	color: #fff;
 	float: left;
-	margin: 10px;	
+	margin: 15px;	
   	min-width: 50% !important;  
  	border: 1px solid #000;
 }
 .bar span {
-  float: left;
-  padding: 1px;
   color: #fff;
+  float: left;
+  padding: 1px;  
   font-weight: bold;  
   font-size: 12px;
 }
@@ -116,7 +122,7 @@
     position: absolute;    
     text-align: right;
     min-width: 0%;
-    background: url('img/stripe-orange.png') #000;
+    background: repeating-linear-gradient(45deg,  #000,  #000 10px,  #222 10px,  #222 20px);
     margin: 0px;
     padding: 2px;    
     padding-top: 7px;
@@ -201,6 +207,8 @@ $('#accordion h3').on("click",function(){
 	</head>
 <body>
 
+<h1> Tabs java script </h1>
+
 <div id="tabs">
   <p>
   <a>Tab 1</a> <a>Tab 2</a> <a>Tab 3</a> <a>Tab Name</a> 
@@ -221,6 +229,8 @@ $('#accordion h3').on("click",function(){
   </div>  
 </div>
 
+
+<h1> Accordion java script </h1>
 
 <div id="accordion">
   <h3>Section 1</h3>
@@ -261,6 +271,7 @@ $('#accordion h3').on("click",function(){
   </div>
 </div>
 
+<h1> Progress skill bar java script </h1>
 
 <div class="box"><div class="bar" data-width="95%" data-txt="HTML5 / CSS3"><span> </span>95% </div></div>
 <div class="box"><div class="bar" data-width="55%" data-txt="Android / C#"><span> </span>95% </div></div>
