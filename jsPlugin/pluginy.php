@@ -89,6 +89,37 @@
 		background: #fff !important;
 		color: #000 !important;
 	}
+
+
+.box {
+	float: left;
+	margin: 10px;	
+  	min-width: 50% !important;  
+ 	border: 1px solid #000;
+}
+.bar span {
+  float: left;
+  padding: 1px;
+  color: #fff;
+  font-weight: bold;  
+  font-size: 12px;
+}
+.bar {
+	height: 30px;
+  	font-size: 13px;
+    position: relative !important;
+    float: left;	
+    position: absolute;    
+    text-align: right;
+    min-width: 0%;
+    background: url('img/stripe-orange.png') #000;
+    margin: 0px;
+    padding: 2px;    
+    padding-top: 7px;
+    font-size: 13px;
+    display: inline;
+    white-space:nowrap;
+}	
 	</style>
 
 <script type="text/javascript">
@@ -135,6 +166,29 @@ $('#accordion h3').on("click",function(){
 	$(this).addClass('showbar');	
 	//$('#accordion').children().eq($(this).index()+1).fadeIn(200);
 	$('#accordion').children().eq($(this).index()+1).animate({height:"toggle"},300);
+});
+
+
+/* progres bar animation simple */
+$('.barsmall').each(function(i) {
+  var width = $(this).data('width');  
+  $(this).animate({'width' : width + '%' }, 900, function(){
+    // Animation complete
+  });  
+});
+	
+/* progress bar animate */
+$('.bar').each(function () {   
+  $(this).animate({
+      width: $(this).attr('data-width')},
+      {
+        duration: 5000,
+        step: function(n){
+          var txt = $(this).children('span').text();    
+          txt = $(this).attr('data-txt');
+          $(this).html( "<span>" + txt + "</span>" + parseInt(n) + "% ");
+      }
+  });
 });
 
 
@@ -205,5 +259,11 @@ $('#accordion h3').on("click",function(){
     inceptos himenaeos.
   </div>
 </div>
+
+
+<div class="box"><div class="bar" data-width="95%" data-txt="HTML5 / CSS3"><span> </span>95% </div></div>
+<div class="box"><div class="bar" data-width="55%" data-txt="Android / C#"><span> </span>95% </div></div>
+<div class="box"><div class="bar" data-width="35%" data-txt="PHP / MYSQL"><span> </span>95% </div></div>
+
 </body>
 </html>
