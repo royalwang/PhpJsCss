@@ -3,12 +3,16 @@
 <head>
 	<title>Plugin test page</title>
 	<meta charset="utf-8">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="-plugins.js"></script>
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/inview.js"></script>
 	<link rel="stylesheet" type="text/css" href="main.css">
 
 
 	<style type="text/css">
+	html{
+		min-height: 1200px;
+	}
 	/* Tabs style */
 	*{
 		font-family: Tahoma;
@@ -125,6 +129,26 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
+
+jQuery('.bar').one('inview', function (event, visible) {
+    if (visible == true) {
+		/* skill bars progress bar animate */
+		$('.bar').each(function () {   
+		 $(this).animate({
+		      width: $(this).attr('data-width')},
+		      {
+		        duration: 5000,
+		        step: function(n){
+		          var txt = $(this).children('span').text();    
+		          txt = $(this).attr('data-txt');
+		          $(this).html( "<span>" + txt + "</span>" + parseInt(n) + "% ");
+		      }
+		  });
+		});
+		/* skill bars progress bar animate */
+    }
+ });
+
 /* get request */
 function httpGet(theUrl)
 {
@@ -160,37 +184,14 @@ $('#tabs p a').on("click",function(){
 
 /* accordion script */
 $('#accordion h3').on("click",function(){	
-	$('#accordion div').css("display","none");	
+	//$('#accordion div').css("display","none");	
+	$('#accordion div').slideUp();	
 	$('h3').addClass('hidebar');
 	$(this).removeClass('hidebar');
 	$(this).addClass('showbar');	
 	//$('#accordion').children().eq($(this).index()+1).fadeIn(200);
-	$('#accordion').children().eq($(this).index()+1).animate({height:"toggle"},300);
+	$('#accordion').children().eq($(this).index()+1).animate({height:"toggle"},200);
 });
-
-
-/* progres bar animation simple */
-$('.barsmall').each(function(i) {
-  var width = $(this).data('width');  
-  $(this).animate({'width' : width + '%' }, 900, function(){
-    // Animation complete
-  });  
-});
-	
-/* progress bar animate */
-$('.bar').each(function () {   
-  $(this).animate({
-      width: $(this).attr('data-width')},
-      {
-        duration: 5000,
-        step: function(n){
-          var txt = $(this).children('span').text();    
-          txt = $(this).attr('data-txt');
-          $(this).html( "<span>" + txt + "</span>" + parseInt(n) + "% ");
-      }
-  });
-});
-
 
 
 });	
