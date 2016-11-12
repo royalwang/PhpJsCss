@@ -9,6 +9,10 @@
 	<script src="js/isonscreen.js"></script>
 	<script src="js/mixitup.js"></script>
 	<script src="js/knob.js"></script>
+	<script src="js/brick-by-brick.js"></script>
+	<!--
+	<script src="//s3-us-west-2.amazonaws.com/s.cdpn.io/130527/brick-by-brick.min.js"></script>
+	-->
 
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link href="css/hover.css" rel="stylesheet" media="all">
@@ -31,6 +35,15 @@ h1{
 	padding: 20px;
 	width: 100%;
 	overflow: hidden;	
+}
+
+.menushow{
+  z-index: 9999;
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  transition: top 0.9s ease-in-out;
 }
 
 /* Tabs style */
@@ -156,7 +169,21 @@ h1{
 <script type="text/javascript">
 $(document).ready(function(){
 
-  $("#owl-demo").owlCarousel({
+// masonry brick
+$('#layout').layout({
+    itemMargin : 5,
+    itemPadding : 5
+});
+
+// slide to top of the page
+$('.up').click(function () {
+    $("html, body").animate({
+        scrollTop: 0
+    }, 600);
+    return false;
+});
+
+$("#owl-demo").owlCarousel({
     items : 4,
     loop:true,
     lazyLoad : true,
@@ -170,7 +197,7 @@ $(document).ready(function(){
   })
   $(".btnprev").click(function(){
     owl.trigger('owl.prev');
-  })
+});
 
 
 /* knoc circle setup */
@@ -260,6 +287,38 @@ $(window).scroll(function () {
 });
 /* inview 1 time run */
 
+
+// div background animate
+$(window).scroll(function () {     
+	// div background animate
+	var x = $(this).scrollTop();
+	// freezze div background
+	$('.banner').css('background-position', '0px ' + x +'px');
+
+	// from left to right
+	$('.banner').css('background-position', x+'px ' +'0px');
+
+	// from right to left
+	$('.banner').css('background-position', -x+'px ' +'0px');
+
+	// from bottom to top
+	$('#skills').css('background-position', '0px ' + -x + 'px');
+
+	// move background from top to bottom
+	$('.skills1').css('background-position', '0% ' + parseInt(-x / 1) + 'px' + ', 0% ' + parseInt(-x / 1) + 'px, center top');
+
+
+	/* hide show menu on scroll */
+	if ( x > 100 ) {
+	$( ".menu" ).addClass( 'menushow' );
+	$( ".menu" ).fadeIn("slow");
+	$( ".menu" ).animate({opacity: 0.75}, 500);
+	} else {
+	$( ".menu" ).removeClass( 'menushow' );
+	$( ".menu" ).animate({opacity: 1}, 500);
+	}
+	/* hide show menu on scroll */
+});
 
 /* get request */
 function httpGet(theUrl)
@@ -567,6 +626,215 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 	</div>	
 </div>	
 
+<!-- pricing list 3 -->
+<style type="text/css">
+#pricing{
+	float: left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+}
+.ptab{
+	position: relative;
+	float: left;
+	width: 28.33%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	box-sizing: border-box;
+	border: 1px solid #000;
+}
+.ptab *{ text-align: center; padding: 10px;}
+.ptab i{
+	background: #000; color: #fff; padding: 10px 20px 10px 20px;
+}
+.ptab h3{font-size: 25px; font-weight: bold}
+.ptab h5{font-size: 29px;font-weight: bold; text-align: center; min-width: 100%; transition: all .8s}
+.ptab h6 a{font-size: 20px; width: 100%; background: #000; color: #fff; float: left;padding: 20px;text-decoration: none;}
+.ptab h2{position: absolute; left: 0px; top: -50px; text-align: center; background: #000; color: #fff; height: 50px; border: 1px solid #000; min-width: 100%;}
+.ptab h6:hover h5{color: #ff6600 !important;}
+</style>
+<h1>Pricing table 3</h1>
+<div id="pricing">
+	<div class="ptab">
+		<p><i class="fa fa-diamond" aria-hidden="true"></i></p>
+		<h3>DIAMOND</h3>
+		<p>10 Users</p>
+		<p>Free Setup</p>
+		<p>10GB Storage</p>
+		<p>API Integration</p>
+		<h5 class="hvr-pulse-grow">97.00€</h5>
+		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
+	</div>
+
+	<div class="ptab">
+		<h2> Best For you </h2>
+		<p><i class="fa fa-star" aria-hidden="true"></i></p>
+		<h3>STAR</h3>
+		<p>50 Users</p>
+		<p>Free Setup</p>
+		<p>100GB Storage</p>
+		<p>API Integration</p>
+		<h5 class="hvr-pulse-grow">187.00€</h5>
+		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
+	</div>
+
+	<div class="ptab">
+		<p><i class="fa fa-rocket" aria-hidden="true"></i></p>
+		<h3>ROCKET</h3>
+		<p>100 Users</p>
+		<p>Free Setup</p>
+		<p>1TB Storage</p>
+		<p>API Integration</p>
+		<h5 class="hvr-pulse-grow">321.00€</h5>
+		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
+	</div>
+</div>
+
+
+<!-- pricing list 4 -->
+<style type="text/css">
+#pricing{
+	float: left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+}
+.ptab4{
+	position: relative;
+	float: left;
+	width: 20%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+	border: 1px solid #000;
+}
+.ptab4 *{ text-align: center; padding: 10px;}
+.ptab4 i{
+	background: #000; color: #fff; padding: 10px 20px 10px 20px;
+}
+.ptab4 h3{font-size: 25px; font-weight: bold}
+.ptab4 h5{font-size: 29px;font-weight: bold; text-align: center; min-width: 100%; transition: all .8s}
+.ptab4 h6 a{font-size: 20px; width: 100%; background: #000; color: #fff; float: left;padding: 20px;text-decoration: none;}
+.ptab4 h2{position: absolute; left: 0px; top: -50px; text-align: center; background: #000; color: #fff; height: 50px; border: 1px solid #000; min-width: 100%;}
+@media (max-width: 1024px) {
+.ptab4{
+	width: 45%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;	
+}  
+}
+.ptab4 h6:hover h5{color: #ff6600 !important;}
+</style>
+<h1>Pricing table 4</h1>
+<div id="pricing">
+	<div class="ptab4">
+		<p><i class="fa fa-diamond" aria-hidden="true"></i></p>
+		<h3>DIAMOND</h3>
+		<p>10 Users</p>
+		<p>Free Setup</p>
+		<p>10GB Storage</p>
+		<p>API Integration</p>
+		<h5 class="hvr-pulse-grow">97.00€</h5>
+		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
+	</div>
+
+	<div class="ptab4">
+		<h2> NA START </h2>
+		<p><i class="fa fa-star" aria-hidden="true"></i></p>
+		<h3>STAR</h3>
+		<p>50 Users</p>
+		<p>Free Setup</p>
+		<p>100GB Storage</p>
+		<p>API Integration</p>
+		<h5 class="hvr-pulse-grow">187.00€</h5>
+		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
+	</div>
+
+	<div class="ptab4">
+		<p><i class="fa fa-rocket" aria-hidden="true"></i></p>
+		<h3>ROCKET</h3>
+		<p>100 Users</p>
+		<p>Free Setup</p>
+		<p>1TB Storage</p>
+		<p>API Integration</p>
+		<h5 class="hvr-pulse-grow">321.00€</h5>
+		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
+	</div>
+	<div class="ptab4">
+		<p><i class="fa fa-flash" aria-hidden="true"></i></p>
+		<h3>FLASH</h3>
+		<p>Unlimited Users</p>
+		<p>Free Setup</p>
+		<p>5TB Storage</p>
+		<p>API Integration</p>
+		<h5 class="hvr-pulse-grow">999.00€</h5>
+		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
+	</div>	
+</div>
+
+
+
+<!-- info box -->
+<style type="text/css">
+#infobox{
+	float: left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+}
+.pinfo{
+	position: relative;
+	float: left;
+	width: 20%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+	border: 1px solid #000;
+}
+.pinfo *{ text-align: center; padding: 10px; text-align: justify; text-justify: inter-word; font-size: 13px;}
+.pinfo i{ background: #000; color: #fff; padding: 10px 20px 10px 20px; font-size: 19px;}
+.pinfo h3{font-size: 25px; font-weight: bold}
+@media (max-width: 1024px) {
+.pinfo{	width: 45%;	margin-left: 2.5%;	margin-right: 2.5%;	}  
+}
+.ptab4 h6:hover h5{color: #ff6600 !important;}
+</style>
+<h1>Info box</h1>
+<div id="infobox">
+	<div class="pinfo">
+		<p><i class="fa fa-code" aria-hidden="true"></i></p>
+		<h3>CODE</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+	<div class="pinfo">
+		<p><i class="fa fa-html5" aria-hidden="true"></i></p>
+		<h3>HTML5</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+	<div class="pinfo">
+		<p><i class="fa fa-css3" aria-hidden="true"></i></p>
+		<h3>CSS3</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+	<div class="pinfo">
+		<p><i class="fa fa-heart" aria-hidden="true"></i></p>
+		<h3>WEB DEV</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>	
+</div>
 
 <!-- circle knob -->
 <h1>Knob circle</h1>
@@ -840,6 +1108,90 @@ button:active {
 </div>
 -->
 
+
+<!-- brick by brick masonry -->
+<h1>Masonry grid</h1>
+<style type="text/css">
+.single-column .b-by-b-item {
+  width: 100%!important;
+  padding: 0px !important;
+  margin: 5px !important;
+}
+#layout div img{
+	float: left;width: 100%; height: 100%; overflow: hidden;padding: 0px;margin: 0px; transition: all .5s ease-out
+}
+#layout div img:hover{
+	cursor: pointer;
+	width: 150%; height: 150%;
+}
+
+@media (min-width: 0px) and (max-width: 480px) {
+  #layout .b-by-b-item {
+    width: 100%;    
+  }
+}
+@media (min-width: 481px) and (max-width: 1024px) {
+  #layout .b-by-b-item {
+    width: 50%;    
+  }
+}
+@media (min-width: 1025px) {
+  #layout .b-by-b-item {
+    width: 33.33%;    
+  }
+}
+#layout > div > *{
+	padding: 0px !important;
+	margin: 0px; !important;
+	overflow: hidden;
+}
+.b-by-b-item {
+background: #fff;
+border: 0px solid #000;
+}	
+</style>
+<div id="layout">
+    <div><img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg"></div>
+    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>
+    <div> <img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg"> </div>
+    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>    
+    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>
+    <div> <img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg"> </div>
+    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>    
+    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>
+    <div> <img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg"> </div>
+    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>   
+    <div>Suspendisse quis dapibus tortor, ut tincidunt sem. Vivamus ornare mattis orci sit amet rutrum. Mauris ultricies magna quis diam laoreet commodo. Nullam tellus nisi, maximus at condimentum in, pharetra non metus. Donec nibh lacus, pretium non sollicitudin ac, porta nec est. Nulla laoreet risus semper felis posuere volutpat. Morbi commodo libero enim, nec dictum dolor tempor convallis. Nulla magna sem, varius eget ornare ut, finibus a enim.</div> 
+ </div>
+
+
+
+
+<!-- slide up arrow font awesome icons -->
+<style type="text/css">
+.up{
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  max-width: 90px;
+  background: #000;
+  color: #fff;
+  padding: 10px;
+  margin: 2px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 5px #444;
+  z-index: 9999;
+}
+.up:hover{
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}	
+</style>
+<div class="up"><i class="fa fa-arrow-up"></i></div>
 
 </body>
 </html>
