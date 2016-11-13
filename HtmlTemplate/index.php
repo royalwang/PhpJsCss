@@ -204,6 +204,7 @@ $("#owl-demo").owlCarousel({
     lazyLoad : true,
     dots: false,
     pagination: false,
+    autoPlay: 3000,
   }); 
   // Custom Navigation Events
   var owl = $("#owl-demo");
@@ -426,8 +427,8 @@ $('#Container').mixItUp();
     #owl .item p b{color: #fff; font-size: 49px;}
 </style>
 <div id="owl" class="owl-carousel owl-theme">
-<div class="item"><img src="assets/fullimage6.jpg" alt="Lazy Owl Image"> <p class="animated bounceIn center"> <b>Hello Space 51</b> <br> Time is ticking</p></div>
-<div class="item"><img src="assets/fullimage7.jpg" alt="Lazy Owl Image"></div>
+<div class="item"><img src="assets/fullimage6.jpg" alt="Lazy Owl Image"> <p class="animated flipInX"> <b>Hello Space 51</b> <br> Time is ticking</p></div>
+<div class="item"><img src="assets/fullimage7.jpg" alt="Lazy Owl Image"> <p class="animated flipInY"> <b>Hello World</b> <br> Time is ticking</p> </div>
 <div class="item"><img src="assets/fullimage5.jpg" alt="Lazy Owl Image"></div>
 <div class="item"><img src="assets/fullimage4.jpg" alt="Lazy Owl Image"></div>
 <div class="item"><img src="assets/fullimage3.jpg" alt="Lazy Owl Image"></div>
@@ -1009,7 +1010,7 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 	</div>
 </div>
 
-<!-- info box -->
+<!-- info box 2 -->
 <style type="text/css">
 .infobox{
 	float: left;
@@ -1053,6 +1054,93 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
 		</p>
 	</div>
+</div>
+
+<!-- info box 5 -->
+<style type="text/css">
+.infobox{
+	float: left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+}
+.pinfo5{
+	cursor: pointer;
+	position: relative;
+	float: left;
+	width: 95%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+	border: 0px solid #000;
+}
+.pinfo5 *{ text-align: center; padding: 10px; text-align: justify; text-justify: inter-word; font-size: 13px;}
+.pinfo5 i{ background: #000; color: #fff;  font-size: 19px; width: 100%; height: 100%; text-align: center;  transition: all .6s;}
+.pinfo5 h3{float: left; width: 8%; margin-top: 0px; font-size: 25px; font-weight: bold; transition: all .7s ease-out;}
+.pinfo5 p{float: left; width: 90%;}
+@media (max-width: 768px) {
+.pinfo5{width: 95%;	margin-left: 2.5%;	margin-right: 2.5%;	}  
+.pinfo5 h3{min-width: 20%; height: auto;}
+.pinfo5 p{width: 80%;}
+}
+.pinfo5:hover h3 i{color: #393 !important;}
+.pinfo5:hover h3{
+    font-weight: bold;
+    animation: 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s normal forwards 1 running moveUp;
+}
+
+@keyframes moveUp {
+  50% { -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
+  51% { opacity: 0; -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
+  52% { opacity: 1; -webkit-transform: translate3d(0,100%,0); transform: translate3d(0,100%,0); }
+  100% { -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
+}
+.moveUp {
+    -webkit-animation-name: moveUp;
+    animation-name: moveUp;
+    animation: 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s normal forwards 1 running moveUp;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+.pulse {
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
+}
+@keyframes shake {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+.shake {
+    -webkit-animation-name: shake;
+    animation-name: shake;
+}
+</style>
+<h1>Info box 5</h1>
+<div class="infobox">
+	<div class="pinfo5">
+		<h3 class="shake"><i class="fa fa-comment" aria-hidden="true"></i></h3>		
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+	<div class="pinfo5">
+		<h3 class="shake"><i class="fa fa-exclamation" aria-hidden="true"></i></h3>		
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+	<div class="pinfo5">
+		<h3 class="shake"><i class="fa fa-quote-right" aria-hidden="true"></i></h3>		
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>	
 </div>
 
 
@@ -1105,8 +1193,8 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 <div class="item"><img class="lazyOwl" data-src="assets/owl8.jpg" alt="Lazy Owl Image"></div>
 </div>
 <div class="customNavigation">
-  <a class="btnprev"><</a>
-  <a class="btnnext">></a>
+  <a class="btnprev"> <i class="fa fa-arrow-left"></i> </a>
+  <a class="btnnext"> <i class="fa fa-arrow-right"></i> </a>
 </div>
 
 
