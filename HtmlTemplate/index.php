@@ -16,6 +16,8 @@
 
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link href="css/hover.css" rel="stylesheet" media="all">
+	<link href="css/animate.css" rel="stylesheet" media="all">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&amp;subset=latin-ext" rel="stylesheet"> 
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -183,6 +185,19 @@ $('.up').click(function () {
     return false;
 });
 
+/* big slider 1 */
+$("#owl").owlCarousel({
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem:true,
+      loop:true,
+      autoPlay:4000,
+      stopOnHover:false,
+      margin: 0,
+}); 
+/* big slider 1 */
+
+/* long slider */
 $("#owl-demo").owlCarousel({
     items : 4,
     loop:true,
@@ -197,11 +212,12 @@ $("#owl-demo").owlCarousel({
   })
   $(".btnprev").click(function(){
     owl.trigger('owl.prev');
-});
+  });
+/* long slider */
 
 
 /* knoc circle setup */
-$('.knob').each(function () {
+$('.knob1').each(function () {
    var $this = $(this);
    var myVal = $this.attr("rel");
    $this.knob({
@@ -263,6 +279,18 @@ $(window).scroll(function () {
 	}
 });
 /* skill bars progress bar animate */
+
+/* animate.css info box - add class when visible */
+$(window).scroll(function () {
+	jQuery('.infobox').bind('inview', function (event, visible) {
+	    if (visible == true) {
+	        jQuery(this).addClass("animated bounceIn");
+	    } else {
+	        //jQuery(this).removeClass("animated bounceIn");
+	    }
+	});
+});
+/* animate.css info box */
 
 /* inview 1 time run */
 $(window).scroll(function () {
@@ -374,8 +402,42 @@ $('#Container').mixItUp();
 	</head>
 <body>
 
-<h1> Tabs java script </h1>
+<!-- owl carousel -->
+<h1>Image slider</h1>
+<style type="text/css">
+    #owl .item{
+      margin: 3px;
+      position: relative;
+    }
+    #owl .item img{
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    #owl .item p{	    	
+	font-size: 25px; color :#393; 	
+	text-align: center;	
+	position: absolute;
+    top: 35%;
+    left: 10%;
+    margin-right: -10%;
+    //transform: translate(-50%, -50%)
+    }
+    #owl .item p b{color: #fff; font-size: 49px;}
+</style>
+<div id="owl" class="owl-carousel owl-theme">
+<div class="item"><img src="assets/fullimage6.jpg" alt="Lazy Owl Image"> <p class="animated bounceIn center"> <b>Hello Space 51</b> <br> Time is ticking</p></div>
+<div class="item"><img src="assets/fullimage7.jpg" alt="Lazy Owl Image"></div>
+<div class="item"><img src="assets/fullimage5.jpg" alt="Lazy Owl Image"></div>
+<div class="item"><img src="assets/fullimage4.jpg" alt="Lazy Owl Image"></div>
+<div class="item"><img src="assets/fullimage3.jpg" alt="Lazy Owl Image"></div>
+<div class="item"><img src="assets/fullimage2.jpg" alt="Lazy Owl Image"></div>
+<div class="item"><img src="assets/fullimage1.jpg" alt="Lazy Owl Image"></div>
+</div>
 
+
+<!-- Tabs -->
+<h1> Tabs java script </h1>
 <div id="tabs">
   <p>
   <a>Tab 1</a> <a>Tab 2</a> <a>Tab 3</a> <a>Tab Name</a> 
@@ -626,7 +688,8 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 	</div>	
 </div>	
 
-<!-- pricing list 3 -->
+
+<!-- pricing list 2 -->
 <style type="text/css">
 #pricing{
 	float: left;
@@ -635,28 +698,28 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 	margin-bottom: 50px;
 	box-sizing: border-box;
 }
-.ptab{
+.ptab2{
 	position: relative;
 	float: left;
-	width: 28.33%;
+	width: 45%;
 	margin-left: 2.5%;
 	margin-right: 2.5%;
 	box-sizing: border-box;
 	border: 1px solid #000;
 }
-.ptab *{ text-align: center; padding: 10px;}
-.ptab i{
+.ptab2 *{ text-align: center; padding: 10px;}
+.ptab2 i{
 	background: #000; color: #fff; padding: 10px 20px 10px 20px;
 }
-.ptab h3{font-size: 25px; font-weight: bold}
-.ptab h5{font-size: 29px;font-weight: bold; text-align: center; min-width: 100%; transition: all .8s}
-.ptab h6 a{font-size: 20px; width: 100%; background: #000; color: #fff; float: left;padding: 20px;text-decoration: none;}
-.ptab h2{position: absolute; left: 0px; top: -50px; text-align: center; background: #000; color: #fff; height: 50px; border: 1px solid #000; min-width: 100%;}
-.ptab h6:hover h5{color: #ff6600 !important;}
+.ptab2 h3{font-size: 25px; font-weight: bold}
+.ptab2 h5{font-size: 29px;font-weight: bold; text-align: center; min-width: 100%; transition: all .8s}
+.ptab2 h6 a{font-size: 20px; width: 100%; background: #000; color: #fff; float: left;padding: 20px;text-decoration: none;}
+.ptab2 h2{position: absolute; left: 0px; top: -50px; text-align: center; background: #000; color: #fff; height: 50px; border: 1px solid #000; min-width: 100%;}
+.ptab2:hover h5{color: #393 !important;}
 </style>
-<h1>Pricing table 3</h1>
+<h1>Pricing table 2</h1>
 <div id="pricing">
-	<div class="ptab">
+	<div class="ptab2">
 		<p><i class="fa fa-diamond" aria-hidden="true"></i></p>
 		<h3>DIAMOND</h3>
 		<p>10 Users</p>
@@ -667,7 +730,62 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
 	</div>
 
-	<div class="ptab">
+	<div class="ptab2">
+		<h2> Best For you </h2>
+		<p><i class="fa fa-star" aria-hidden="true"></i></p>
+		<h3>STAR</h3>
+		<p>50 Users</p>
+		<p>Free Setup</p>
+		<p>100GB Storage</p>
+		<p>API Integration</p>
+		<h5 class="hvr-pulse-grow">187.00€</h5>
+		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
+	</div>
+</div>
+
+
+<!-- pricing list 3 -->
+<style type="text/css">
+#pricing{
+	float: left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+}
+.ptab3{
+	position: relative;
+	float: left;
+	width: 28.33%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	box-sizing: border-box;
+	border: 1px solid #000;
+}
+.ptab3 *{ text-align: center; padding: 10px;}
+.ptab3 i{
+	background: #000; color: #fff; padding: 10px 20px 10px 20px;
+}
+.ptab3 h3{font-size: 25px; font-weight: bold}
+.ptab3 h5{font-size: 29px;font-weight: bold; text-align: center; min-width: 100%; transition: all .8s}
+.ptab3 h6 a{font-size: 20px; width: 100%; background: #000; color: #fff; float: left;padding: 20px;text-decoration: none;}
+.ptab3 h2{position: absolute; left: 0px; top: -50px; text-align: center; background: #000; color: #fff; height: 50px; border: 1px solid #000; min-width: 100%;}
+.ptab3:hover h5{color: #393 !important;}
+</style>
+<h1>Pricing table 3</h1>
+<div id="pricing">
+	<div class="ptab3">
+		<p><i class="fa fa-diamond" aria-hidden="true"></i></p>
+		<h3>DIAMOND</h3>
+		<p>10 Users</p>
+		<p>Free Setup</p>
+		<p>10GB Storage</p>
+		<p>API Integration</p>
+		<h5 class="hvr-pulse-grow">97.00€</h5>
+		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
+	</div>
+
+	<div class="ptab3">
 		<h2> Best For you </h2>
 		<p><i class="fa fa-star" aria-hidden="true"></i></p>
 		<h3>STAR</h3>
@@ -679,7 +797,7 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 		<h6><a href="" class="hvr-bounce-to-bottom">KUP</a></h6>
 	</div>
 
-	<div class="ptab">
+	<div class="ptab3">
 		<p><i class="fa fa-rocket" aria-hidden="true"></i></p>
 		<h3>ROCKET</h3>
 		<p>100 Users</p>
@@ -719,6 +837,7 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 .ptab4 h5{font-size: 29px;font-weight: bold; text-align: center; min-width: 100%; transition: all .8s}
 .ptab4 h6 a{font-size: 20px; width: 100%; background: #000; color: #fff; float: left;padding: 20px;text-decoration: none;}
 .ptab4 h2{position: absolute; left: 0px; top: -50px; text-align: center; background: #000; color: #fff; height: 50px; border: 1px solid #000; min-width: 100%;}
+.ptab4:hover h5{color: #393 !important;}
 @media (max-width: 1024px) {
 .ptab4{
 	width: 45%;
@@ -726,7 +845,7 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 	margin-right: 2.5%;	
 }  
 }
-.ptab4 h6:hover h5{color: #ff6600 !important;}
+.ptab4 h6:hover h5{color: #393 !important;}
 </style>
 <h1>Pricing table 4</h1>
 <div id="pricing">
@@ -777,16 +896,16 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 
 
 
-<!-- info box -->
+<!-- info box 4 -->
 <style type="text/css">
-#infobox{
+.infobox{
 	float: left;
 	width: 100%;
 	margin-top: 60px;
 	margin-bottom: 50px;
 	box-sizing: border-box;
 }
-.pinfo{
+.pinfo4{
 	position: relative;
 	float: left;
 	width: 20%;
@@ -796,38 +915,38 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 	box-sizing: border-box;
 	border: 1px solid #000;
 }
-.pinfo *{ text-align: center; padding: 10px; text-align: justify; text-justify: inter-word; font-size: 13px;}
-.pinfo i{ background: #000; color: #fff; padding: 10px 20px 10px 20px; font-size: 19px;}
-.pinfo h3{font-size: 25px; font-weight: bold}
+.pinfo4 *{ text-align: center; padding: 10px; text-align: justify; text-justify: inter-word; font-size: 13px;}
+.pinfo4 i{ background: #000; color: #fff; padding: 10px 20px 10px 20px; font-size: 19px;}
+.pinfo4 h3{font-size: 25px; font-weight: bold; transition: all .6s ease-in-out;}
 @media (max-width: 1024px) {
-.pinfo{	width: 45%;	margin-left: 2.5%;	margin-right: 2.5%;	}  
+.pinfo4{	width: 45%;	margin-left: 2.5%;	margin-right: 2.5%;	}  
 }
-.ptab4 h6:hover h5{color: #ff6600 !important;}
+.pinfo4:hover h3{color: #393 !important;}
 </style>
-<h1>Info box</h1>
-<div id="infobox">
-	<div class="pinfo">
+<h1>Info box 4</h1>
+<div class="infobox">
+	<div class="pinfo4">
 		<p><i class="fa fa-code" aria-hidden="true"></i></p>
 		<h3>CODE</h3>
 		<p>
 			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
 		</p>
 	</div>
-	<div class="pinfo">
+	<div class="pinfo4">
 		<p><i class="fa fa-html5" aria-hidden="true"></i></p>
 		<h3>HTML5</h3>
 		<p>
 			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
 		</p>
 	</div>
-	<div class="pinfo">
+	<div class="pinfo4">
 		<p><i class="fa fa-css3" aria-hidden="true"></i></p>
 		<h3>CSS3</h3>
 		<p>
 			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
 		</p>
 	</div>
-	<div class="pinfo">
+	<div class="pinfo4">
 		<p><i class="fa fa-heart" aria-hidden="true"></i></p>
 		<h3>WEB DEV</h3>
 		<p>
@@ -836,52 +955,105 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 	</div>	
 </div>
 
-<!-- circle knob -->
-<h1>Knob circle</h1>
+
+<!-- info box 3 -->
 <style type="text/css">
-.knobs{
-	list-style: none;
+.infobox{
+	float: left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
 }
-  .knob{
-  	color: #000;
-    min-width: 100px !important;
-    max-width: 100px !important;    
-    font-size: 33px !important;
-    box-shadow: none !important;
-  }
-  .col3knob{
-    float: left;
-    min-width: 33%;
-    max-width: 33%;
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 17px !important;    
-  }
-  .col3knob .txt{
-    font-size: 27px !important;
-    margin: 20px;
-    font-weight: bold;
-  }
-@media screen and (max-width: 768px) {
-.knobs .col3knob{
-	min-width: 100% !important;
+.pinfo3{
+	cursor: pointer;
+	position: relative;
+	float: left;
+	width: 28.33%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+	border: 1px solid #000;
 }
-}  
+.pinfo3 *{ text-align: center; padding: 10px; text-align: justify; text-justify: inter-word; font-size: 13px;}
+.pinfo3 i{ background: #000; color: #fff; padding: 10px 20px 10px 20px; font-size: 19px;}
+.pinfo3 h3{font-size: 25px; font-weight: bold; transition: all .7s ease-out}
+@media (max-width: 768px) {
+.pinfo3{	width: 95%;	margin-left: 2.5%;	margin-right: 2.5%;	}  
+}
+.pinfo3:hover h3{color: #393 !important;}
 </style>
-<ul class="knobs">    
-    <li class="col3knob">      
-      <p class="txt"> Html5/CSS3 </p> 
-      <p> <input class="knob animated" value="0" rel="95" data-bgColor="#eee" data-fgColor="#000" data-thickness=".2" data-min="0"> </p>
-    </li>
-    <li class="col3knob">      
-      <p class="txt"> Php/Mysql </p> 
-      <p> <input class="knob  animated" value="0" rel="91" data-bgColor="#eee" data-fgColor="#000" data-thickness=".2" data-min="0"> </p>
-    </li>
-    <li class="col3knob">      
-      <p class="txt"> E-Commerce </p> 
-      <p> <input class="knob  animated" value="0" rel="79" data-bgColor="#eee" data-fgColor="#000" data-thickness=".2" data-min="0"> </p>
-    </li>    
-</ul> 
+<h1>Info box 3</h1>
+<div class="infobox">
+	<div class="pinfo3">
+		<p><i class="fa fa-code" aria-hidden="true"></i></p>
+		<h3>CODE</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+	<div class="pinfo3">
+		<p><i class="fa fa-html5" aria-hidden="true"></i></p>
+		<h3>HTML5</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+	<div class="pinfo3">
+		<p><i class="fa fa-css3" aria-hidden="true"></i></p>
+		<h3>CSS3</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+</div>
+
+<!-- info box -->
+<style type="text/css">
+.infobox{
+	float: left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+}
+.pinfo2{
+	cursor: pointer;
+	position: relative;
+	float: left;
+	width: 45%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+	border: 1px solid #000;
+}
+.pinfo2 *{ text-align: center; padding: 10px; text-align: justify; text-justify: inter-word; font-size: 13px;}
+.pinfo2 i{ background: #000; color: #fff; padding: 10px 20px 10px 20px; font-size: 19px;}
+.pinfo2 h3{font-size: 25px; font-weight: bold; transition: all .7s ease-out}
+@media (max-width: 768px) {
+.pinfo2{	width: 45%;	margin-left: 2.5%;	margin-right: 2.5%;	}  
+}
+.pinfo2:hover h3{color: #393 !important;}
+</style>
+<h1>Info box 2</h1>
+<div class="infobox">
+	<div class="pinfo2">
+		<p><i class="fa fa-code" aria-hidden="true"></i></p>
+		<h3>CODE</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+	<div class="pinfo2">
+		<p><i class="fa fa-html5" aria-hidden="true"></i></p>
+		<h3>HTML5</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego: „tekst, tekst, tekst”, sprawiającego, że wygląda to „zbyt czytelnie” po polsku. Wielu webmasterów i designerów używa Lorem Ipsum jako domyślnego modelu tekstu
+		</p>
+	</div>
+</div>
 
 
 <!-- owl carousel -->
@@ -1046,16 +1218,17 @@ button:active {
 <button class="filter" data-filter=".mix">All</button>
 <button class="filter" data-filter=".category-1">Dziewczyny</button>
 <button class="filter" data-filter=".category-2">Samochody</button>
+<button class="filter" data-filter=".category-3">Komputery</button>
 </div>
 <div id="Container">
-    <div class="mix category-1" data-my-order="1"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg">  </div>
-    <div class="mix category-1" data-my-order="2"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="https://portal.restomontreal.ca/hooters/gallery/images/09_hooters-4145.jpg"> </div>
-    <div class="mix category-2" data-my-order="3"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="http://blog.caranddriver.com/wp-content/uploads/2015/11/Chevrolet-Corvette1.jpg"> </div>
-    <div class="mix category-2" data-my-order="4"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>
-    <div class="mix category-1" data-my-order="5"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg"> </div>
-    <div class="mix category-1" data-my-order="6"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="https://portal.restomontreal.ca/hooters/gallery/images/09_hooters-4145.jpg"> </div>
-    <div class="mix category-2" data-my-order="7"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="http://blog.caranddriver.com/wp-content/uploads/2015/11/Chevrolet-Corvette1.jpg"> </div>
-    <div class="mix category-2" data-my-order="8"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>    
+    <div class="mix category-1" data-my-order="1"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="assets/fullimage1.jpg">  </div>
+    <div class="mix category-1" data-my-order="2"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="assets/fullimage2.jpg"> </div>
+    <div class="mix category-2" data-my-order="3"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="assets/fullimage3.jpg"> </div>
+    <div class="mix category-2" data-my-order="4"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="assets/fullimage4.jpg"> </div>
+    <div class="mix category-3" data-my-order="5"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="assets/fullimage5.jpg"> </div>
+    <div class="mix category-3" data-my-order="6"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="assets/fullimage6.jpg"> </div>
+    <div class="mix category-2" data-my-order="7"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="assets/fullimage7.jpg"> </div>
+    <div class="mix category-2" data-my-order="8"> <p> <a href="link.com" class="hvr-bounce-to-right"> SHOW </a> </p> <img src="assets/fullimage1.jpg"> </div>    
 </div>
 
 
@@ -1151,19 +1324,66 @@ border: 0px solid #000;
 }	
 </style>
 <div id="layout">
-    <div><img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg"></div>
-    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>
-    <div> <img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg"> </div>
-    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>    
-    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>
-    <div> <img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg"> </div>
-    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>    
-    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>
-    <div> <img src="http://pop.h-cdn.co/assets/cm/15/05/54cb1d27a519c_-_analog-sports-cars-01-1013-de.jpg"> </div>
-    <div><img src="https://static.pexels.com/photos/24353/pexels-photo.jpg"> </div>   
+    <div><a href=""> <img src="assets/fullimage1.jpg"></a></div>
+    <div><img src="assets/fullimage2.jpg"> </div>
+    <div> <img src="assets/fullimage3.jpg"> </div>
+    <div><img src="assets/fullimage4.jpg"> </div>    
+    <div><img src="assets/fullimage5.jpg"> </div>
+ 	<div><img src="assets/fullimage6.jpg"></div>
+    <div><img src="assets/fullimage7.jpg"> </div>
+    <div> <img src="assets/fullimage1.jpg"> </div>
+    <div><img src="assets/fullimage6.jpg"> </div>    
+    <div><img src="assets/fullimage3.jpg"> </div>
     <div>Suspendisse quis dapibus tortor, ut tincidunt sem. Vivamus ornare mattis orci sit amet rutrum. Mauris ultricies magna quis diam laoreet commodo. Nullam tellus nisi, maximus at condimentum in, pharetra non metus. Donec nibh lacus, pretium non sollicitudin ac, porta nec est. Nulla laoreet risus semper felis posuere volutpat. Morbi commodo libero enim, nec dictum dolor tempor convallis. Nulla magna sem, varius eget ornare ut, finibus a enim.</div> 
  </div>
 
+
+<!-- circle knob -->
+<h1>Knob circle</h1>
+<style type="text/css">
+.knobs{
+	list-style: none;
+}
+  .knob{
+  	color: #000;
+    min-width: 100px !important;
+    max-width: 100px !important;    
+    font-size: 33px !important;
+    box-shadow: none !important;
+  }
+  .col3knob{
+    float: left;
+    min-width: 33%;
+    max-width: 33%;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 17px !important;    
+  }
+  .col3knob .txt{
+    font-size: 27px !important;
+    margin: 20px;
+    font-weight: bold;
+  }
+@media screen and (max-width: 768px) {
+.knobs .col3knob{
+	min-width: 100% !important;
+}
+}  
+</style>
+<ul class="knobs">    
+    <li class="col3knob">      
+      <p class="txt"> Html5/CSS3 </p> 
+      <p> <input class="knob animated" value="0" rel="95" data-bgColor="#eee" data-fgColor="#000" data-thickness=".2" data-min="0"> </p>
+    </li>
+    <li class="col3knob">      
+      <p class="txt"> Php/Mysql </p> 
+      <p> <input class="knob  animated" value="0" rel="91" data-bgColor="#eee" data-fgColor="#000" data-thickness=".2" data-min="0"> </p>
+    </li>
+    <li class="col3knob">      
+      <p class="txt"> E-Commerce </p> 
+      <p> <input class="knob  animated" value="0" rel="79" data-bgColor="#eee" data-fgColor="#000" data-thickness=".2" data-min="0"> </p>
+    </li>    
+</ul> 
 
 
 
