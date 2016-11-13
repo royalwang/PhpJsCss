@@ -1387,6 +1387,27 @@ border: 0px solid #000;
 
 
 
+<!-- google map -->
+<h1>Google map</h1>
+<style type="text/css">
+.iframe-rwd  {
+position: relative;
+}
+.iframe-rwd iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: auto;
+}	
+</style>
+<div class="iframe-rwd" style="float: left; min-width: 100%;">
+ <iframe width="425" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="map.html" style="float: left; min-width: 100%; height: 500px;">
+</div>
+
+
+
+
 <!-- slide up arrow font awesome icons -->
 <style type="text/css">
 .up{
