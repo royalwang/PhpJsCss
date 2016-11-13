@@ -895,6 +895,139 @@ Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawar
 	</div>	
 </div>
 
+<!-- info box 1 -->
+<style type="text/css">
+.infobox{
+	float: left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+}
+.pinfo1{
+	position: relative;
+	float: left;
+	width: 20%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+	border: 0px solid #000;
+}
+.pinfo1 div{ text-align: center; padding: 10px; font-size: 13px;}
+.pinfo1 p{ text-align: center; padding: 10px; font-size: 13px; text-align: justify; text-justify: inter-word; }
+.pinfo1 i{ background: #000; color: #fff; padding: 10px 20px 10px 20px; font-size: 19px; transition: all .6s;}
+.pinfo1 h3{text-align: center; padding: 10px; font-size: 25px; font-weight: bold; transition: all .6s ease-in-out;}
+@media (max-width: 1024px) {
+.pinfo1{	width: 45%;	margin-left: 2.5%;	margin-right: 2.5%;	}  
+}
+.pinfo1:hover h3{color: #393 !important;}
+.pinfo1:hover div i{background: #393;}
+.pinfo1:hover div{
+    font-weight: bold;
+    animation: 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s normal forwards 1 running shake;
+}
+</style>
+<h1>Info box 1</h1>
+<div class="infobox">
+	<div class="pinfo1">
+		<div><i class="fa fa-code" aria-hidden="true"></i></div>
+		<h3>CODE</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów.
+		</p>
+	</div>
+	<div class="pinfo1">
+		<div><i class="fa fa-html5" aria-hidden="true"></i></div>
+		<h3>HTML5</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów.
+		</p>
+	</div>
+	<div class="pinfo1">
+		<div><i class="fa fa-css3" aria-hidden="true"></i></div>
+		<h3>CSS3</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego.
+		</p>
+	</div>
+	<div class="pinfo1">
+		<div><i class="fa fa-heart" aria-hidden="true"></i></div>
+		<h3>WEB DEV</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie...
+		</p>
+	</div>	
+</div>
+
+
+<!-- info box 1a -->
+<style type="text/css">
+.infobox{
+	float: left;
+	width: 100%;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+}
+.pinfo1a{
+	position: relative;
+	float: left;
+	width: 20%;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-bottom: 50px;
+	box-sizing: border-box;
+	border: 0px solid #000;
+}
+.pinfo1a div{ text-align: center; padding: 10px; font-size: 13px; position: relative;}
+.pinfo1a p{ text-align: center; padding: 10px; font-size: 13px; text-align: justify; text-justify: inter-word; }
+.pinfo1a div i{ border-radius: 500px; background: #000; color: #fff;  font-size: 19px;
+	width: 50px; height: 50px; padding: 15px;
+    transition: all .6s;
+ }
+.pinfo1a h3{text-align: center; padding: 10px; font-size: 25px; font-weight: bold; transition: all .6s ease-in-out;}
+@media (max-width: 1024px) {
+.pinfo1a{	width: 45%;	margin-left: 2.5%;	margin-right: 2.5%;	}  
+}
+.pinfo1a:hover h3{color: #393 !important;}
+.pinfo1a:hover div i{background: #393;}
+.pinfo1a:hover div{
+    font-weight: bold;
+    animation: 0.4s cubic-bezier(0.7, 0, 0.3, 1) 0s normal forwards 1 running shake;
+}
+</style>
+<h1>Info box 1a</h1>
+<div class="infobox">
+	<div class="pinfo1a">
+		<div><i class="fa fa-code" aria-hidden="true"></i></div>
+		<h3>CODE</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów.
+		</p>
+	</div>
+	<div class="pinfo1a">
+		<div><i class="fa fa-html5" aria-hidden="true"></i></div>
+		<h3>HTML5</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów.
+		</p>
+	</div>
+	<div class="pinfo1a">
+		<div><i class="fa fa-css3" aria-hidden="true"></i></div>
+		<h3>CSS3</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie do zwykłego.
+		</p>
+	</div>
+	<div class="pinfo1a">
+		<div><i class="fa fa-heart" aria-hidden="true"></i></div>
+		<h3>WEB DEV</h3>
+		<p>
+			Ogólnie znana teza głosi, iż użytkownika może rozpraszać zrozumiała zawartość strony, kiedy ten chce zobaczyć sam jej wygląd. Jedną z mocnych stron używania Lorem Ipsum jest to, że ma wiele różnych „kombinacji” zdań, słów i akapitów, w przeciwieństwie...
+		</p>
+	</div>	
+</div>
 
 
 <!-- info box 4 -->
@@ -1473,29 +1606,6 @@ border: 0px solid #000;
     </li>    
 </ul> 
 
-
-
-<!-- google map -->
-<h1>Google map</h1>
-<style type="text/css">
-.iframe-rwd  {
-position: relative;
-}
-.iframe-rwd iframe {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: auto;
-}	
-</style>
-<div class="iframe-rwd" style="float: left; min-width: 100%;">
- <iframe width="425" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="map.html" style="float: left; min-width: 100%; height: 500px;">
-</div>
-
-
-
-
 <!-- slide up arrow font awesome icons -->
 <style type="text/css">
 .up{
@@ -1522,5 +1632,47 @@ height: auto;
 </style>
 <div class="up"><i class="fa fa-arrow-up"></i></div>
 
+
+<!-- google map -->
+<h1>Google map</h1>
+<style type="text/css">
+.iframe-rwd  {
+position: relative;
+}
+.iframe-rwd iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: auto;
+}	
+</style>
+<div class="iframe-rwd" style="float: left; min-width: 100%;">
+ <iframe width="425" height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="map.html" style="float: left; min-width: 100%; height: 500px;">
+</div>
+
+
+
+<style type="text/css">
+.portfolio-item.full-width img, .portfolio-item.centered2 img {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    transition: all 0.8s ease;
+	width: 100%;
+}
+.portfolio-item.full-width:hover img, .portfolio-item.centered2:hover img {
+	-webkit-transform: scale(1.2) rotate(-5deg);
+	-moz-transform: scale(1.2) rotate(-5deg);
+	-ms-transform: scale(1.2) rotate(-5deg);
+	-o-transform: scale(1.2) rotate(-5deg);
+	transform: scale(1.2) rotate(-5deg);
+}	
+
+</style>
 </body>
 </html>
