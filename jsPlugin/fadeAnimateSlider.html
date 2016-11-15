@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<title>Plugin test page</title>
+	<meta charset="utf-8">
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/inview.js"></script>
+	<script src="js/isonscreen.js"></script>
+	<script src="js/mixitup.js"></script>
+	<script src="js/knob.js"></script>
+	<script src="js/brick-by-brick.js"></script>
+	<!--
+	<script src="//s3-us-west-2.amazonaws.com/s.cdpn.io/130527/brick-by-brick.min.js"></script>
+	-->
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link href="css/hover.css" rel="stylesheet" media="all">
+	<link href="css/animate.css" rel="stylesheet" media="all">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&amp;subset=latin-ext" rel="stylesheet"> 
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<style type="text/css">
+html{
+	background: #111;
+}
+.fadein { position:relative; width:100%; height: 500px; overflow: hidden; }
+.fadein img { position:absolute; left:0; top:0; min-width: 100%; overflow: hidden;}	
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+$(function(){
+    $('.fadein img:gt(0)').hide();
+    //setInterval(function(){ $('.fadein :first-child').fadeOut().next('img').fadeIn().end().appendTo('.fadein');}, 3000);
+    setInterval(function(){ $('.fadein :first-child').fadeOut().next('img').fadeIn().addClass('animated bounceIn').end().removeClass('animated bounceIn').appendTo('.fadein');}, 3000);
+});
+
+});
+</script>
+</head>
+<body>
+
+<div class="fadein">
+  <img src="https://farm3.static.flickr.com/2610/4148988872_990b6da667.jpg">
+  <img src="https://farm3.static.flickr.com/2597/4121218611_040cd7b3f2.jpg">
+  <img src="https://farm3.static.flickr.com/2531/4121218751_ac8bf49d5d.jpg">
+</div>
+
+</body>
+</html>
