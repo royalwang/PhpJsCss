@@ -1,1 +1,1 @@
-# word press
+# Wordpress
