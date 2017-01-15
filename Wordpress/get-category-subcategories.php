@@ -1,4 +1,9 @@
 <?php
+// get category data
+// https://codex.wordpress.org/Function_Reference/get_category
+$category = get_category(get_query_var('cat'));
+$cat_ID = $category[0]->term_id;
+
 // get current slug category ID
 $catID = get_query_var( 'cat' );
 
