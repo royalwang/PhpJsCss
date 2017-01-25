@@ -1,0 +1,10 @@
+IIS Wordpress crop error
+# Add this line to php.ini
+upload_tmp_dir = C:\inetpub\temp\uploads
+
+or add IIS_USERS and IUSER permissions to c:\Windows\temp
+
+
+More:
+https://forums.iis.net/t/1159252.aspx
+http://www.howyoudo.info/index.php/how-to-fix-windows-server-upload-file-inherit-permissions-error/
