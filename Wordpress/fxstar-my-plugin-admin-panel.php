@@ -20,12 +20,19 @@ function fxstar_plugin_create_menu() {
 
     //call register settings function
     add_action( 'admin_init', 'register_fxstar_plugin_settings' );
+    // sub menu page
+    add_submenu_page( 'My Cool Plugin Settings', 'About My Plugin', 'About', 'editor', 'About', 'plugin_about_page'); 
 }
 
 
 function register_fxstar_plugin_settings() {
     //register our settings
     register_setting( 'my-cool-plugin-settings-group', 'fx_option_name' );
+}
+
+function plugin_about_page(){
+    echo '<h1 style="background: #fff; color: #192241; padding: 10px;">Fxstar.eu <br><br> <small style="color: #f60"> Wordpress templates and Woocommerce shops. </small> </h1>';
+    echo '<a href="https://fxstar.eu" style="background: #f60; color: #fff; padding: 10px; text-decoration: none;"> https://fxstar.eu</a>';
 }
 
 function fxstar_plugin_settings_page() {
