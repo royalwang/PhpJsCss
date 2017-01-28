@@ -43,6 +43,41 @@ $connection->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8mb4' COL
 return $connection;
 }
 
+// secure id int
+$id = (int)$_GET['id'];
+$id = (int)$_POST['id'];
+// secure string
+$str = htmlentities($_GET['id'], ENT_QUOTES, 'utf-8');
+$str = htmlentities($_POST['id'], ENT_QUOTES, 'utf-8');
+
+// init db
+$db = new Conn();
+// how use select
+$table = "posts";
+$res = $db->query("SELECT * FROM ".$table." WHERE active != 0 LIMIT 0,25");
+$rows = $res->fetchAll(PDO::FETCH_ASSOC);
+// show array
+print_r($rows);
+
+// count rows, policz ile wierszy
+$cnt = $res->rowCount();
+
+// how use update, delete, insert
+$res = $db->query("UPDATE appkey SET active = '1' WHERE keyid = '$bankey' AND userid = '$id'");
+
+// show errors
+try{
+  // pdo  
+  $cnt = $res->rowCount();
+  
+  print_r($db->errorInfo());
+  echo "PDO::errorCode(): ", $db->errorCode();
+} catch (PDOException $e) {
+    if ($e->getCode() == '2A000')
+        echo "Syntax Error: ".$e->getMessage();
+} 
+
+// javascript filter
 function strip_javascript($filter, $allowed=0){
 if($allowed == 0) // 1 href=...
 $filter = preg_replace('/href=([\'"]).*?javascript:.*?\\1/i', "'", $filter);
