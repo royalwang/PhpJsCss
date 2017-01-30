@@ -1,5 +1,8 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+// allow use js from another host
+header('Access-Control-Allow-Origin: *');
+
 error_reporting('E_ALL');
 
 // PDO
