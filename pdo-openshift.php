@@ -51,7 +51,7 @@ $str = htmlentities($_GET['id'], ENT_QUOTES, 'utf-8');
 $str = htmlentities($_POST['id'], ENT_QUOTES, 'utf-8');
 
 // init db
-$db = new Conn();
+$db = Conn();
 // how use select
 $table = "posts";
 $res = $db->query("SELECT * FROM ".$table." WHERE active != 0 LIMIT 0,25");
