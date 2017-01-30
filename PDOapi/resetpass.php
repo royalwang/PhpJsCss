@@ -36,7 +36,7 @@ function send_password($nick, $db){
 	$email = $rows[0]['email'];
 	if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 		$p = rand(123456, 987654);
-		$p = 'pass';
+		//$p = 'pass';
 		$newpass = md5($p);
 		$s = $db->query("UPDATE users SET pass = '$newpass' WHERE nick = '$nick'");
 		$m = mail($email, 'New password to chat: ', 'Your new password: '.$p);
