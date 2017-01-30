@@ -20,7 +20,7 @@ return $connection;
 
 // secure string
 $nick = htmlentities($_GET['nick'], ENT_QUOTES, 'utf-8');
-$pass = md5($_POST['pass']);
+$pass = md5($_GET['pass']);
 $msg = htmlentities($_GET['msg'], ENT_QUOTES, 'utf-8');
 $tid = 0;
 if (!empty($_GET['privid'])) {
