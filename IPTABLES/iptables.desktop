@@ -24,7 +24,7 @@
 ### Or in one rule
 # -A INPUT -p tcp -i eth0 -m multiport --dports 465,110,995,587,143,21,22,25,80,443 -j ACCEPT
 ### For all interfaces (eth0, eth1 ...)
-# -A INPUT -p tcp -m multiport --dports 465,110,995,587,143,21,22,25,80,443 -j ACCEPT
+# -A INPUT -p tcp -m multiport --dports 465,110,995,587,143,21,22,25,80,443,3306 -j ACCEPT
 
 ### Allow all returning traffic started from our server
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
