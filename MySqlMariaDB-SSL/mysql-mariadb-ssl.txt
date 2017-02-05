@@ -42,5 +42,12 @@ ssl-ca=C:/Program Files/MariaDB 10.1/data/ssl/ca-cert.pem
 ssl-cert=C:/Program Files/MariaDB 10.1/data/ssl/client-cert.pem
 ssl-key=C:/Program Files/MariaDB 10.1/data/ssl/client-key.pem
 
+# 5
+# Connect from mysql client (from other location or mysql client)
+# 1.2.3.4 - MariaDB server ip address, foo - database name
+
+mysql ssluser -h 1.2.3.4 --port=3333 --ssl-ca=ca-cert.pem -p foo
+# or
+mysql ssluser -h 1.2.3.4 --port=3333 --ssl-ca=ca-cert.pem -p
 
 ##### Have a nice day
