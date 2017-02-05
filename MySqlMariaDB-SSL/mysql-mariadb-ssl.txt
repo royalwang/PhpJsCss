@@ -51,4 +51,9 @@ mysql ssluser -h 1.2.3.4 --port=3333 --ssl-ca=ca-cert.pem -p foo
 mysql ssluser -h 1.2.3.4 --port=3333 --ssl-ca=ca-cert.pem -p
 
 # 6
+# Test cert install
+SHOW VARIABLES LIKE '%ssl%';
+status;
+
+# 7
 Have a nice day
