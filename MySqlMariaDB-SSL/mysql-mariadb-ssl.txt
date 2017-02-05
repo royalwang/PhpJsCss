@@ -2,7 +2,7 @@
 
 # 1
 # Create ssl cert here example:
-# user opennssl (for example from openshift.com containe, add php app and from ssh console create certs and download to windows server)
+# user opennssl (for example from openshift.com container, add php app and from ssh console create certs and download to windows server)
 # https://www.cyberciti.biz/faq/how-to-setup-mariadb-ssl-and-secure-connections-from-clients/
 
 # 2
@@ -11,6 +11,12 @@
 # https://downloads.mariadb.org/mariadb/10.1.21/
 
 # 3
+# Create database and user
+CREATE DATABASE foo;
+GRANT ALL ON foo.* TO ssluser@'%' IDENTIFIED BY 'sslpass' REQUIRE SSL;
+FLUSH PRIVILEGES;
+
+# 4
 # Save to file ( C:\Program Files\MariaDB 10.1\data\  >>>  my.cnf / my.ini )
 
 [mysqld]
@@ -35,5 +41,6 @@ plugin-dir=C:/Program Files/MariaDB 10.1/lib/plugin
 ssl-ca=C:/Program Files/MariaDB 10.1/data/ssl/ca-cert.pem
 ssl-cert=C:/Program Files/MariaDB 10.1/data/ssl/client-cert.pem
 ssl-key=C:/Program Files/MariaDB 10.1/data/ssl/client-key.pem
+
 
 ##### Have a nice day
