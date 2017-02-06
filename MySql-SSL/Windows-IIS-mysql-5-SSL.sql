@@ -31,7 +31,26 @@ net start MySql
 7) login to mysql
 #> mysql -u root -p
 
-8) mysql> show variables like '%ssl%';
+8) Create ssl user
+mysql> CREATE DATABASE foo;
+
+# Allow connect to database foo from host
+mysql> GRANT ALL ON foo.* TO ssluser@localhost IDENTIFIED BY 'sslpass' REQUIRE SSL;
+
+# or from ip
+mysql> GRANT ALL ON foo.* TO ssluser@192.168.200 IDENTIFIED BY 'sslpass' REQUIRE SSL;
+
+# or from all
+mysql> GRANT ALL ON foo.* TO ssluser@'%' IDENTIFIED BY 'sslpass' REQUIRE SSL;
+
+# or from all to all databases
+mysql> GRANT ALL ON *.* TO ssluser@'%' IDENTIFIED BY 'sslpass' REQUIRE SSL;
+
+# And reload 
+mysql> FLUSH PRIVILEGES;
+
+9) Check if ssl works:
+mysql> show variables like '%ssl%';
 +---------------+-------------------------+
 | Variable_name | Value                   |
 +---------------+-------------------------+
