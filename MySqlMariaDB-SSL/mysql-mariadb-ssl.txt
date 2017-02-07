@@ -3,7 +3,9 @@
 # 1
 # Create ssl cert here example:
 # user opennssl (for example from openshift.com container, add php app and from ssh console create certs and download to windows server)
-# https://www.cyberciti.biz/faq/how-to-setup-mariadb-ssl-and-secure-connections-from-clients/
+# or install
+# Install OpenSSL from (32 or 64 bit)
+http://www.slproweb.com/products/Win32OpenSSL.html
 
 # 2
 # Install MariaDB (Mysql server) from
@@ -76,3 +78,6 @@ mysql> FLUSH PRIVILEGES;
 
 # 8
 Have a nice day
+
+Tutorial Create ssl
+https://www.cyberciti.biz/faq/how-to-setup-mariadb-ssl-and-secure-connections-from-clients/
