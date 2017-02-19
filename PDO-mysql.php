@@ -12,6 +12,27 @@ function Conn(){
   $connection->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
   return $connection;
 }
+// use pdo
+$db = Conn();
+
+// SSL download certs
+// https://github.com/fxstar/PhpJsCss/blob/master/MySql-SSL/sslw.zip
+// or from folder
+// http://breakermind.com/ssl/ca-cert.pem
+// http://breakermind.com/ssl/client-key.pem
+// http://breakermind.com/ssl/client-cert.pem
+<?php
+$pdo = new PDO('mysql:host=ip;dbname=db', 'user', 'pass', array(
+    PDO::MYSQL_ATTR_SSL_KEY    =>'/ssl/client-key.pem',
+    PDO::MYSQL_ATTR_SSL_CERT=>'/ssl/client-cert.pem',
+    PDO::MYSQL_ATTR_SSL_CA    =>'/ssl/ca-cert.pem'
+    )
+);
+$statement = $pdo->query("SHOW TABLES;");
+$row = $statement->fetch(PDO::FETCH_ASSOC);
+echo htmlentities($row['_message']);
+?>
+
 // secure input numbers
 $id = (int)$_POST['id'];
 // secure input text
