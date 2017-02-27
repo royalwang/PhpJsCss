@@ -77,6 +77,26 @@ try{
         echo "Syntax Error: ".$e->getMessage();
 } 
 
+
+// SSL download certs
+// https://github.com/fxstar/PhpJsCss/blob/master/MySql-SSL/sslw.zip
+// or from folder
+// http://breakermind.com/ssl/ca-cert.pem
+// http://breakermind.com/ssl/client-key.pem
+// http://breakermind.com/ssl/client-cert.pem
+<?php
+// PDO SSL  
+$pdo = new PDO('mysql:host=ip;dbname=db', 'user', 'pass', array(
+    PDO::MYSQL_ATTR_SSL_KEY    =>'/ssl/client-key.pem',
+    PDO::MYSQL_ATTR_SSL_CERT=>'/ssl/client-cert.pem',
+    PDO::MYSQL_ATTR_SSL_CA    =>'/ssl/ca-cert.pem'
+    )
+);
+$statement = $pdo->query("SHOW TABLES;");
+$row = $statement->fetch(PDO::FETCH_ASSOC);
+echo htmlentities($row['_message']);
+?>
+
 // javascript filter
 function strip_javascript($filter, $allowed=0){
 if($allowed == 0) // 1 href=...
