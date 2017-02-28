@@ -33,6 +33,16 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
 echo htmlentities($row['_message']);
 ?>
 
+<?php
+// secure 
+$stmt = $pdo->prepare('SELECT * FROM employees WHERE name = :name');
+$stmt->execute(array('name' => $name));
+
+foreach ($stmt as $row) {
+    // do something with $row
+}
+?>
+
 // secure input numbers
 $id = (int)$_POST['id'];
 // secure input text
