@@ -11,3 +11,6 @@ Copy this file to:
 https://blog.openshift.com/how-to-set-up-cron-jobs-on-openshift/
 
 ### Php file must be in application folder (appnamefolder)
+
+#### demo link with symbols .json format
+http://www-fxstar.rhcloud.com/symbols/symbols.json
