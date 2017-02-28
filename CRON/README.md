@@ -9,3 +9,5 @@ Copy this file to:
 
 ## Add first cron cartrige to app from admin panel or console
 https://blog.openshift.com/how-to-set-up-cron-jobs-on-openshift/
+
+### Php file must be in application folder (appnamefolder)
