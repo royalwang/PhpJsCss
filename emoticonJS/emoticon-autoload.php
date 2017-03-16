@@ -110,5 +110,5 @@ foreach ($a as $v) {
 $s .= '}';
 file_put_contents('emoticon.css', $s);
 echo '<link rel="stylesheet" href="emoticon.css">';
-echo '<div style="display: none; width: 1px; height: 1px;"></div>';
+echo '<div class="xx" style="display: none; width: 1px; height: 1px;"></div>';
 ?>
