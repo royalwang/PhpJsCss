@@ -1,16 +1,10 @@
-<script type="text/javascript">	
-$(function(){
-	$('.msgemo').each(function(){			
-		var msg = $(this).html();
-		//alert(msg);			
-		$(this).html(emoticons(msg));
-	});		
-});
-</script>
+function init(){
+	// alert("windows");
+}
 
-// emoticon.js
-var time = new Date();
-var x = time.getMillisecond();
+window.onload = function() {
+  init(); 
+};
 
 function getCookie(name) {
   var value = "; " + document.cookie;
@@ -26,7 +20,9 @@ function ImageExist(url)
 {
    var img = new Image();
    img.src = url;
-   return img.height != 0;
+   //return img.height != 0;
+   return img.complete;
+
 }
 
 function emoticons(msg){
@@ -94,6 +90,7 @@ function emoticons(msg){
 	    ':tomato' : 'pomidor.gif',
 	    ':ciao' : 'ciao.gif',
 	    ':9nono' : 'nono.gif',
+	    ':nono' : 'nono.gif',
 	    ':noway' : 'noway.gif',
 	    ':sayno' : 'sayno.gif',
 	    ':sorry' : 'sorry.gif',
@@ -135,30 +132,20 @@ function emoticons(msg){
 	for ( smile in emoticons )
 	{			
 		// https://qflash-fxstar.rhcloud.com
-		var surl = "http://"+window.location.host+"/emoticons/";
-		// surl = "https://qflash-fxstar.rhcloud.com/emoticons/";
+		var surl = "//"+window.location.host+"/emoticons/";
+			//surl = "https://qflash-fxstar.rhcloud.com/emoticons/";
 	   	// msg = msg.replace(smile, '<img src="' + surl + emoticons[smile] + '" />');
-	    if (ImageExist(surl + emoticons[smile])) {
+	    //if (ImageExist(surl + emoticons[smile])) {
 	   		msg = msg.split(smile).join('<img class="emo" src="' + surl + emoticons[smile] + '" />');		   		
-		}
+		//}
 	}		
 	return msg;
 }
 
-// preload images
-function preload() {
-	for (i = 0; i < preload.arguments.length; i++) {
-		images[i] = new Image();
-		images[i].src = "https://qflash-fxstar.rhcloud.com/emoticons/"+preload.arguments[i]
-	}
-}
-
-preload(emoticons);
-
+// is image exist in cache
 function is_cached(src) {
     var image = new Image();
     image.src = src;
-
     return image.complete;
 }
 
@@ -168,7 +155,10 @@ function parseURL($string){
     var exp = __urlRegex;
     return $string.replace(exp,function(match){
             __imgRegex.lastIndex=0;
-            if(__imgRegex.test(match)){
+
+            if (match.indexOf("embed")) {
+            	// youtube link dont change
+            }else if(__imgRegex.test(match)){
                 return '<img src="'+match+'" class="thumb" />';
             }
             else{
@@ -181,17 +171,18 @@ function parseURL($string){
 function parseYoutubeUriImgToTag($string){
 	var __imgRegex = /\.(?:jpe?g|gif|png)$/i;
 	var __YouRegex = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+	var __iFrameRegex = /(\b(iframe):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
 	var __urlRegexHttp = /(\b(http|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-	var __urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+	var __urlRegex = /(\b(https?|ftp|file|iframe):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
 	var exp = __urlRegex;
 	return $string.replace(exp,function(url){ 
 		__imgRegex.lastIndex=0;
    		// youtube
 		if(__YouRegex.test(url)){			
 			if (url.indexOf('embed') < 0) {
-			    var u = url.match(__YouRegex);
+			    var u = url.match(__YouRegex);			    
 			    if (u && u[2].length == 11) {			    	
-			        return '<iframe width="300" height="166" src="//www.youtube.com/embed/' + u[2]+ '" frameborder="0" allowfullscreen></iframe>';
+			        return '<iframe width="100%" height="174" src="//www.youtube.com/embed/' + u[2]+ '" frameborder="0" allowfullscreen></iframe>';
 			    } else {
 			        return url;
 			    }
@@ -201,8 +192,20 @@ function parseYoutubeUriImgToTag($string){
         	return '<a href="'+url+'" target="_blank" class="links external">'+url+'</a>'; 
         }else if(__imgRegex.test(url)){
             return '<img src="'+url+'" class="links external" />';
+        }else if(__iFrameRegex.test(url)){
+        	var uri = url.replace("iframe://","");
+            return '<iframe class="iframe" width="100%" height="400" src="//' + uri+ '" frameborder="0" style="overflow-y: hidden !important" sandbox="allow-same-origin allow-forms" ></iframe>';
         }else{
 			return '<a href="'+url+'" target="_blank" class="links external">'+url+'</a>'; 
 		}
 	});
 }
+
+$(function(){
+	$('.msgemo').each(function(){			
+		var msg = $(this).html();
+		msg = parseYoutubeUriImgToTag(msg);
+		//alert(msg);			
+		$(this).html(emoticons(msg));			
+	});		
+});
