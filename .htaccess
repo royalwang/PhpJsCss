@@ -76,6 +76,13 @@ RewriteRule ^(.*)$ http://fxstar.eu/$1 [R=301,QSA,NC,L]
 #RewriteRule ^(.*)$ https://fxstar.eu/$1 [R=301,QSA,NC,L]
 
 
+# redirect subdomain to subdomain folder in *.domain.com document root
+RewriteEngine On 
+RewriteCond %{HTTP_HOST} ^(.+)\.boo\.loc$ [NC]
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^([^/]*)$ /%1%{REQUEST_URI}?folder=%1 [L,QSA]
+
+# error page
 ErrorDocument 400 /er404.html
 ErrorDocument 401 /er404.html
 ErrorDocument 402 /er404.html
