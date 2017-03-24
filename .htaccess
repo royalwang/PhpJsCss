@@ -82,6 +82,9 @@ RewriteCond %{HTTP_HOST} ^(.+)\.boo\.loc$ [NC]
 RewriteCond %{HTTP_HOST} !^www\.
 RewriteRule ^([^/]*)$ /%1%{REQUEST_URI}?folder=%1 [L,QSA]
 
+# Hiding File Extension .html
+# RewriteRule ^([^/.]+)/?$ $1.html
+
 # error page
 ErrorDocument 400 /er404.html
 ErrorDocument 401 /er404.html
