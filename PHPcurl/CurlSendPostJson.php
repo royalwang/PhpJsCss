@@ -5,10 +5,10 @@ $data = array("name" => "Heniek", "age" => "125", "rozmiar" => "M");
 $data = json_encode($data);                                                                                   
 
 // Send post data format json
-echo CurlSendPost($url,$data);
+echo CurlSendPostJson($url,$data);
 
 // send curl post                                        
-function CurlSendPost($url='http://localhost/forex/z/curl-req.php',$datajson){   
+function CurlSendPostJson($url='http://localhost/forex/z/curl-req.php',$datajson){   
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $datajson);
