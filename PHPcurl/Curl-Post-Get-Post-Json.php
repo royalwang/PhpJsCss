@@ -36,6 +36,7 @@ function CurlSendPost($url='http://localhost/forex/z/curl-req.php',$data){
 	curl_close($curl);
 	return $res;
 }
+
 ?>
 
 
