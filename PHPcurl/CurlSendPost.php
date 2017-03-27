@@ -12,6 +12,7 @@ function CurlSendPost($url='http://localhost/forex/z/curl-req.php',$data){
 	curl_setopt_array($curl, array(
 	    CURLOPT_RETURNTRANSFER => 1,
 	    CURLOPT_URL => $url,
+	    CURLOPT_SSL_VERIFYPEER => false,
 	    CURLOPT_USERAGENT => 'FxStarBrowser',
 	    CURLOPT_POST => 1,
 	    CURLOPT_POSTFIELDS => $data
