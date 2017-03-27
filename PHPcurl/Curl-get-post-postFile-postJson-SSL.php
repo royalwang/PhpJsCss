@@ -1,6 +1,6 @@
 <?php
 
-$url ='https://qflash-fxstar.rhcloud.com';
+$url ='https://url.com';
 
 // GET REQUEST
 echo CurlSendGet();
