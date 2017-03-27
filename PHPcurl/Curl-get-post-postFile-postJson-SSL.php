@@ -25,19 +25,18 @@ function CurlSendGet($url ='https://fxstar.eu'){
 }
 
 // GET REQUEST with ca.bundle
-// GET REQUEST
-echo CurlSendGet();
+echo CurlSendGetSSL();
 
-function CurlSendGet($url ='https://fxstar.eu'){
+function CurlSendGetSSL($url ='https://fxstar.eu'){
 	$curl = curl_init();	
 	curl_setopt_array($curl, array(
 		CURLOPT_HEADER => 0,
 	    CURLOPT_RETURNTRANSFER => 1,
 	    CURLOPT_BINARYTRANSFER => 1,
 	    CURLOPT_URL => $url,
-	    //CURLOPT_SSL_VERIFYPEER => 0,
-	    //CURLOPT_SSL_VERIFYHOST => 0,
-	    CURLOPT_CAINFO => getcwd() . "/bundle.pem",
+	    CURLOPT_SSL_VERIFYPEER => 1,
+	    CURLOPT_SSL_VERIFYHOST => 2,
+	    CURLOPT_CAINFO => getcwd() . "/ca.crt",
 	    CURLOPT_FOLLOWLOCATION => 1,
 	    CURLOPT_CONNECTTIMEOUT => 0,
 	    CURLOPT_TIMEOUT => 60,
