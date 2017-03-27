@@ -10,6 +10,8 @@ curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 //Set the content type to 'Content-Type: application/json' or 'Content-Type: text/html; charset=utf-8'
 // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));  
+ // ssl
+ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 // Execute the curl session
 $output = curl_exec($ch);
 // Close the curl session
@@ -38,6 +40,8 @@ curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded); 
 //Set the content type to application/json
 curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));  
+// ssl
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 //Execute the request
 $result = curl_exec($ch);
 ?>
