@@ -7,7 +7,7 @@ $filePointer = fopen("output.txt", "w");
 curl_setopt($curlHandle, CURLOPT_FILE, $filePointer); // Output to file instead of STDOUT
 curl_setopt($curlHandle, CURLOPT_HEADER, 1); // Include headers
 curl_setopt($curlHandle, CURLOPT_VERBOSE, 1); // Output extra details
-
+curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, false); // ssl verify
 // Execute and clean up
 curl_exec($curlHandle);
 curl_close($curlHandle);
