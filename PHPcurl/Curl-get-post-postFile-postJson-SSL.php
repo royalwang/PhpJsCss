@@ -2,7 +2,7 @@
 
 $url ='https://url.com';
 
-// GET REQUEST
+// GET REQUEST Dont validate cert
 echo CurlSendGet();
 
 function CurlSendGet($url ='https://fxstar.eu'){
@@ -24,6 +24,30 @@ function CurlSendGet($url ='https://fxstar.eu'){
 	return $res;
 }
 
+// GET REQUEST with ca.bundle
+// GET REQUEST
+echo CurlSendGet();
+
+function CurlSendGet($url ='https://fxstar.eu'){
+	$curl = curl_init();	
+	curl_setopt_array($curl, array(
+		CURLOPT_HEADER => 0,
+	    CURLOPT_RETURNTRANSFER => 1,
+	    CURLOPT_BINARYTRANSFER => 1,
+	    CURLOPT_URL => $url,
+	    //CURLOPT_SSL_VERIFYPEER => 0,
+	    //CURLOPT_SSL_VERIFYHOST => 0,
+	    CURLOPT_CAINFO => getcwd() . "/bundle.pem",
+	    CURLOPT_FOLLOWLOCATION => 1,
+	    CURLOPT_CONNECTTIMEOUT => 0,
+	    CURLOPT_TIMEOUT => 60,
+	    CURLOPT_COOKIE, 'apiToken=A9',
+	    CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13'
+	));	
+	$res = curl_exec($curl);	
+	curl_close($curl);
+	return $res;
+}
 
 // POST REQUEST DATA AND FILES
 $dir = dirname(__FILE__);
