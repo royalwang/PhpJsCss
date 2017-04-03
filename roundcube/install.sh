@@ -15,3 +15,4 @@ After uploading the files point your browser to  http://url-to-roundcube/install
 
 ## mime types file
 http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
+
