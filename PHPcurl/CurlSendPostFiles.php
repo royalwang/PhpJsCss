@@ -1,7 +1,7 @@
 <?php
 // Send public message with image
 $dir = dirname(__FILE__);
-$data = array("user" => "mindbreaker", "pass" => "pass", "msg" => "Send image", "img[]" => "@".$dir."\curl.png");  
+$data = array("user" => "mindbreaker", "pass" => "xxxxx", "msg" => "Send image", "img[]" => "@".$dir."\curl.png");  
 
 echo CurlSendPostFiles($data);
 
