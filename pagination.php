@@ -72,4 +72,48 @@ function pagine($uid = 1, $table= "subscribe", $perpage = 10){
 // use like this
 $links = pagine($uid);
 
+
+// pagine with search
+	$curpage = 0;
+	function pagine($uid = 1, $search, $table= "subscribe", $perpage = 10){
+		if(empty($_GET['page'])){$page = 1;}else{$page = (int)$_GET['page'];}
+		$pagenext = $page +1;
+		$pageprev = $page -1;
+		if ($pageprev < 0){$pageprev = 1;}
+		$offset = ($page - 1) * $perpage;
+		global $curpage;
+		$curpage = $page;
+		// count messages
+		$q = "SELECT COUNT(*) as ile FROM ".$table." WHERE uid = $uid";
+		if (!empty($search)) {
+			$search = '%'.$search.'%';
+			$q = "SELECT COUNT(*) as ile FROM ".$table." WHERE uid = $uid AND CONCAT_WS(' ',prefix,number,name,lastname,city) LIKE '$search'";
+		}
+		global $db; // get pdo connection Conn()
+		$st = $db->query($q);
+		$ile = $st->fetchAll(PDO::FETCH_ASSOC)[0]['ile'];		
+		$pages = (int)($ile / $perpage) + 1;
+		// get messages		
+		$sql = "SELECT * FROM ".$table." WHERE uid = $uid ORDER BY id DESC LIMIT " . $offset . "," . $perpage;
+		if (!empty($search)) {
+			$search = '%'.$search.'%';
+			$sql = "SELECT * FROM ".$table." WHERE uid = $uid AND CONCAT_WS(' ',prefix,number,name,lastname,city) LIKE '$search' ORDER BY id DESC LIMIT " . $offset . "," . $perpage;			
+		}		
+		global $db; // get pdo connection Conn()
+		$st = $db->query($sql);
+		$row = $st->fetchAll(PDO::FETCH_ASSOC);
+
+		if ($st->rowCount() > 0) {
+			echo '<p class="pagine"><a class="pagelink" href="?page='.$pageprev.'"> Poprzednia</a>';
+			echo '<a class="pagelink"> '.$page.' </a>';
+			if ($page < $pages) {
+				echo '<a class="pagelink" href="?page='.$pagenext.'"> Nastepna</a></p>';
+			}
+		}
+		return $row;
+	}
+
+// pobierz linki i wyświetl tabelkę
+$links = pagine($uid);
+
 ?>
