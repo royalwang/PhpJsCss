@@ -1,4 +1,9 @@
 <?php
+// smsapi.pl dodaj kontakt z php api
+// RESTfull API smsapi.pl
+// http://dev.smsapi.pl/#!/contacts/post_contacts
+
+// OAuthTOken do utworzenia w admin panelu
 $token = "OAuthToken-generate-in-smsapi-panel";
 
 // Add contakt to database
@@ -15,6 +20,7 @@ function addContact($params, $token, $backup = false) {
     curl_setopt( $c, CURLOPT_POST, true );
     curl_setopt( $c, CURLOPT_POSTFIELDS, http_build_query($params) );
     // curl_setopt( $c, CURLOPT_POSTFIELDS, $params );
+    // curl_setopt( $c, CURLOPT_POSTFIELDS, json_encode($params) );
     curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
     curl_setopt( $c,CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt( $c, CURLOPT_HTTPHEADER, array(
@@ -27,17 +33,17 @@ function addContact($params, $token, $backup = false) {
     $http_status = curl_getinfo($c, CURLINFO_HTTP_CODE);
 
     if($http_status != 200){
-        echo "ERROR NR ".$http_status;
+        echo "RESPONSE ".$http_status;
     }
 
     curl_close( $c );    
     return $content;
 }
 
-// Add group
+// Dodaj grupę
 // $params = array( 'name' => 'BioCash', 'message' => 'Hello !!!' );
 
-// Add contact
+// Dodaj kontakt
 $params = array(
      'phone_number' => '48000000000',
      'email' => "Bax@fxstar.eu",
@@ -49,8 +55,8 @@ $params = array(
      'city' => 'Miasteczko',
 );
 
+// Dodaj kontakt do bazy kontaktów
 echo addContact($params, $token);
-
 
 // ERROR 201 - ALL OK
 // Add contact OK !!!
