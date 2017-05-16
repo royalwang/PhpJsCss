@@ -85,8 +85,17 @@ class Company
 		}
 
 		if ($error == "") {		
-			$this->db->query("INSERT INTO company(`login`,`email`,`pass`,`firstname`,`lastname`,`name`,`nip`,`address`,`zip`,`city`,`country`,`www`,`mobile`,`code`,`active`,`time`) VALUES('$login','$email', '$pass','$firstname','$lastname','$name','$nip','$address','$zip','$city','$country','$www','$mobile','$code',1, $time);");
-			return $this->db->lastInsertId();
+			try{
+				$this->db->query("INSERT INTO company(`login`,`email`,`pass`,`firstname`,`lastname`,`name`,`nip`,`address`,`zip`,`city`,`country`,`www`,`mobile`,`code`,`active`,`time`) VALUES('$login','$email', '$pass','$firstname','$lastname','$name','$nip','$address','$zip','$city','$country','$www','$mobile','$code',1, $time);");
+				return $this->db->lastInsertId();
+			}catch(Exception $e){
+				if ($e->errorInfo[1] == 1062) {
+				  	// duplicate entry, do something else
+					return '{"error":"USER_EXISTS"}';
+				} else {			  	
+					return '{"error":"ERR_0"}';
+				}	
+			}
 		}
 		return $error;
 	}
@@ -151,7 +160,7 @@ try{
 $com = new Company();
 
 // Add company fi not exist
-$com->AddCompany('breakermind','hello@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
+echo $com->AddCompany('breakermind','hello@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
 
 // Get companies with text
 $s = $com->GetCompany('brea');
