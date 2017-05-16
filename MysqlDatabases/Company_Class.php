@@ -33,24 +33,28 @@ class Company
 	function Login($login, $pass){
 		$login = htmlentities($login, ENT_QUOTES, 'UTF-8');
 		$pass =md5($pass);
-
-		$r = $this->db->query("SELECT * FROM company WHERE login = '$login' AND pass = '$pass' OR email = '$login' AND pass = '$pass'");	
-		$rows = $r->fetchAll(PDO::FETCH_ASSOC);
-		if ($r->rowCount() == 1) {	
-			$_SESSION['loged']  = $rows[0]['id'];
-			$_SESSION['id']  = $rows[0]['id'];
-			$_SESSION['login']  = $rows[0]['login'];
-			$_SESSION['name']  = $rows[0]['name'];
-			$_SESSION['address']  = $rows[0]['address'];
-			$_SESSION['email']  = $rows[0]['email'];
-			$_SESSION['mobile']  = $rows[0]['mobile'];
-			$_SESSION['city']  = $rows[0]['city'];
-			$_SESSION['nip']  = $rows[0]['nip'];
-			$_SESSION['country']  = $rows[0]['country'];
-			$_SESSION['www']  = $rows[0]['www'];
-			$_SESSION['firstname']  = $rows[0]['firstname'];
-			$_SESSION['lastname']  = $rows[0]['lastname'];
-			return 1;
+		try{
+			$r = $this->db->query("SELECT * FROM company WHERE login = '$login' AND pass = '$pass' OR email = '$login' AND pass = '$pass'");	
+			$rows = $r->fetchAll(PDO::FETCH_ASSOC);
+			if ($r->rowCount() == 1) {	
+				$_SESSION['ip']  = $this->IP();
+				$_SESSION['loged']  = $rows[0]['id'];
+				$_SESSION['id']  = $rows[0]['id'];
+				$_SESSION['login']  = $rows[0]['login'];
+				$_SESSION['name']  = $rows[0]['name'];
+				$_SESSION['address']  = $rows[0]['address'];
+				$_SESSION['email']  = $rows[0]['email'];
+				$_SESSION['mobile']  = $rows[0]['mobile'];
+				$_SESSION['city']  = $rows[0]['city'];
+				$_SESSION['nip']  = $rows[0]['nip'];
+				$_SESSION['country']  = $rows[0]['country'];
+				$_SESSION['www']  = $rows[0]['www'];
+				$_SESSION['firstname']  = $rows[0]['firstname'];
+				$_SESSION['lastname']  = $rows[0]['lastname'];
+				return 1;
+			}
+		}catch(Exception $e){
+			return 0;
 		}
 		return 0;		
 	}
@@ -71,10 +75,11 @@ class Company
 		$mobile = htmlentities($mobile, ENT_QUOTES, 'UTF-8');
 		$code = md5(time());
 		$time = time();	
+		$ip = $this->IP();
 		// $ = htmlentities($, ENT_QUOTES, 'UTF-8');
+		
 		$error = "";
-
-		// validate nip
+		// validate nip		
 		if ($this->nip($nip) == 0) {
 			$error = '{"error":"Zły nip"}';
 		}
@@ -86,7 +91,7 @@ class Company
 
 		if ($error == "") {		
 			try{
-				$this->db->query("INSERT INTO company(`login`,`email`,`pass`,`firstname`,`lastname`,`name`,`nip`,`address`,`zip`,`city`,`country`,`www`,`mobile`,`code`,`active`,`time`) VALUES('$login','$email', '$pass','$firstname','$lastname','$name','$nip','$address','$zip','$city','$country','$www','$mobile','$code',1, $time);");
+				$this->db->query("INSERT INTO company(`login`,`email`,`pass`,`firstname`,`lastname`,`name`,`nip`,`address`,`zip`,`city`,`country`,`www`,`mobile`,`code`,`active`,`time`,`ip`) VALUES('$login','$email', '$pass','$firstname','$lastname','$name','$nip','$address','$zip','$city','$country','$www','$mobile','$code',1, $time, '$ip')");
 				return $this->db->lastInsertId();
 			}catch(Exception $e){
 				if ($e->errorInfo[1] == 1062) {
@@ -101,11 +106,15 @@ class Company
 	}
 
 	function GetCompany($word){		
-		$r = $this->db->query("SELECT * FROM company WHERE CONCAT_WS('', login, name, email, city, address, www, mobile ) LIKE '%$word%'");	
-		$rows = $r->fetchAll(PDO::FETCH_ASSOC);
-		if ($r->rowCount() > 0) {	
-			return json_encode($rows);
-		}
+		try{
+			$r = $this->db->query("SELECT * FROM company WHERE CONCAT_WS('', login, name, email, city, address, www, mobile ) LIKE '%$word%'");	
+			$rows = $r->fetchAll(PDO::FETCH_ASSOC);
+			if ($r->rowCount() > 0) {	
+				return json_encode($rows);
+			}
+		}catch(Exception $e){
+			return 0;
+		}		
 		return 0;
 	}
 
@@ -116,6 +125,7 @@ class Company
 		}
 	}
 
+	// validate nip
 	function nip($str)
 	{
 		if (strlen($str) != 10){return 0;}
@@ -130,6 +140,7 @@ class Company
 			return 0;
 	}
 
+	// Check nip number
 	function nip2($nip) {
 		if ($nip == '') return false;
 		$chr_to_replace = array('-', ' '); // get rid of these characters
@@ -153,24 +164,52 @@ class Company
 		return $in_control_number == $control_number;
 	}
 
+	// Send confirmation email
+	function mail_register($email, $from_user = "Breakermind.com", $from_email = "mail@breakermind.com", $subject = 'Witaj! Potwierdź swój adres email.')
+   	{
+   		ini_set("sendmail_from", $from_email);
+      	$from_user = "=?UTF-8?B?".base64_encode($from_user)."?=";
+      	$subject = "=?UTF-8?B?".base64_encode($subject)."?=";      	
+      	$headers = "From: $from_user <$from_email>" . "\r\n" . "MIME-Version: 1.0" . "\r\n" . "Content-type: text/html; charset=UTF-8" . "\r\n" . "Reply-to: <$from_email>" . "\r\n";
+    	return mail($email, $subject, 'Witaj! Twoje konto zostało utworzone. Jeśli to nie Ty usuń tego emaila.' , $headers);
+   	}	
+
+   	// Get user ip address
+	function IP() {
+	    $ipa = '';
+	    if (isset($_SERVER['HTTP_CLIENT_IP']))
+	        $ipa = $_SERVER['HTTP_CLIENT_IP'];
+	    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+	        $ipa = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	    else if(isset($_SERVER['HTTP_X_FORWARDED']))
+	        $ipa = $_SERVER['HTTP_X_FORWARDED'];
+	    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+	        $ipa = $_SERVER['HTTP_FORWARDED_FOR'];
+	    else if(isset($_SERVER['HTTP_FORWARDED']))
+	        $ipa = $_SERVER['HTTP_FORWARDED'];
+	    else if(isset($_SERVER['REMOTE_ADDR']))
+	        $ipa = $_SERVER['REMOTE_ADDR'];
+	    else
+	        $ipa = $_SERVER['REMOTE_ADDR'];
+	    return $ipa;
+	}
 }
 
 try{
-// Create object
-$com = new Company();
+	// Create object
+	$com = new Company();
 
-// Add company fi not exist
-echo $com->AddCompany('breakermind','hello@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
+	// Add company fi not exist return ID or error
+	$com->AddCompany('breakermind','hello@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
 
-// Get companies with text
-$s = $com->GetCompany('brea');
+	// Get companies with text
+	$s = $com->GetCompany('brea');
+	// Show companies
+	$com->Show($s);
 
-// Show companies
-$com->Show($s);
-
-// Login return 1 if exist and add info to session
-echo $com->Login('breakermind','pass');
-print_r($_SESSION);
+	// Login return 1 if exist and add info to session
+	$com->Login('breakermind','pass');
+	// print_r($_SESSION);
 
 }catch(Exception $e){
 	echo "Syntax Error: ".$e->getMessage();
