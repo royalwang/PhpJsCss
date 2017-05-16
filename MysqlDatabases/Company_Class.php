@@ -151,7 +151,7 @@ try{
 $com = new Company();
 
 // Add company fi not exist
-$com->AddCompany('breakermind1'.rand(1,100),'hello'.rand(1,100).'@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
+$com->AddCompany('breakermind','hello@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
 
 // Get companies with text
 $s = $com->GetCompany('brea');
