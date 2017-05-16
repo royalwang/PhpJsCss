@@ -29,10 +29,39 @@ class Company
 	}
 
 	function AddCompany($login,$email,$pass,$firstname,$lastname,$name,$nip,$address,$zip,$city,$country,$www,$mobile){		
+		$login = htmlentities($login, ENT_QUOTES, 'UTF-8');
+		$email = htmlentities($email, ENT_QUOTES, 'UTF-8');
+		$pass = md5($pass);;
+		$firstname = htmlentities($firstname, ENT_QUOTES, 'UTF-8');
+		$lastname = htmlentities($lastname, ENT_QUOTES, 'UTF-8');
+		$name = htmlentities($name, ENT_QUOTES, 'UTF-8');
+		$nip = htmlentities($nip, ENT_QUOTES, 'UTF-8');
+		$address = htmlentities($address, ENT_QUOTES, 'UTF-8');
+		$zip = htmlentities($zip, ENT_QUOTES, 'UTF-8');
+		$city = htmlentities($city, ENT_QUOTES, 'UTF-8');
+		$country = htmlentities($country, ENT_QUOTES, 'UTF-8');
+		$www = htmlentities($www, ENT_QUOTES, 'UTF-8');
+		$mobile = htmlentities($login, ENT_QUOTES, 'UTF-8');
 		$code = md5(time());
-		$time = time();									
-		$this->db->query("INSERT INTO company(`login`,`email`,`pass`,`firstname`,`lastname`,`name`,`nip`,`address`,`zip`,`city`,`country`,`www`,`mobile`,`code`,`active`,`time`) VALUES('$login','$email', '$pass','$firstname','$lastname','$name','$nip','$address','$zip','$city','$country','$www','$mobile','$code',1, $time);");
-		return $this->db->lastInsertId();
+		$time = time();	
+		// $ = htmlentities($, ENT_QUOTES, 'UTF-8');
+		$error = "";
+		//echo $this->nip($nip);
+
+		// validate nip
+		if ($this->nip($nip) == 0) {
+			$error = '{"error":"Zły nip"}';
+		}
+		// validate regon
+		if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+			$error = '{"error":"Popraw adres email"}';
+		}
+
+		if ($error == "") {		
+			$this->db->query("INSERT INTO company(`login`,`email`,`pass`,`firstname`,`lastname`,`name`,`nip`,`address`,`zip`,`city`,`country`,`www`,`mobile`,`code`,`active`,`time`) VALUES('$login','$email', '$pass','$firstname','$lastname','$name','$nip','$address','$zip','$city','$country','$www','$mobile','$code',1, $time);");
+			return $this->db->lastInsertId();
+		}
+		return $error;
 	}
 
 	function GetCompany($word){		
@@ -50,16 +79,52 @@ class Company
 			echo $v['email']. ' ' .$v['name'] . ' '.$v['address'] . '<br>';
 		}
 	}
-}
 
-$pass = md5("pass");
+	function nip($str)
+	{
+		if (strlen($str) != 10){return 0;}
+		$arrSteps = array(6, 5, 7, 2, 3, 4, 5, 6, 7);
+		$intSum=0;
+		for ($i = 0; $i < 9; $i++){
+			$intSum += $arrSteps[$i] * $str[$i];
+		}
+		$int = $intSum % 11;
+		$intControlNr=($int == 10)?0:$int;
+		if ($intControlNr == $str[9]){ return 1; }
+			return 0;
+	}
+
+	function nip2($nip) {
+		if ($nip == '') return false;
+		$chr_to_replace = array('-', ' '); // get rid of these characters
+		$nip = str_replace($chr_to_replace, '', $nip);
+		if (! is_numeric($nip)) return false;
+		$weights = array(6, 5, 7, 2, 3, 4, 5, 6, 7);
+		$digits = str_split($nip);
+		$digits_length = count($digits);
+		for ($i = 1; $i < $digits_length; $i++) {
+		if ($digits[0] != $digits[$i]) break;
+		if ($digits[0] == $digits[$i] && $i == $digits_length - 1) return false;
+		}//end for
+		$in_control_number = intval(array_pop($digits));
+		$sum = 0;
+		$weights_length = count($weights);
+		for ($i = 0; $i < $weights_length; $i++) {
+		$sum += $weights[$i] * intval($digits[$i]);
+		}//end for
+		$modulo = $sum % 11;
+		$control_number = ($modulo == 10) ? 0 : $modulo;
+		return $in_control_number == $control_number;
+	}
+
+}
 
 try{
 // Create object
 $com = new Company();
 
 // Add company fi not exist
-$com->AddCompany('breakermind1','hello1@breakermind.com',$pass,'Marcin','Łukaszewski','Breakermind.com','000000000','Dębowa 4','06300','Warszawa','PL','https://breakermind.com','+48732977888');
+$com->AddCompany('breakermind1'.rand(1,100),'hello'.rand(1,100).'@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
 
 // Get companies with text
 $s = $com->GetCompany('brea');
