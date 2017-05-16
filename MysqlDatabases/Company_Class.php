@@ -8,6 +8,7 @@ class Company
 	
 	function __construct()
 	{
+		session_start();
 		header('Content-Type: text/html; charset=utf-8');
 		$this->db =  $this->Conn();
 	}	
@@ -28,6 +29,32 @@ class Company
 		return $c;
 	}
 
+	// is user exists
+	function Login($login, $pass){
+		$login = htmlentities($login, ENT_QUOTES, 'UTF-8');
+		$pass =md5($pass);
+
+		$r = $this->db->query("SELECT * FROM company WHERE login = '$login' AND pass = '$pass' OR email = '$login' AND pass = '$pass'");	
+		$rows = $r->fetchAll(PDO::FETCH_ASSOC);
+		if ($r->rowCount() == 1) {	
+			$_SESSION['loged']  = $rows[0]['id'];
+			$_SESSION['id']  = $rows[0]['id'];
+			$_SESSION['login']  = $rows[0]['login'];
+			$_SESSION['name']  = $rows[0]['name'];
+			$_SESSION['address']  = $rows[0]['address'];
+			$_SESSION['email']  = $rows[0]['email'];
+			$_SESSION['mobile']  = $rows[0]['mobile'];
+			$_SESSION['city']  = $rows[0]['city'];
+			$_SESSION['nip']  = $rows[0]['nip'];
+			$_SESSION['country']  = $rows[0]['country'];
+			$_SESSION['www']  = $rows[0]['www'];
+			$_SESSION['firstname']  = $rows[0]['firstname'];
+			$_SESSION['lastname']  = $rows[0]['lastname'];
+			return 1;
+		}
+		return 0;		
+	}
+
 	function AddCompany($login,$email,$pass,$firstname,$lastname,$name,$nip,$address,$zip,$city,$country,$www,$mobile){		
 		$login = htmlentities($login, ENT_QUOTES, 'UTF-8');
 		$email = htmlentities($email, ENT_QUOTES, 'UTF-8');
@@ -46,12 +73,12 @@ class Company
 		$time = time();	
 		// $ = htmlentities($, ENT_QUOTES, 'UTF-8');
 		$error = "";
-		//echo $this->nip($nip);
 
 		// validate nip
 		if ($this->nip($nip) == 0) {
 			$error = '{"error":"Zły nip"}';
 		}
+
 		// validate regon
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
 			$error = '{"error":"Popraw adres email"}';
@@ -124,7 +151,7 @@ try{
 $com = new Company();
 
 // Add company fi not exist
-$com->AddCompany('breakermind1'.rand(1,100),'hello'.rand(1,100).'@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
+$com->AddCompany('breakermind','hello@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
 
 // Get companies with text
 $s = $com->GetCompany('brea');
@@ -132,6 +159,10 @@ $s = $com->GetCompany('brea');
 // Show companies
 $com->Show($s);
 
+// Login return 1 if exist and add info to $_SESSION 
+echo $com->Login('breakermind','pass');
+print_r($_SESSION);
+	
 }catch(Exception $e){
 	echo "Syntax Error: ".$e->getMessage();
 }
