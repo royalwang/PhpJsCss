@@ -68,7 +68,7 @@ class Company
 		$city = htmlentities($city, ENT_QUOTES, 'UTF-8');
 		$country = htmlentities($country, ENT_QUOTES, 'UTF-8');
 		$www = htmlentities($www, ENT_QUOTES, 'UTF-8');
-		$mobile = htmlentities($login, ENT_QUOTES, 'UTF-8');
+		$mobile = htmlentities($mobile, ENT_QUOTES, 'UTF-8');
 		$code = md5(time());
 		$time = time();	
 		// $ = htmlentities($, ENT_QUOTES, 'UTF-8');
@@ -151,7 +151,7 @@ try{
 $com = new Company();
 
 // Add company fi not exist
-$com->AddCompany('breakermind','hello@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
+$com->AddCompany('breakermind1'.rand(1,100),'hello'.rand(1,100).'@breakermind.com','pass','Marcin','Marcinkowski','Breakermind.com','0000000000','Złota 4','00300','Warszawa','PL','https://breakermind.com','+48000000000');
 
 // Get companies with text
 $s = $com->GetCompany('brea');
@@ -159,10 +159,10 @@ $s = $com->GetCompany('brea');
 // Show companies
 $com->Show($s);
 
-// Login return 1 if exist and add info to $_SESSION 
+// Login return 1 if exist and add info to session
 echo $com->Login('breakermind','pass');
 print_r($_SESSION);
-	
+
 }catch(Exception $e){
 	echo "Syntax Error: ".$e->getMessage();
 }
