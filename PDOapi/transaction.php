@@ -1,3 +1,4 @@
+<?php
 /**
  * Connect to MySQL and instantiate the PDO object.
  * Set the error mode to throw exceptions and disable emulated prepared statements.
@@ -56,3 +57,4 @@ catch(Exception $e){
 
 // from 
 // http://thisinterestsme.com/php-pdo-transaction-example/
+?>
