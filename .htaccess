@@ -29,6 +29,13 @@ RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 # redirect to folder
 # RewriteRule ^(.*)$ http://fxstar.eu/blog/$1 [R=301,L]
 
+# username, login
+# RewriteRule   ^([A-Za-z0-9-]+)/?$ user.php?user=$1  [NC,L]
+
+# remove last /
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)/$ /$1 [L,R]
+
 # [NC]- case-insensitive 
 # [L] - Last Rule , stop the rewriting process here 
 # [OR] = Or - If it matches this condition or the next 
