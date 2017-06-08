@@ -311,12 +311,23 @@ class Company
 	function mail_register($email, $from_user = "Breakermind.com", $from_email = "mail@breakermind.com", $subject = 'Witaj! Potwierdź swój adres email.')
    	{
    		ini_set("sendmail_from", $from_email);
-      	$from_user = "=?UTF-8?B?".base64_encode($from_user)."?=";
-      	$subject = "=?UTF-8?B?".base64_encode($subject)."?=";      	
-      	$headers = "From: $from_user <$from_email>" . "\r\n" . "MIME-Version: 1.0" . "\r\n" . "Content-type: text/html; charset=UTF-8" . "\r\n" . "Reply-to: <$from_email>" . "\r\n";
-    	return mail($email, $subject, 'Witaj! Twoje konto zostało utworzone. Jeśli to nie Ty usuń tego emaila.' , $headers);
+      		$from_user = "=?UTF-8?B?".base64_encode($from_user)."?=";
+      		$subject = "=?UTF-8?B?".base64_encode($subject)."?=";      	
+      		$headers = "From: $from_user <$from_email>" . "\r\n" . "MIME-Version: 1.0" . "\r\n" . "Content-type: text/html; charset=UTF-8" . "\r\n" . "Reply-to: <$from_email>" . "\r\n";
+    		return mail($email, $subject, 'Witaj! Twoje konto zostało utworzone. Jeśli to nie Ty usuń tego emaila.' , $headers);
    	}	
 
+	// clean javascript tags
+	function javascript($filter, $allowed=0){
+		if($allowed == 0) // 1 href=...
+		$filter = preg_replace('/href=([\'"]).*?javascript:.*?\\1/i', "'", $filter);
+		if($allowed == 0) // 2 <script....
+		$filter = preg_replace("/<script.*?>.*?<\/script>/i", "", $filter);
+		if($allowed == 0) // 4 <tag on.... ---- useful for onlick or onload
+		$filter = preg_replace("/<(.*)?\son.+?=\s*?(['\"]).*?\\2/i", "<$1", $filter);
+		return $filter;
+	}
+	
    	// Get user ip address
 	function IP() {
 	    $ipa = '';
