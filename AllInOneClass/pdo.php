@@ -344,7 +344,7 @@ class Sun
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);	
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);    
 		curl_setopt($ch, CURLOPT_COOKIE, 'apiToken=' . $token);
-	    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
+	    	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
 		$output = curl_exec($ch);	    
 		curl_close($ch);	    
 		return $output;
@@ -358,7 +358,7 @@ class Sun
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($datajson)));
 		curl_setopt($ch, CURLOPT_COOKIE, 'apiToken=' . $token);
-	    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');		
+	    	curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');		
 		//curl_setopt($ch,CURLOPT_HEADER, true); //if you want headers
 		return $result = curl_exec($ch);
 	}		
