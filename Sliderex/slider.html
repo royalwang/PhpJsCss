@@ -1,0 +1,83 @@
+<style type="text/css">
+#slider {
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  border-radius: 4px;
+}
+
+#slider ul {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 400px;
+  height: 400px;
+  max-height: 400px;
+  list-style: none;
+  overflow: hidden;
+}
+
+#slider ul li {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background: #ccc;
+  text-align: center;
+  line-height: 300px;
+}
+
+a.control_prev, a.control_next {
+  position: absolute;
+  top: 40%;
+  z-index: 999;
+  display: block;
+  padding: 7px 14px;
+  width: auto;
+  height: auto;
+  background: rgba(0,0,0,0.1);  
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;    
+  transition: all 0.2s ease;
+}
+a.control_prev i, a.control_next i {
+  color: #b77b37;
+}
+
+a.control_prev:hover, a.control_next:hover {
+  background: rgba(255,255,255,0.6); 
+}
+
+a.control_prev {
+  border-radius: 0 22px 22px 0;
+}
+
+a.control_next {
+  right: 0;
+  border-radius: 22px 0 0 22px;
+}
+
+.slider_option {
+  position: relative;
+  margin: 10px auto;
+  width: 160px;
+  font-size: 18px;
+}  
+</style>
+
+<div id="slider" style="width: 100%; min-height: 455px;">
+  <a href="#" class="control_next"> <i class="fa fa-chevron-right"></i> </a>
+  <a href="#" class="control_prev"> <i class="fa fa-chevron-left"></i> </a>
+  <ul>
+    <li>SLIDE 1</li>
+    <li style="background: #aaa;">SLIDE 2</li>
+    <li>SLIDE 3</li>
+    <li style="background: #aaa;">SLIDE 4</li>
+  </ul>  
+</div>
