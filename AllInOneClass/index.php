@@ -55,7 +55,6 @@
 		<a href="users.php" class="m animated flipInX">Users</a>
 		<a href="shop.php" class="m animated swing">Sklep</a>
 	</div>
-
 </div>
 
 <h2> Koniec </h2>
