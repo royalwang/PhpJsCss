@@ -78,7 +78,7 @@
 <body>
 
 <form method="post" action="" enctype="multipart/form-data">
-	<input type="file" name="files[]" multiple="true" type="*/image" id="upload">
+	<input type="file" name="files[]" multiple="true" accept="image/*" id="upload">
 	<input type="submit" name="upload" value="UPLOAD">
 </form>
 
