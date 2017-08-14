@@ -26,4 +26,8 @@ try{
     echo $e;
 }
 die();
+
+// more here
+// https://github.com/fxstar/Java/blob/master/CreateJavaSmtpServer/PhpSslSocketSmtp/smtp-email.php
+// https://stackoverflow.com/questions/32211301/ssl-error-ssl3-get-server-certificatecertificate-verify-failed
 ?>
