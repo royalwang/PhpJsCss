@@ -7,7 +7,7 @@ $ctx = stream_context_create();
 stream_context_set_option($ctx, 'ssl', 'verify_peer', false);
 stream_context_set_option($ctx, 'ssl', 'verify_peer_name', false);
 try{
-    echo $socket = stream_socket_client('ssl://127.0.0.1:587, $err, $errstr, 60, STREAM_CLIENT_CONNECT, $ctx);
+    echo $socket = stream_socket_client('ssl://127.0.0.1:587', $err, $errstr, 60, STREAM_CLIENT_CONNECT, $ctx);
     if (!$socket) {
         print "Failed to connect $err $errstr\n";
         return;
