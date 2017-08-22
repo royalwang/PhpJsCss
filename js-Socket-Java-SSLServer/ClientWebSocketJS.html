@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+
+    <script type="text/javascript">
+        function onClick(){
+            var wrc_socket = new WebSocket('wss://localhost:9999');
+            wrc_socket.onmessage = function(event) {
+                alert('message = '+event.data);
+            };
+            wrc_socket.onclose = function(event) {
+                alert('Socket is close!');
+            };
+            wrc_socket.onopen = function(event) {
+                alert('Socket is open!');
+            };
+            wrc_socket.send('Hi there!');
+            alert('Done!');
+        }
+    </script>
+</head>
+
+<body>
+    <a href="#" onclick="onClick()">Test!</a>
+</body>
+</html>
