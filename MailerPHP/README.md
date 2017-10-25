@@ -1,4 +1,4 @@
-# PhpMailer example
+# PhpMailer smtp send email with tls/ssl
 
 ### With tls
 $mail->SMTPSecure = 'tls';
