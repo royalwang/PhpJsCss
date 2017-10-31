@@ -35,6 +35,12 @@ class Main{
 			$conn->setAttribute(PDO::ATTR_PERSISTENT, false);
 			// set utf for connection utf8_general_ci or utf8_unicode_ci 
 			$conn->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8mb4' COLLATE 'utf8mb4_unicode_ci'");
+			// PDO SSL
+			// $conn = new PDO('mysql:host='.$mysqlhost.';port='.$mysqlport.';dbname='.$mysqldb.';charset=utf8', $mysqluser, $mysqlpass,array( PDO::MYSQL_ATTR_SSL_KEY    =>'/path/to/client-key.pem', PDO::MYSQL_ATTR_SSL_CERT=>'/path/to/client-cert.pem', PDO::MYSQL_ATTR_SSL_CA    =>'/path/to/ca-cert.pem'));
+			// Or
+			// $conn->setAttribute(PDO::MYSQL_ATTR_SSL_KEY => '/path/to/client-key.pem');
+			// $conn->setAttribute(PDO::MYSQL_ATTR_SSL_CERT => '/path/to/client-cert.pem');
+			// $conn->setAttribute(PDO::MYSQL_ATTR_SSL_CA => '/path/to/ca-cert.pem');			
 			return $conn;
 		}catch(Exception $e){
 			echo "Mysql connection error!!!";
