@@ -35,6 +35,9 @@ class Main{
 			$conn->setAttribute(PDO::ATTR_PERSISTENT, false);
 			// set utf for connection utf8_general_ci or utf8_unicode_ci 
 			$conn->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8mb4' COLLATE 'utf8mb4_unicode_ci'");
+			// Buffered querry
+			// $conn->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true);
+			
 			// PDO SSL
 			// $conn = new PDO('mysql:host='.$mysqlhost.';port='.$mysqlport.';dbname='.$mysqldb.';charset=utf8', $mysqluser, $mysqlpass,array( PDO::MYSQL_ATTR_SSL_KEY    =>'/path/to/client-key.pem', PDO::MYSQL_ATTR_SSL_CERT=>'/path/to/client-cert.pem', PDO::MYSQL_ATTR_SSL_CA    =>'/path/to/ca-cert.pem'));
 			// Or
@@ -49,6 +52,8 @@ class Main{
 		// $rows = $res->fetchAll(PDO::FETCH_ASSOC);
 		// $cnt = $res->rowCount();
 		// $id = $this->db->lastInsertId();
+		// buffered query
+		// $stmt = $db->prepare('select * from foo', array(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => true)
 	}
 
 	// Create new user mailbox
