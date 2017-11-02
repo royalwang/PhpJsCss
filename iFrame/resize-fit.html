@@ -1,0 +1,92 @@
+<script src="js/jquery.min.js"></script>
+
+	<script type="text/javascript">
+  
+	// Resize iframe onload
+	function resizeIframe(obj) {
+		obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+		obj.style.width = obj.contentWindow.document.body.scrollWidth + 'px';
+		// resize side bar
+		var wi = $(document).height();
+		$('.left').height(wi);
+
+		// iframe.src = 'data:text/html;charset=utf-8,' + encodeURI(html);
+	}
+
+	function createIframe(){
+		var html = '<body><h2>Foo</h2></body>';
+		var iframe = document.createElement('iframe');		
+		iframe.src = 'data:text/html;charset=utf-8,' + encodeURI(html);
+		// The iframe element needs to be added to the DOM tree to be parsed.
+		document.body.appendChild(iframe);
+		console.log('iframe.contentWindow =', iframe.contentWindow);
+		// 
+		// iframe.contentWindow.document.open();
+		// iframe.contentWindow.document.write(html);
+		// iframe.contentWindow.document.close();
+	}
+
+	$(document).ready(function() {		
+		// ajax search
+		$('.findtxt').keyup(function() {			
+  			var txt = $(this).val();
+			$.get( "ajax.php",{ q: txt } ,function( data ) {
+			  $( "#ajax" ).html( data );
+			});
+		});
+    
+		// show hide
+		$( "#findbtn" ).click(function() {			
+		  // $( "#findbox" ).toggle( "slow" );
+		  $( "#findbox" ).slideToggle( "slow" );
+		});
+
+		// resize left sidebar height to web page height
+		var wi = $(document).height();
+		$('.left').height(wi);
+
+	});	
+  
+  // animate menu
+	$(window).scroll(function () {
+		var top = $(this).scrollTop();
+		if (top > 100) {
+			$( ".top" ).addClass("fixed");
+		    $( ".top" ).fadeIn("slow");
+			$( ".top" ).animate({opacity: 0.9}, 500);
+		}else {
+			$( ".top" ).removeClass( 'fixed' );    			
+			$( ".top" ).animate({opacity: 1}, 500);
+		}			
+	});	
+  
+  // resize fit change content
+	$( window ).resize(function() {			  
+		// get iframe with id
+		var frame = $('#xframe');
+		// get iframe parent div width
+		var parentWidth = frame.parent().width();	  
+		// resize iframe
+		$('#xframe').css({'width':parentWidth + 'px'});	  	  
+		// get iframe document
+		var frameDocument = $("#xframe", top.document);
+		// get iframe html
+		var frameHtml = frameDocument.contents().find("html").html();	 
+		// resize iframe height to inside content height
+		var frameContentHeight = frameDocument.contents().height();
+		// set frame height  
+		$('#xframe').css({'height':frameContentHeight + 'px'});	
+		// change iframe content
+		// var frameHtml = frameDocument.contents().find("html").html("<h1>New HTML</h1>");		 
+	});
+	</script>
+  
+  <div style="width: 50%">
+  
+    <!-- load message and resize iframe to content size  or: srcdoc="<html><body>Hello, <b>world</b>.</body></html>" -->
+		<iframe id="xframe" name="xframe" src="emails/christmas/index.html" style="background: #fff; min-height: 100% !important; width: 100%" sandbox="allow-same-origin allow-scripts" frameborder="0" scrolling="no" onload="resizeIframe(this);">
+  			<p>Your browser does not support iframes.</p>
+		</iframe>
+    
+	</div>
+    
