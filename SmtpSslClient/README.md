@@ -15,8 +15,14 @@ $ctx = stream_context_create();
 stream_context_set_option($ctx, 'ssl', 'verify_peer', false);
 stream_context_set_option($ctx, 'ssl', 'verify_peer_name', false);
 try{
-    // echo $socket = stream_socket_client('ssl://smtp.gmail.com:587', $err, $errstr, 60, STREAM_CLIENT_CONNECT, $ctx);
-    echo $socket = stream_socket_client('tcp://smtp.gmail.com:587', $err, $errstr, 60, STREAM_CLIENT_CONNECT, $ctx);
+    // with only ssl
+    // echo $socket = stream_socket_client('ssl://smtp.gmail.com:587', $err, $errstr, 
+        60, STREAM_CLIENT_CONNECT, $ctx);
+        
+    // tcp no ssl
+    echo $socket = stream_socket_client('tcp://smtp.gmail.com:587', $err, $errstr, 
+        60, STREAM_CLIENT_CONNECT, $ctx);
+        
     if (!$socket) {
         print "Failed to connect $err $errstr\n";
         return;
@@ -30,7 +36,10 @@ try{
         // Start tls connection
         echo fwrite($socket, "STARTTLS\r\n");
         echo fread($socket,8192);
+        
+        // tcp enable tls encryption
         echo stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_SSLv23_CLIENT);
+        
         // Send ehlo
         echo fwrite($socket, "EHLO cool.xx\r\n");
         echo fread($socket,8192);
