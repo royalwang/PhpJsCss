@@ -1,7 +1,7 @@
 <?php
 error_reporting('E_ALL');
 // only from localhost
-//ini_set('sendmail_from', 'hello@fxstar.eu');
+//ini_set('sendmail_from', 'hello@domain.com');
 //echo mail('hello@breakermind.com', 'DKIM test', 'DKIM test ..... works');
 require 'mailer/PHPMailerAutoload.php';
 require_once('mailer/class.phpmailer.php');
@@ -18,16 +18,16 @@ if (!empty($DKIMdomain)) {
 }
 		
 $mail->IsSMTP(); 
-$mail->Host       = "fxstar.eu";           // SMTP server
+$mail->Host       = "domain.com";           // SMTP server
 $mail ->CharSet = "utf-8";                 // polish characters
 $mail->SMTPSecure = "tls";                 // tls or ssl as you need
 $mail->SMTPAuth   = true;                  // enable SMTP authentication
 $mail->Port       = 25;                    // set the SMTP port for the GMAIL server
 //$mail->SMTPDebug  = 1;                   // 1 = errors and messages, 2 = messages only
-$mail->Username   = "hello@fxstar.eu";     // SMTP account username
+$mail->Username   = "hello@domain.com";     // SMTP account username
 $mail->Password   = "###############";     // SMTP account password
-$mail->SetFrom('hello@fxstar.eu', 'Marcyś');
-$mail->AddReplyTo("hello@fxstar.eu","Breakermind");
+$mail->SetFrom('hello@domain.com', 'Marcyś');
+$mail->AddReplyTo("hello@domain.com","Breakermind");
 $mail->Subject    = "PHPMailer Test Subject ąćńółśężźńąą via smtp, basic with authentication";
 $mail->AltBody    = "To view the message, please use an HTML compatible email viewer!";
 $mail->MsgHTML($body);
