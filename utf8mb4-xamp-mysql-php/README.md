@@ -1,5 +1,7 @@
 # Mysql polish characters in php
 
+Mysql znaki zapytania zamiast polskich liter
+
 ```php
 // Add to mysql config file my.ini or my.cnf :	 
 // C:/xampp/mysql/bin/my.ini 
