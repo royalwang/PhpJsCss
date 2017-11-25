@@ -56,14 +56,13 @@
 	}
 
 
-And in html  header add:
-
+// And in html  header add:
     <meta charset="utf-8">
-Or in php:
-
+    
+// Or in php:
     header('Content-Type: text/html; charset=utf-8');
 
-And set database and table collation and charset  when creating database:
+// And set database and table collation and charset  when creating database:
 utf8mb4
 utf8mb4_unicode_ci
 
