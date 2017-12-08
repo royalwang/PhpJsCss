@@ -18,3 +18,10 @@ Wordpress smtp client plugin with SSL/TLS. Send emails without smtp server with 
   
 ?>
 ```
+
+#### 
+```
+License:
+1) Commercial use only after 10 USD Donation on PayPal account: hello@breakermind.com
+2) Private use for Free (0.00 USD)
+```
