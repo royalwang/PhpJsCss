@@ -1,0 +1,61 @@
+
+.box{
+	float: left; width: 99%; margin-right: 1%; margin-bottom: 1%; padding-bottom: 1%; overflow: hidden;
+	padding: 0px; font-family: Arial;
+	background: #fff; border-radius: 5px;
+	border: 1px solid #ddd;
+	box-sizing: border-box;	
+}
+
+.box *{
+	color: #2fb602; transition: all .4s;
+}
+
+.box h1{
+	float: left; width: 100%; padding: 10px; margin: 0px; border-bottom: 1px solid #ddd; box-sizing: border-box;
+}
+
+.box p{
+	float: left; width: 98%; margin-left: 1%;  padding: 5px; box-sizing: border-box;
+	color: #222; cursor: initial;
+}
+
+.box label{
+	float: left; width: 98%; margin-left: 1%;  padding: 10px 0px 0px 0px; box-sizing: border-box;
+	color: #222;
+}
+
+.box code{
+	float: left; width: 98%; margin-left: 1%; padding: 5px; border-radius: 5px; box-sizing: border-box;
+	margin-bottom: 5px; color: #222;
+}
+
+.box input{
+	float: left; width: 98%; margin: 1%; padding: 10px; border-radius: 5px; box-sizing: border-box;
+	color: #222;
+}
+
+.box input[type="submit"]{
+	border: 0px;
+	border-radius: 50px; 
+	border: 1px solid #2fb602;
+	background: #fff;
+	color: #2fb602;
+	cursor: pointer;
+}
+
+.box input[type="submit"]:hover{
+	background: #2fb602; 
+	color: #fff;
+}
+
+.box textarea{
+	float: left; width: 98%; min-width: 98%; max-width: 98%; margin: 1%; padding: 10px; border-radius: 5px; box-sizing: border-box;
+	min-height: 100px; color: #222;
+}
+
+div.err{
+	float: left; width: 99%; padding: 10px; margin-bottom: 10px; color: #ff2200;	
+	border: 1px solid #ff2200; background: #fff; border-radius: 5px; box-sizing: border-box;
+
+}
