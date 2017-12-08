@@ -11,7 +11,10 @@ Wordpress smtp client plugin with SSL/TLS. Send emails without smtp server with 
   $html = '<h1>Hello message from smtp !!! </h1> <br> <p> Message from wordpress plugin! </p>';
   
   // Install and activate plugin and send emails
-  wp_mail($to, $subject, $html);
+  $ok = wp_mail($to, $subject, $html);
+  
+  // Show error
+  echo $ok;
   
 ?>
 ```
