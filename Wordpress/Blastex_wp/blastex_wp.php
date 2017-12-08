@@ -11,6 +11,13 @@ License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain:  blastex_wp
 Domain Path:  /languages
 */
+
+/*
+License:
+1) Commercial use only after 10USD Donation on PayPal account: hello@breakermind.com
+2) Private use for Free (0.00 USD)
+*/
+
 ob_start();
 // header('Content-Type: text/html; charset=utf-8');
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
@@ -145,10 +152,18 @@ if (Blastex_wp_PhpVersionCheck()) {
 			// Send email			
 			$ok = $m->Send();
 			if($ok == 1){
-				$err = mb_convert_encoding($m->lastError, "UTF-8", "auto");
+				if(function_exists('mb_convert_encoding')){
+					$err = mb_convert_encoding($m->lastError, "UTF-8", "auto");
+				}else{
+					$err = $m->lastError;
+				}
 				return  '<div class="err">Email has been sent!!! '.$err.' From: ' . $from . ' To: ' . $to . '</div>';
 			}else{
-				$err = mb_convert_encoding($m->lastError, "UTF-8", "auto");
+				if(function_exists('mb_convert_encoding')){
+					$err = mb_convert_encoding($m->lastError, "UTF-8", "auto");
+				}else{
+					$err = $m->lastError;
+				}
 				return '<div class="err">Email send error! '.$err.'</div>';
 			}
 
