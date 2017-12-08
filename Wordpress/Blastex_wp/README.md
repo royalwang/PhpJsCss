@@ -10,7 +10,11 @@ Wordpress smtp client plugin with SSL/TLS. Send emails without smtp server with 
   $subject 'Hello from email client';
   $html = '<h1>Hello message from smtp !!! </h1> <br> <p> Message from wordpress plugin! </p>';
   
-  // Install and activate plugin and send emails
+  $attachments = array( 'path/to/file1' , 'path/to/file2' );
+
+  // Install and activate plugin and send emails with attachments
+  $ok = wp_mail($to, $subject, $html, $attachments);
+  // or without
   $ok = wp_mail($to, $subject, $html);
   
   // Show error
@@ -19,7 +23,7 @@ Wordpress smtp client plugin with SSL/TLS. Send emails without smtp server with 
 ?>
 ```
 
-#### 
+#### Blastex_wp License
 ```
 License:
 1) Commercial use only after 10 USD Donation on PayPal account: hello@breakermind.com
