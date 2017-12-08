@@ -85,7 +85,7 @@ class Blastex
     }
 
     function addFrom($email, $name = ""){       
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if(filter_var(trim($email), FILTER_VALIDATE_EMAIL)){
             $this->From['email'] = $email;
             $this->From['name'] = $name;            
             return 1;
@@ -95,7 +95,7 @@ class Blastex
     }
 
     function addReplyTo($email, $name = ""){       
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if(filter_var(trim($email), FILTER_VALIDATE_EMAIL)){
             $this->ReplyTo['email'] = $email;
             $this->ReplyTo['name'] = $name;            
             return 1;
@@ -117,7 +117,7 @@ class Blastex
 
     function addCc($email, $name = ""){
         $i = count($this->ccList)+1;
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if(filter_var(trim($email), FILTER_VALIDATE_EMAIL)){
             $this->ccList[$i]['name'] = $name;
             $this->ccList[$i]['email'] = $email;
             return 1;
@@ -128,7 +128,7 @@ class Blastex
 
     function addBcc($email, $name = ""){
         $i = count($this->bccList)+1;
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if(filter_var(trim($email), FILTER_VALIDATE_EMAIL)){
             $this->bccList[$i]['name'] = $name;
             $this->bccList[$i]['email'] = $email;
             return 1;
@@ -139,7 +139,7 @@ class Blastex
 
     function addTo($email, $name = ""){
         $i = count($this->toList)+1;
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if(filter_var(trim($email), FILTER_VALIDATE_EMAIL)){
             $this->toList[$i]['name'] = $name;
             $this->toList[$i]['email'] = $email;
             return 1;
@@ -456,12 +456,13 @@ class Blastex
                         fclose($socket);                                            
                     }
                     $emailSend = 1;
+                    return 1;
                 }catch(Exception $e){
                     $logi .= $e->getMessage();
                     $this->lastError = "[SEND_ERROR_EXCEPTION]";
                     return 0;
                 }                  
-            }
+            }        
         } 
         return 1;    
     }
