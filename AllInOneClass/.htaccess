@@ -1,0 +1,89 @@
+#PHP ini settings
+php_value memory_limit 50M
+php_value post_max_size 25M
+php_value upload_max_filesize 5M
+
+# main page
+# DirectoryIndex index.php
+
+#Rewrite
+RewriteEngine on
+RewriteBase /
+
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://qflash.pl/$1 [R=301,QSA,NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# fix folder redirect images and css js/images/css/media
+RewriteRule ^.+?/((img|css|js|media)/.+)$ /$1 [L,R=301,NC]
+
+# Redirect css
+RewriteRule ^(.+?)/style.css$ /style.css [L,NC]
+
+# User sklep profil
+RewriteRule ^([sklep]+)/([A-Za-z0-9]+)/?$ shop-user.php?id=$2&type=5 [NC,L,QSA]
+RewriteRule ^([shop]+)/([A-Za-z0-9]+)/?$ shop-user.php?id=$2&type=5 [NC,L,QSA]
+
+#Tags
+RewriteRule ^([tag]+)/([A-Za-z0-9ąęśćźżńłó\ ]+)/?$ tag.php?tag=$2&type=6 [NC,L,QSA]
+
+# User praca profil
+# RewriteRule ^([praca]+)/([A-Za-z0-9]+)/?$ profil-praca.php?id=$2&menu=$3 [NC,L,QSA]
+
+# Shop products
+RewriteRule ^([product]+)/([0-9]+)/(.*)/?$ shop-show.php?pid=$2&t=$3 [NC,L,QSA]
+RewriteRule ^([product]+)/([0-9]+)/?$ shop-show.php?pid=$2&t=$3 [NC,L,QSA]
+RewriteRule ^([product]+)/([0-9]+)?$ shop-show.php?pid=$2&t=$3 [NC,L,QSA]
+
+# Question
+RewriteRule ^([pytanie]+)/([0-9]+)/(.*)?$ question.php?qid=$2&t=$3 [NC,L,QSA]
+RewriteRule ^([artykul]+)/([0-9]+)/(.*)?$ question-article.php?qid=$2&t=$3 [NC,L,QSA]
+RewriteRule ^([framework]+)/([0-9]+)/(.*)?$ question-framework.php?qid=$2&t=$3 [NC,L,QSA]
+
+# Jobs
+RewriteRule ^([praca]+)/([0-9]+)/(.*)/?$ job-show.php?id=$2&t=$3 [NC,L,QSA]
+RewriteRule ^([praca]+)/([0-9]+)/?$ job-show.php?id=$2&t=$3 [NC,L,QSA]
+RewriteRule ^([praca]+)/([0-9]+)?$ job-show.php?id=$2&t=$3 [NC,L,QSA]
+RewriteRule ^([praca]+)/?$ job.php [NC,L,QSA]
+
+
+# User profil
+RewriteRule ^([user]+)/([A-Za-z0-9]+)/?$ profil.php?id=$2&menu=$3 [NC,L,QSA]
+# User profil articles
+RewriteRule ^([user]+)/([A-Za-z0-9]+)/question/?$ profil.php?id=$2&type=1 [NC,L,QSA]
+RewriteRule ^([user]+)/([A-Za-z0-9]+)/article/?$ profil.php?id=$2&type=2 [NC,L,QSA]
+RewriteRule ^([user]+)/([A-Za-z0-9]+)/framework/?$ profil.php?id=$2&type=3 [NC,L,QSA]
+RewriteRule ^([user]+)/([A-Za-z0-9]+)/about/?$ profil-about.php?id=$2&type=4 [NC,L,QSA]
+RewriteRule ^([user]+)/([A-Za-z0-9]+)/shop/?$ shop-user.php?id=$2&type=5 [NC,L,QSA]
+RewriteRule ^([user]+)/([A-Za-z0-9]+)/job/?$ job-user.php?id=$2&type=6 [NC,L,QSA]
+
+### Examples
+# Username rewrite profil
+#RewriteRule ^([a-zA-Z0-9-]+)$ userinfo.php?user=$1 [L,NC]
+
+#Pretty url page.xom/id/post/number 
+#RewriteRule ^([A-za-z0-9-]+)/?$ profil.php?id=$1 [NC,L]
+#RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/?$ profil.php?id=$1&menu=$2 [NC,L]
+#RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9]+)/([0-9]+)/?$ profil.php?id=$1&menu=$2&page=$3 [NC,L]
+
+# Redirect css
+#RewriteRule ^subscribeform/subscribe.css$ /subscribe.css [L,NC]
+#portfolio rewrite folder
+#RewriteRule ^([api]+)/?$ /api/index.php?id=$1 [NC,L]
+# App android download
+#RewriteRule ^app$ download.php [L,NC,QSA]
+#RewriteRule ^app/$ download.php [L,NC,QSA]
+
+# dont list folder files
+#Option -Indexes
+
+### Others examples
+# Hiding File Extension .html
+# RewriteRule ^([^/.]+)/?$ $1.html
+
+# redirect subdomain to subdomain folder in *.domain.com document root
+# RewriteEngine On 
+# RewriteCond %{HTTP_HOST} ^(.+)\.boo\.loc$ [NC]
+# RewriteCond %{HTTP_HOST} !^www\.
+# RewriteRule ^([^/]*)$ /%1%{REQUEST_URI}?folder=%1 [L,QSA]
