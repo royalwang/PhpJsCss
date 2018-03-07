@@ -6,7 +6,7 @@
 // Import and use alias
 use App\Lib1\MyClass1 as MC1;
 use App\Lib2\MyClass2 as MC2;
-use App\Zupa\MyClass3 as MC3;
+use App\Zupa\Zimna\MyClass3 as MC3;
 
 // First class
 $obj1 = new MC1();
