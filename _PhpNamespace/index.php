@@ -16,7 +16,7 @@ echo $obj1->WhoAmI();
 $obj2 = new MC2();
 echo $obj2->WhoAmI();
 
-// Third class from App/Zupa/MyClass3
+// Third class from App/Zupa/Zimna/MyClass3
 $obj3 = new MC3();
 echo $obj3->WhoAmI();
 
