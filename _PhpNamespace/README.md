@@ -1,4 +1,4 @@
-# Php namespaces in class
+# Php namespace
 
 ### index.php output
 
