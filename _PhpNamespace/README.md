@@ -1,4 +1,24 @@
-# Php namespace
+# Php namespace and class
+
+# Php protected, private, public
+```
+#### public 
+Oznacza że atrybut lub metoda jest widoczna zarówno ze środka klasy, klas dziedziczonych jak i z zewnątrz klasy.
+
+#### private 
+Oznacza że atrybut lub metoda nie jest widoczna na zewnątrz klasy i nie może być dziedziczona.
+
+#### protected 
+Oznacza że atrybut lub metoda nie jest widoczna na zewnątrz klasy i może być dziedziczona. 
+
+#### static
+Oznacza że atrybut lub metoda może być użyta bez tworzenia instancji(objektu) klasy 
+Foo::StaticMethod();
+Foo::$StaticVal;
+self::$StaticVal;
+parent::$StaticVal;
+
+```
 
 ### index.php output
 
