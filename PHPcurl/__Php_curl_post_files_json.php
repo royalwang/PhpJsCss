@@ -11,6 +11,9 @@ curl_setopt($ch, CURLOPT_SAFE_UPLOAD, false); // !!!! required as of PHP 5.6.0 f
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2) Gecko/20100115 Firefox/3.6 (.NET CLR 3.5.30729)");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // 1, 2
+curl_setopt($ch, CURLOPT_TIMEOUT, 60);
 $res1 = curl_exec($ch);
 
 
@@ -27,6 +30,9 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Length: ' . strlen($data_string))
 );
 curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB; rv:1.9.2) Gecko/20100115 Firefox/3.6 (.NET CLR 3.5.30729)");
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // 1, 2
+curl_setopt($ch, CURLOPT_TIMEOUT, 60);
 $res2 = curl_exec($ch);
 
 
@@ -42,14 +48,3 @@ echo "<pre>";
 echo $res1;
 echo $res2;
 echo $res3;
-
-// _curl-post.php 
-<?php 
-// from form-data
-print_r($_POST);
-// files
-print_r($_FILES);
-// from json
-echo file_get_contents('php://input');
-?>
-
