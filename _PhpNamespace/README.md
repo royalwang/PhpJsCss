@@ -4,11 +4,13 @@
 
 ```
 #### public 
-Oznacza że atrybut lub metoda jest widoczna zarówno ze środka klasy, klas dziedziczonych jak i z zewnątrz klasy.
+Oznacza że atrybut lub metoda jest widoczna zarówno ze środka klasy, 
+klas dziedziczonych jak i z zewnątrz klasy.
 
 #### private 
-Oznacza że atrybut lub metoda nie jest widoczna na zewnątrz klasy i nie może być dziedziczona 
-(klasa potomna nie ma dostępu do prywatnych pól i metod klasy bazowej tylko przez metody publiczne można się odwołać do pola private rodzica).
+Oznacza że atrybut lub metoda nie jest widoczna na zewnątrz klasy 
+i nie może być dziedziczona (klasa potomna nie ma dostępu do prywatnych pól 
+i metod klasy bazowej tylko przez metody publiczne można się odwołać do pola private rodzica).
 
 #### protected 
 Oznacza że atrybut lub metoda nie jest widoczna na zewnątrz klasy i może być dziedziczona. 
