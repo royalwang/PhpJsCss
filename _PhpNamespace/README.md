@@ -27,9 +27,10 @@ parent::$StaticVal;
 
 #### abstract
 Nie można utworzyć objectu klasy abstrakcyjnej tylko do dziedziczenia, tworzenia nowych klas. 
-Metody abstrakcyjne w klasie muszą zostać nadpisane (unieważnione) w tworzonej klasie pochodnej 
-(jest to metoda, która jest przeznaczona do tego, aby ją unieważnić, dlatego też nie może zawierać żadnej treści). 
-Słowo abstract wymusza na programiście konieczność dziedziczenia po klasie oraz unieważnienia metody abstrakcyjnej.
+Metody abstrakcyjne w klasie muszą zostać nadpisane (unieważnione) w tworzonej klasie pochodnej, 
+dlatego też nie mogą zawierać żadnej treści. 
+Słowo abstract wymusza na programiście konieczność dziedziczenia po klasie 
+oraz unieważnienia metody abstrakcyjnej.
 
 #### final
 Metoda klasy została zadeklarowana jako finalna i nie może zostać nadpisana (unieważniona) przy dziedziczeniu.
