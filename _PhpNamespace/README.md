@@ -12,10 +12,13 @@ Oznacza że atrybut lub metoda nie jest widoczna na zewnątrz klasy i nie może 
 #### protected 
 Oznacza że atrybut lub metoda nie jest widoczna na zewnątrz klasy i może być dziedziczona. 
 
-#### static, parent::  self::
+#### static
 Oznacza że atrybut lub metoda może być użyta bez tworzenia instancji(objektu) klasy 
 Foo::StaticMethod();
 Foo::$StaticVal;
+
+### parent::  self:: 
+Używamy w klasie pochodnej
 self::$StaticVal;
 parent::$StaticVal;
 
