@@ -2,7 +2,7 @@
 
 # Php protected, private, public
 
-```
+```php
 #### public 
 Oznacza że atrybut lub metoda jest widoczna zarówno ze środka klasy, 
 klas dziedziczonych jak i z zewnątrz klasy.
