@@ -2,6 +2,9 @@
 // Send POST request with files
 $file1 = realpath('ads/ads0.jpg');
 $file2 = realpath('ads/ads1.jpg');
+// Single file
+// $data = array('name' => 'Alexia', 'address' => 'Usa', 'age' => 21, 'file' => '@'.$file1);
+// Multiple files
 $data = array('name' => 'Alexia', 'address' => 'Usa', 'age' => 21, 'file[0]' => '@'.$file1, 'file[1]' => '@'.$file2);
 
 $ch = curl_init();
