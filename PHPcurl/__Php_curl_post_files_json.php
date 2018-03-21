@@ -19,7 +19,6 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // 1, 2
 curl_setopt($ch, CURLOPT_TIMEOUT, 60);
 $res1 = curl_exec($ch);
 
-
 // Send json POST
 $data = array("name" => "Markos", "age" => "21");
 $data_string = json_encode($data);
@@ -38,7 +37,6 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // 1, 2
 curl_setopt($ch, CURLOPT_TIMEOUT, 60);
 $res2 = curl_exec($ch);
 
-
 // GET request
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, "http://www.example.com?q=jabadoo");
@@ -46,9 +44,7 @@ curl_setopt($ch, CURLOPT_HEADER, false);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $res3 = curl_exec($ch);
 
-
 echo "<pre>";
 echo $res1;
 echo $res2;
 echo $res3;
-
