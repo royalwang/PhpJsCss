@@ -1,6 +1,10 @@
 # PHP Send POST data with file or files and json data with ssl (forece ssl/tls)
 https://github.com/fxstar/PhpJsCss/blob/master/PHPcurl/__Php_curl_post_files_json.php
 
+## Enable in file php.ini extensions
+extension=php_curl.dll
+extension=php_sockets.dll
+
 ### Other available options
 ```
 /*
