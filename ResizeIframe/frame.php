@@ -132,7 +132,7 @@
 		});
 						
 		// ckeditor
-		initSample();
+		// initSample();
 		// get data
 		// var data = CKEDITOR.instances.editor.getData();
 
