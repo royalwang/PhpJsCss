@@ -1,3 +1,4 @@
+<?php
 // Send post to facebook
 function SendFacebookPost($id, $fbuser, $fbtoken){
 		// Get item id
@@ -37,3 +38,4 @@ function SendFacebook($fbuser, $fbtoken, $msg, $link, $photo_url){
 			return "Error send post with curl to facebook!";
 		}
 	}
+?>
