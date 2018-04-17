@@ -4,9 +4,11 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
+
 function sendmail($to = 'hello@breakermind.com',$to_name = 'Marcys',$sub = '', $msg = '', $from = 'noreply@xx.xx', $from_name = 'Roninex'){	
 	$mail = new PHPMailer(true); // true - enables exceptions
 	try {
