@@ -27,7 +27,7 @@ function sms_send($params, $token)
     return $content;
 }
 
-$token = "wygenerowany_token"; //https://ssl.smsapi.com/webapp#/oauth/manage
+$token = "wygenerowany_token";
 
 $params = array(
     'to' => '900000000', //numery odbiorców rozdzielone przecinkami
