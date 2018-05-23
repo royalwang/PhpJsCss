@@ -4,7 +4,7 @@ function sms_send($params, $token)
 {
 
     static $content;    
-    $url = 'http://localhost/_curl_oauth_api.php';
+    $url = 'https://localhost/_curl_oauth_api.php';
 
     $c = curl_init();
     curl_setopt($c, CURLOPT_URL, $url);
@@ -14,6 +14,9 @@ function sms_send($params, $token)
     curl_setopt($c, CURLOPT_HTTPHEADER, array(
         "Authorization: Bearer $token"
     ));
+    // Force TLS/SSL certificates errors
+    curl_setopt($c, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($c, CURLOPT_SSL_VERIFYHOST, 0); // 1, 2
 
     $content = curl_exec($c);
     $http_status = curl_getinfo($c, CURLINFO_HTTP_CODE);
