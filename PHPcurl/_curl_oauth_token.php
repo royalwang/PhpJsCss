@@ -4,7 +4,7 @@ function sms_send($params, $token)
 {
 
     static $content;    
-    $url = 'https://api.smsapi.pl/sms.do';
+    $url = 'http://localhost/_curl_oauth_api.php';
 
     $c = curl_init();
     curl_setopt($c, CURLOPT_URL, $url);
